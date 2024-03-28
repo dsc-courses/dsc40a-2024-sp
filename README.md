@@ -1,3 +1,3 @@
-# dsc80-2024-wi
+# dsc40a-2024-sp
 
-Public repository for the Winter 2024 offering of DSC 80. For instructions on how to use this repository, see https://dsc80.com/tech_support/.
+Public repository for the Spring 2024 offering of DSC 40A. Any time we present you with code, we'll put it here.
