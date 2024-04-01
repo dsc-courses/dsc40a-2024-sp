@@ -127,6 +127,8 @@ There will be one Midterm Exam and one Final Exam, both held in person.
 
 The Midterm Exam will be worth 20% of your overall course grade and will only cover content from Lectures 1-9. The Final Exam will be worth 30% of your overall course grade and will be cumulative.
 
+To prepare for exams, you should plan to spend a considerable amount of time working through past exam problems. We're building a bank of old exam problems, with detailed explanations, at [practice.dsc40a.com](https://practice.dsc40a.com).
+
 ### Redemption Policy
 
 The Final Exam will consist of two parts: a "Midterm" section and a "post-Midterm" section. If you do better on the "Midterm" section of the Final Exam than you did on the original Midterm Exam, your score on the "Midterm" section will replace your original Midterm Exam score. This lowers the stakes of the Midterm Exam and gives you two opportunities to demonstrate your understanding of the content from the first half of the course. This also means that you can miss the Midterm Exam for any reason and have the score be replaced by your score on the "Midterm" section of the Final Exam (though we do not recommend this).
