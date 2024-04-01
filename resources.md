@@ -14,9 +14,11 @@ nav_order: 4
 1. TOC
 {:toc}
 
+---
+
 ## Lecture Videos
 
-In the table below, you can find lecture videos created by Janine Tiefenbruck, who created this course and taught it many times. The lecture videos linked below will generally be pretty similar in content coverage to our lectures, but there will be occasional differences. You are responsible for everything covered in our lectures, even if something doesn’t appear in the videos below. When in doubt, refer to the main lecture slides posted and ask on Ed.
+In the table below, you can find lecture videos created by Janine Tiefenbruck, who created this course and taught it many times. The lecture videos linked below will generally be pretty similar in content coverage to our lectures, but there are indeed differences in notation and order. You are responsible for everything covered in our lectures, even if something doesn’t appear in the videos below. When in doubt, refer to the main lecture slides posted and ask on Ed.
 
 | **Video** | **Topics** |
 | --- | --- |
@@ -48,12 +50,15 @@ In the table below, you can find lecture videos created by Janine Tiefenbruck, w
 |[Video 26](https://youtu.be/WLQMoA4ZAus)| naive Bayes |
 |[Video 27](https://youtu.be/4tGtziW901Y)| text classification, spam filter, naive Bayes | 
 
+---
+
 ## Course Notes
 The notes for this class were written by Janine Tiefenbruck and Justin Eldridge. These notes cover the material from the first half of the course, but as of Spring 2024, the order of coverage may be different.
-- [Chapter 1: Learning via Optimization](resources/notes/notes_chapter_1.pdf)
-- [Supplement on Spread](resources/notes/spread.pdf)
-- [Chapter 2: Least Squares Regression](resources/notes/notes_chapter_2.pdf)
+- [Chapter 1: Learning via Optimization](../resources/notes/notes_chapter_1.pdf)
+- [Supplement on Spread](../resources/notes/spread.pdf)
+- [Chapter 2: Least Squares Regression](../resources/notes/notes_chapter_2.pdf)
 
+---
 
 ## Probability
 
@@ -84,6 +89,8 @@ Janine Tiefenbruck wrote a "Probability Roadmap" that aims to guide students thr
 - [Conditional probability: A Visual explanation by Victor Powell for Setosa](https://setosa.io/conditional/)
 - [Seeing Theory](https://seeing-theory.brown.edu)
 
+---
+
 ## Past Exams
 
 Past exam problems can be found at [practice.dsc40a.com](https://practice.dsc40a.com).
@@ -104,6 +111,8 @@ Past exam problems can be found at [practice.dsc40a.com](https://practice.dsc40a
 | Fall 2020 | Janine Tiefenbruck, Yian Ma | [Blank](https://drive.google.com/file/d/1n_yvPUyGfp9p6406FXrTD52xc_Tctykv/view?usp=sharing), [Solutions](https://drive.google.com/file/d/1sOFCym0FrMF7ZCf_Q6Gz3icF8iIdlkPt/view?usp=sharing) | -- | Part 1: [Blank](https://drive.google.com/file/d/1xx0ovIBlmlNM2Jls6CIcyxsIYcwBNdic/view?usp=sharing), [Solutions](https://drive.google.com/file/d/1jbIO2xz0MMSTs1VUlu07yiNJYrMRU8Np/view?usp=sharing) |
 | Spring 2020 | Janine Tiefenbruck | [Blank](https://drive.google.com/file/d/1rORHtb7uw9hsYec-2LWwKMh3ikEaxVVf/view?usp=sharing), [**Videos 🎬**](https://www.youtube.com/playlist?list=PLDNbnocpJUhZPkdrIW984vwcTAdEX0Lam) | -- | Part 1: [Blank](https://drive.google.com/file/d/1LPnysH4z6aadrJPqwSXtk_APs1jaXMr3/view?usp=sharing) |
 | Winter 2020 | Justin Eldridge | [Solutions](https://drive.google.com/file/d/1-eQjRyfl-v8IkLuvJYnYTdtw0T72I87C/view?usp=sharing) | [Solutions](https://drive.google.com/file/d/1cIq2W52LJVrNbC4hnL1oeU4JtyOpwCIW/view?usp=sharing) | [Solutions](https://drive.google.com/file/d/17_ITSLkzNdJhWezBqJsORhiaViIWW6aV/view?usp=sharing) | -->
+
+---
 
 ## Other Resources
 
