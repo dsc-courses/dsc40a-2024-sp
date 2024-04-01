@@ -155,7 +155,7 @@ Here's how we will compute your grade.
 
 Each student has **four slip days** to use throughout the quarter. A slip day can be used to extend the deadline of a homework assignment by 24 hours. You can use at most one slip day on any single homework assignment. **Slip days can only be used for homework assignments.**
 
-Slip days are applied automatically at the end of the quarter, and you don't need to ask in order to use one. It's your responsibility to keep track of how many you have left. If you run out of slip days and submit a homework late, it may still be graded so that you'll see what questions you missed, but the grade will be changed to a zero at the end of the quarter. If you use more than three slip days, we will count the first three late assignments, and any late assignments after that will get zero scores.
+Slip days are applied automatically at the end of the quarter, and you don't need to ask in order to use one. It's your responsibility to keep track of how many you have left. If you run out of slip days and submit a homework late, it may still be graded so that you'll see what questions you missed, but the grade will be changed to a zero at the end of the quarter. If you use more than four slip days, we will count the first four late assignments, and any late assignments after that will get zero scores.
 
 Slip days are designed to be a transparent and predictable source of leniency in deadlines. You can use a slip day if you are too busy to complete a homework on its original due date. But slips days are also meant for things like the internet going down at 11:58PM just as you go to submit your homework.
 
