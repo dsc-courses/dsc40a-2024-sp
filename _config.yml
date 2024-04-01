@@ -13,12 +13,12 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: DSC 80
-description: DSC 80, Winter 2024 at UC San Diego
-tagline: Practice and Application of Data Science
-baseurl: '/dsc80-2024-wi' # the subpath of your site, e.g. /blog
-url: 'https://dsc-courses.github.io' # the base hostname & protocol for your site, e.g. http://example.com
-author: DSC 80 course staff
+title: DSC 40A
+description: DSC 40A, Spring 2024 at UC San Diego
+tagline: Theoretical Foundations of Data Science I
+baseurl: '/' # the subpath of your site, e.g. /blog
+url: 'https://dsc40a.com' # the base hostname & protocol for your site, e.g. http://example.com
+author: DSC 40A course staff
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
 
 # Theme settings
@@ -28,16 +28,14 @@ search_enabled: true
 heading_anchors: true
 permalink: pretty
 aux_links:
-  💻 GitHub:
-    - 'https://github.com/dsc-courses/dsc80-2024-wi/'
   🙋 Ed:
-    - 'https://edstem.org/us/courses/51951/discussion/'
+    - 'https://edstem.org/us/courses/57667/discussion/'
   💯 Gradescope:
-    - 'https://www.gradescope.com/courses/698219/'
+    - 'https://www.gradescope.com/courses/759109/'
   💪 Practice:
-    - 'https://practice.dsc80.com'
+    - 'https://practice.dsc40a.com'
   🤔 Lecture Questions:
-    - 'https://docs.google.com/forms/d/e/1FAIpQLScWbVZv9hBv-wX-ItKHUVRnkPMMtfJZVfErKE9GS7_8dFcRBQ/viewform'
+    - 'https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform'
 footer_content:
 
 # Collections for website data
