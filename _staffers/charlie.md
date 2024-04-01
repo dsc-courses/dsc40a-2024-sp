@@ -8,5 +8,5 @@ description: 2nd year, Data Science, Revelle
 hometown: Shenzhen, CHN
 askabout: F1, poker, rap
 foodemoji: 🥃
-food: Yamazaki 12, Flower love sushi, Seafood paella
+food: Taste of Hong Kong, Handoo Korean BBQ, Bei Yuan Tea & Boba
 ---
