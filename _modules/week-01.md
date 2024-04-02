@@ -10,7 +10,7 @@ days:
       - name: LEC 1
         type: lecture
         title: Introduction to Modeling
-        # url: resources/lectures/lec01/lec01.html
+        url: resources/lectures/lec01/lec01-blank.pdf
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/1
       - name: SUR
         type: survey
