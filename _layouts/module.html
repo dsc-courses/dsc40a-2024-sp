@@ -20,22 +20,24 @@
               {% else %}
                 {{ event.title }}
               {% endif %}
-              {%- if event.filled -%}
-                <span>
-                  <a href="{{ event.filled }}">📝</a>
-                </span>
+              {%- if event.blank -%}
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <small><a href="{{ event.blank }}"><button type="button" class="btn btn-info">🌗 blank</button></a></small>
               {%- endif -%}
+              {%- if event.filled -%}
+              <small>&nbsp;&nbsp;<a href="{{ event.filled }}"><button type="button" class="btn btn-info">📝 filled</button></a></small>
+              {%- endif -%}
+              {%- if event.podcast -%}
+              <small>&nbsp;&nbsp;<a href="{{ event.podcast }}"><button type="button" class="btn btn-info">🎥 podcast</button></a></small>
+
+            {%- endif -%}
             </p>
             <p>
               <!-- 
               {%- if event.filled and event.podcast -%}
                 <span> | </span>
               {%- endif -%} -->
-              {%- if event.podcast -%}
-                <span>
-                  <a href="{{ event.podcast }}">🎥</a>
-                </span>
-              {%- endif -%}
               {%- if event.podcast and event.reading -%}
                 <span> | </span>
               {%- endif -%}

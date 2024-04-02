@@ -2,16 +2,14 @@
 title: Week 1 – Modeling and Loss Functions
 weekNumber: 1
 days:
-  - date: '2024-04-01'
-    events:
-      - markdown_content: 'No discussion – discussions start next week!'
   - date: '2024-04-02'
     events:
       - name: LEC 1
         type: lecture
         title: Introduction to Modeling
-        url: resources/lectures/lec01/lec01-blank.pdf
-        # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/1
+        blank: resources/lectures/lec01/lec01-blank.pdf
+        filled: resources/lectures/lec01/lec01-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/1
       - name: SUR
         type: survey
         title: <b>Welcome Survey</b>
