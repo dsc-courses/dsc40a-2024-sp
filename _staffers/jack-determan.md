@@ -8,5 +8,5 @@ description: 2nd year, Mathematics + Computer Science, ERC
 hometown: North Andover, MA
 askabout: Manim Code, Chess, Track and Field
 foodemoji: 🍲
-food: Duke's La Jolla
+food: Duke's La Jolla, Pizookies from BJs
 ---
