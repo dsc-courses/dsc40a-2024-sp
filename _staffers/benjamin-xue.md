@@ -8,6 +8,6 @@ description: 4th year, Data Science, Muir
 hometown: Houston, TX
 askabout: Homework, NFL, poker, guitar
 foodemoji: 🌮
-food: The Taco Stand, Calvin's Korean Chicken, SomiSomi
+food: Taco Stand, Calvin's Korean Chicken, SomiSomi
 ---
 
