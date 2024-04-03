@@ -1,5 +1,5 @@
 ---
-title: "Week 3 – Regression and Linear Algebra"
+title: "Week 3 – Regression and Linear Algebra<br><small>📘 Read <a href='resources/notes/notes_chapter_2.pdf#page=7'>Note 2, Pages 7-13</a>.</small>"
 weekNumber: 3
 days:
   - date: '2024-04-15'

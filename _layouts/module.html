@@ -30,20 +30,22 @@
               {%- endif -%}
               {%- if event.podcast -%}
               <small>&nbsp;&nbsp;<a href="{{ event.podcast }}"><button type="button" class="btn btn-info">🎥 podcast</button></a></small>
-
-            {%- endif -%}
+              {%- endif -%}
+              {%- if event.reading -%}
+              <small>&nbsp;&nbsp;<a href="{{ event.reading }}"><button type="button" class="btn btn-info">📖 read pg. 1-5</button></a></small>
+              {%- endif -%}
             </p>
             <p>
               <!-- 
               {%- if event.filled and event.podcast -%}
                 <span> | </span>
               {%- endif -%} -->
-              {%- if event.podcast and event.reading -%}
+              <!-- {%- if event.podcast and event.reading -%}
                 <span> | </span>
-              {%- endif -%}
-              {%- if event.reading -%}
+              {%- endif -%} -->
+              <!-- {%- if event.reading -%}
                 {{ event.reading | markdownify | remove: '<p>' | remove: '</p>' }}
-              {%- endif -%}
+              {%- endif -%} -->
             </p>
             <!-- {{ event | first | markdownify }} {{ event | last | markdownify }} -->
           </dd>
@@ -55,7 +57,7 @@
   {% assign content_strip = content | strip %}
   {% if content_strip != "" %}
   <div class="module-body">
-    {{ content }}
+    <small>{{ content }}</small>
   </div>
   {% endif %}
 </div>

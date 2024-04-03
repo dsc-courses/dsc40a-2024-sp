@@ -1,5 +1,5 @@
 ---
-title: "Week 2 – Simple Linear Regression"
+title: "Week 2 – Simple Linear Regression<br><small>📘 Read <a href='resources/notes/spread.pdf'>the spread notes</a> and <a href='resources/notes/notes_chapter_2.pdf#page=1'>Note 2, Pages 1-7</a>.</small>"
 weekNumber: 2
 days:
   - date: '2024-04-08'
