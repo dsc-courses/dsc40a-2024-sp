@@ -46,6 +46,8 @@ We will be using several websites this quarter. Here's what they're all used for
 - [Gradescope](https://www.gradescope.com/courses/759109/): Platform for submitting assignments and viewing grades. You should be automatically added to Gradescope within 24 hours of enrolling.
 - [Datahub](https://datahub.ucsd.edu): UCSD's data science and machine learning platform, for coding in Jupyter notebooks.
 
+**Note that we will not be using Canvas at all.**
+
 ---
 
 ## Course Structure 🍎
