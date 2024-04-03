@@ -13,7 +13,7 @@ nav_order: 1
 
 {{ site.staffersnobio }}
 
-[Jump to the current week](#week-1-modeling-and-loss-functions){: .btn }
+[Jump to the current week](#week-1-modeling-and-loss-functions-br-small-read-a-href-resources-notes-notes-chapter-1-pdf-page-1-note-1-pages-1-12-a-small){: .btn }
 
 <!-- Click the 🎥 button to view the recording of a lecture/discussion.<br>Click the 📝 button to view lecture notebooks after they've been filled in during lecture. -->
 
