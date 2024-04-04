@@ -19,7 +19,8 @@ days:
     events:
       - name: LEC 2
         type: lecture
-        title: Squared Loss and Absolute Loss
+        title: Empirical Risk Minimization
+        blank: resources/lectures/lec02/lec02-blank.pdf
         # url: resources/lectures/lec02/lec02.html
         # podcast: https://youtu.be/lOnq_nwpJPg
 ---
