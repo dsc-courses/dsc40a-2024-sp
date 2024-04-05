@@ -20,19 +20,34 @@
               {% else %}
                 {{ event.title }}
               {% endif %}
-              {%- if event.blank -%}
+              {%- if event.type == "lecture" -%}
+                {%- if event.blank -%}
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <small><a href="{{ event.blank }}"><button type="button" class="btn btn-info">🌗 blank</button></a></small>
+                {%- endif -%}
+                {%- if event.filled -%}
+                <small>&nbsp;&nbsp;<a href="{{ event.filled }}"><button type="button" class="btn btn-info">📝 filled</button></a></small>
+                {%- endif -%}
+                {%- if event.podcast -%}
+                <small>&nbsp;&nbsp;<a href="{{ event.podcast }}"><button type="button" class="btn btn-info">🎥 podcast</button></a></small>
+                {%- endif -%}
+                {%- if event.reading -%}
+                <small>&nbsp;&nbsp;<a href="{{ event.reading }}"><button type="button" class="btn btn-info">📖 read pg. 1-5</button></a></small>
+                {%- endif -%}
+              {%- endif -%}
+              {%- if event.type == "hw" -%}
+              {%- if event.problems -%}
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <small><a href="{{ event.blank }}"><button type="button" class="btn btn-info">🌗 blank</button></a></small>
+              <small><a href="{{ event.problems }}"><button type="button" class="btn btn-info">📄 problems</button></a></small>
               {%- endif -%}
-              {%- if event.filled -%}
-              <small>&nbsp;&nbsp;<a href="{{ event.filled }}"><button type="button" class="btn btn-info">📝 filled</button></a></small>
+              {%- if event.template -%}
+              <small>&nbsp;&nbsp;<a href="{{ event.template }}"><button type="button" class="btn btn-info">🍃 template</button></a></small>
               {%- endif -%}
               {%- if event.podcast -%}
               <small>&nbsp;&nbsp;<a href="{{ event.podcast }}"><button type="button" class="btn btn-info">🎥 podcast</button></a></small>
               {%- endif -%}
-              {%- if event.reading -%}
-              <small>&nbsp;&nbsp;<a href="{{ event.reading }}"><button type="button" class="btn btn-info">📖 read pg. 1-5</button></a></small>
               {%- endif -%}
             </p>
             <p>

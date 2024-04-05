@@ -23,4 +23,9 @@ days:
         blank: resources/lectures/lec02/lec02-blank.pdf
         filled: resources/lectures/lec02/lec02-filled.pdf
         podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/2
+      - name: EX HW
+        type: hw
+        title: Example Homework (not due!)
+        problems: resources/homeworks/hw-example.pdf
+        template: https://www.overleaf.com/read/drzdbmwxgtmz#ea4761
 ---
