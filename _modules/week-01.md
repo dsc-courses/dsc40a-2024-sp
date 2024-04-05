@@ -21,6 +21,6 @@ days:
         type: lecture
         title: Empirical Risk Minimization
         blank: resources/lectures/lec02/lec02-blank.pdf
-        # url: resources/lectures/lec02/lec02.html
-        # podcast: https://youtu.be/lOnq_nwpJPg
+        filled: resources/lectures/lec02/lec02-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/2
 ---
