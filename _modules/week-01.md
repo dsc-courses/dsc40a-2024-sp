@@ -28,4 +28,5 @@ days:
         title: Example Homework (not due!)
         problems: resources/homeworks/hw-example.pdf
         template: https://www.overleaf.com/read/drzdbmwxgtmz#ea4761
+        walkthrough: https://www.youtube.com/playlist?list=PLDNbnocpJUhYtg3s2__3pbh1kNKYxXaFM
 ---
