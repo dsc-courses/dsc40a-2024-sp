@@ -25,7 +25,7 @@ days:
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
       - name: HW 1
         type: hw
-        title: <b>Homework 1
+        title: <b>Homework 1</b>
         problems: resources/homeworks/hw01.pdf
         template: https://www.overleaf.com/read/jkbqbvktnckv#c53ba2
 ---
