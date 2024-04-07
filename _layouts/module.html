@@ -36,7 +36,7 @@
                 <small>&nbsp;&nbsp;<a href="{{ event.reading }}"><button type="button" class="btn btn-info">📖 read pg. 1-5</button></a></small>
                 {%- endif -%}
               {%- endif -%}
-              {%- if event.type == "hw" or if event.type == "disc" -%}
+              {%- if event.type == "hw" | if event.type == "disc" -%}
               {%- if event.problems -%}
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
