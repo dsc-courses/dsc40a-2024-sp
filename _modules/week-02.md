@@ -14,7 +14,7 @@ days:
         type: lecture
         title: Comparing Loss Functions
         blank: resources/lectures/lec03/lec03-blank.pdf
-        filled: resources/lectures/lec03/lec03-filled.html
+        filled: resources/lectures/lec03/lec03-filled.pdf
         podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_a00/3
   - date: "2024-04-11"
     events:
