@@ -29,6 +29,9 @@
                 {%- if event.filled -%}
                 <small>&nbsp;&nbsp;<a href="{{ event.filled }}"><button type="button" class="btn btn-info">📝 filled</button></a></small>
                 {%- endif -%}
+                {%- if event.code -%}
+                <small>&nbsp;&nbsp;<a href="{{ event.code }}"><button type="button" class="btn btn-info">💻 code</button></a></small>
+                {%- endif -%}
                 {%- if event.podcast -%}
                 <small>&nbsp;&nbsp;<a href="{{ event.podcast }}"><button type="button" class="btn btn-info">🎥 podcast</button></a></small>
                 {%- endif -%}

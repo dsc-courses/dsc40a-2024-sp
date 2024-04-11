@@ -22,7 +22,8 @@ days:
         type: lecture
         title: Simple Linear Regression
         # url: resources/lectures/lec03/lec03.html
-        # filled: resources/lectures/lec03/lec03-filled.html
+        blank: resources/lectures/lec04/lec04-blank.pdf
+        code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec04/lec04-code.ipynb
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
       - name: HW 1
         type: hw
