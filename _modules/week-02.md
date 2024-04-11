@@ -23,8 +23,9 @@ days:
         title: Simple Linear Regression
         # url: resources/lectures/lec03/lec03.html
         blank: resources/lectures/lec04/lec04-blank.pdf
+        filled: resources/lectures/lec04/lec04-filled.pdf
         code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec04/lec04-code.ipynb
-        # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_a00/4
       - name: HW 1
         type: hw
         title: <b>Homework 1</b>
