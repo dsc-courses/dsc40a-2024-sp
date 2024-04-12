@@ -60,6 +60,16 @@ The notes for this class were written by Janine Tiefenbruck and Justin Eldridge.
 
 ---
 
+
+## Tutor-Created Supplemental Resources
+
+- Alan Wang's [video showing the equivalence of the various regression formulas](https://youtu.be/h2qMB1g9zSQ?si=55ziwlomsIFkC9d7).
+- Pallavi Prabhu's [permutations and combinations guide](https://drive.google.com/file/d/1v5AFjUSzeleVQBe2m2Wd27ViSUC00sY6/view?usp=sharing).
+- Pranav Rebala's [conditional probability presentation](https://docs.google.com/presentation/d/1s-W4NTHwfBKBFdB1fjqDXmWPk69G0K0nse7ukfRQ2bw/edit?usp=sharing).
+- Benjamin Xue's [visualizing independence guide](https://docs.google.com/document/d/e/2PACX-1vTV_h_3yrVwY5JAZ2ZIyKQ6J84t3jsHtaoEMDpduumvtWu5idmf1timb9SfrEpqMdqqkYPvpjqned8Z/pub).
+
+---
+
 ## Probability
 
 Unlike the first half of the course, where we had course notes written specifically for this class, we don't have DSC 40A-specific notes for the second half of the class, because there are many high-quality resources available online that cover the same material. Below, you'll find links to some of these resources.
