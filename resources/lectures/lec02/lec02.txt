@@ -1,0 +1,619 @@
+---
+marp: true
+paginate: true
+---
+
+<!-- These set styles for the entire document. -->
+<style>
+
+h1 {
+  background: linear-gradient(90.2deg, rgba(190, 70, 102, 0.93) -15.6%, rgb(252, 154, 154) -15.6%, rgba(190, 70, 102, 0.92) 17.9%, rgb(58, 13, 48) 81.6%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 { font-size: 72px }
+
+h2 { font-size: 48px; color: #fff; }
+
+h3 { font-size: 36px; vertical-align: top; }
+
+h3, h4, h5 {
+  background: rgb(58, 13, 48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3, h4, h5 { color: #444 }
+
+section {
+  position: absolute;
+  height: inherit;
+  vertical-align: bottom;
+  margin: 0;
+  display: table-cell;
+}
+
+</style>
+
+<br><br><br>
+
+##### Lecture 2
+
+# Empirical Risk Minimization
+
+#### DSC 40A, Spring 2024
+
+---
+
+### Announcements
+
+- Remember, there is no Canvas: all information is at [dsc40a.com](https://dsc40a.com).
+- Please fill out the [Welcome Survey](https://docs.google.com/forms/d/e/1FAIpQLSftyR__u1hEA39AufRcOZVf5Xu49wDJFokH212XJGhum88wqA/viewform) if you haven't already.
+- Homework 1 will be released tomorrow, and is due on **Thursday, April 11th**.
+  - With it, we will release an [Overleaf](https://www.overleaf.com/learn/how-to/How_do_I_use_Overleaf%3F) template, where you can _type_ your solutions using $\LaTeX$.
+  - This is optional for most homeworks, but **required** for Homework 2, because it's a good skill to have.
+- Look at the office hours schedule [here](https://dsc40a.com/calendar) and plan to start regularly attending!
+- There are now readings linked on the course website for the next few weeks – read them for supplementary explanations.
+  - They cover the same ideas, but in a different order and with different examples.
+
+---
+
+### Agenda
+
+- Recap: Mean squared error.
+- Minimizing mean squared error.
+- Another loss function.
+- Minimizing mean absolute error.
+- A practice exam problem (time permitting).
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>Remember, you can always ask questions at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform">q.dsc40a.com</a>!</b></big></center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Recap: Mean squared error
+
+---
+
+### Overview
+
+<div style="width: 100%;">
+    <div style="width: 50%; float: left"> 
+<img src="imgs/scatter-1.png" width=100%>
+    </div>
+    <div style="margin-left: 50%; height: 100px;" markdown="1"> 
+
+- We started by introducing the idea of a hypothesis function, $H(x)$.
+- We looked at two possible models:
+  - The constant model, $H(x) = h$.
+  - The simple linear regression model, $H(x) = w_0 + w_1x$.
+- We decided to find the **best constant prediction** to use for predicting commute times, in minutes.
+
+</div>
+</div>
+
+---
+
+### Mean squared error
+
+- Let's suppose we have just a smaller dataset of just five historical commute times in minutes.
+
+$$y_1 = 72 \:\:\:\:\:\:\:\:\:\: y_2 = 90 \:\:\:\:\:\:\:\:\:\: y_3 = 61 \:\:\:\:\:\:\:\:\:\: y_4 = 85 \:\:\:\:\:\:\:\:\:\: y_5 = 92$$
+
+- The **mean squared error** of the constant prediction $h$ is:
+
+$$R_\text{sq}(h) = \frac{1}{5} \left( (72 - h)^2 + (90 - h)^2 + (61 - h)^2 + (85 - h)^2 + (92 - h)^2 \right)$$
+
+- For example, if we predict $h = {\color{purple}{100}}$, then:
+
+$$\begin{align*} R_\text{sq}({\color{purple}{100}}) &=  \frac{1}{5} \left( (72 - {\color{purple}{100}})^2 + (90 - {\color{purple}{100}})^2 + (61 - {\color{purple}{100}})^2 + (85 - {\color{purple}{100}})^2 + (92 - {\color{purple}{100}})^2 \right) \\ &= \boxed{538.8} \end{align*}$$
+
+- **We can pick any $h$ as a prediction, but the smaller $R_\text{sq}(h)$ is, the better $h$ is!**
+
+
+---
+
+### Visualizing mean squared error
+
+<center>
+
+<img src="imgs/risk.png" width=70%>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small> Which $h$ corresponds to the vertex of $R_\text{sq}(h)$?</small>
+
+</center>
+
+---
+
+### The best prediction
+
+- Suppose we collect $n$ commute times, $y_1, y_2, ..., y_n$.
+- The mean squared error of the prediction $h$ is:
+
+$$R_\text{sq}(h) = \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2$$
+
+- We want the **best** prediction, $h^*$.
+
+- The smaller $R_\text{sq}(h)$ is, the better $h$ is.
+
+- **Goal**: Find the $h$ that minimizes $R_\text{sq}(h)$.
+<small>The resulting $h$ will be called $h^*$.</small>
+
+- **How do we find $h^*$?**
+
+---
+
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Minimizing mean squared error
+
+---
+
+### Minimizing using calculus
+
+We'd like to minimize:
+
+$$R_\text{sq}(h) = \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2$$
+
+In order to minimize $R_\text{sq}(h)$, we:
+1. take its derivative with respect to $h$,
+2. set it equal to 0,
+3. solve for the resulting $h^*$, and
+4. perform a second derivative test to ensure we found a minimum.
+
+---
+
+### Step 0: The derivative of $(y_i-h)^2$
+
+- Remember from calculus that:
+  - if $c(x) = a(x) + b(x)$, then 
+  - $\frac{d}{dx} c(x) = \frac{d}{dx} a(x) + \frac{d}{dx} b(x)$.
+
+- This is relevant because $R_\text{sq}(h) = \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2$ involves the sum of $n$ individual terms, each of which involve $h$.
+
+- So, to take the derivative of $R_\text{sq}(h)$, we'll first need to find the derivative of $(y_i-h)^2$. 
+
+<br>
+
+$\frac{d}{dh} (y_i-h)^2 = \:$
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+$$R_\text{sq}(h) = \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2$$
+
+Which of the following is $\frac{d}{dh}R_\text{sq}(h)$?
+
+- A. 0
+- B. $\sum_{i = 1}^n y_i$
+- C. $\frac{1}{n} \sum_{i = 1}^n (y_i - h)$
+- D. $\frac{2}{n} \sum_{i = 1}^n (y_i - h)$
+- E. $-\frac{2}{n} \sum_{i = 1}^n (y_i - h)$ 
+---
+
+### Step 1: The derivative of $R_\text{sq}(h)$
+
+$$\frac{d}{dh}R_\text{sq}(h) = \frac{d}{dh} \left( \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2 \right) $$
+
+---
+
+### Steps 2 and 3: Set to 0 and solve for the minimizer, $h^*$
+
+---
+
+### Step 4: Second derivative test
+
+<div style="width: 100%;">
+    <div style="width: 50%; float: left"> 
+<img src="imgs/risk.png" width=100%>
+    </div>
+    <div style="margin-left: 55%; height: 100px;" markdown="1"> 
+
+We already saw that $R_\text{sq}(h)$ is **convex**, i.e. that it opens upwards, so the $h^*$ we found must be a minimum, not a maximum.
+
+</div>
+</div>
+
+---
+
+### The mean minimizes mean squared error!
+
+- The problem we set out to solve was, find the $h^*$ that minimizes:
+
+$$R_\text{sq}(h) = \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2$$
+
+- The answer is:
+
+$$h^* = \text{Mean}(y_1, y_2, ..., y_n)$$
+
+- The **best constant prediction**, in terms of mean squared error, is always the **mean**.
+- We call $h^*$ our **optimal model parameter**, for when we use:
+  - the constant model, $H(x) = h$, and
+  - the squared loss function, $L_\text{sq}(y_i, h) = (y_i - h)^2$.
+
+---
+
+### Aside: Notation
+
+Another way of writing
+
+$$h^* \text{ is the value of $h$ that minimizes } \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2$$
+
+is
+
+<br>
+
+$$h^* = \underset{h}{\text{argmin}} \: \left( \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2 \right)$$
+
+<br>
+
+$h^*$ is the solution to an **optimization problem**.
+
+---
+
+### The modeling recipe
+
+We've implicitly introduced a three-step process for finding optimal model parameters (like $h^*$) that we can use for making predictions:
+
+1. Choose a model.
+
+<br>
+
+2. Choose a loss function.
+
+<br>
+
+3. Minimize average loss to find optimal model parameters.
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>What questions do you have?</b></big></center>
+
+
+---
+
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Another loss function
+
+---
+
+### Another loss function
+
+- Last lecture, we started by computing the **error** for each of our <span style="color:orange">predictions</span>, but ran into the issue that some errors were positive and some were negative.
+
+$$e_i = {\color{blue}y_i} - {\color{orange}H(x_i)}$$
+
+- The solution was to **square** the errors, so that all are non-negative. The resulting loss function is called **squared loss**.
+
+$$L_{\text{sq}}({\color{blue}y_i}, {\color{orange}H(x_i)}) = ({\color{blue}y_i} - {\color{orange}H(x_i)})^2$$
+
+- Another loss function, which also measures how far $H(x_i)$ is from $y_i$, is **absolute loss**.
+
+$$L_{\text{abs}}({\color{blue}y_i}, {\color{orange}H(x_i)}) = |{\color{blue}y_i} - {\color{orange}H(x_i)} |$$
+
+---
+
+### Squared loss vs. absolute loss
+
+For the constant model, $H(x_i) = h$, so we can simplify our loss functions as follows:
+<!-- - Squared loss: $L_{\text{sq}}({\color{blue}y_i}, {\color{orange}h}) = ({\color{blue}y_i} - {\color{orange}h})^2$.
+- Absolute loss: $L_{\text{abs}}({\color{blue}y_i}, {\color{orange}h}) = |{\color{blue}y_i} - {\color{orange}h}|$. -->
+- Squared loss: $L_{\text{sq}}({\color{blue}y_i}, {\color{orange}h}) = ({\color{blue}y_i} - {\color{orange}h})^2$.
+- Absolute loss: $L_{\text{abs}}({\color{blue}y_i}, {\color{orange}h}) = |{\color{blue}y_i} - {\color{orange}h} |$.
+
+Consider, again, our example <span style="color:blue">dataset of five commute times</span> and the <span style="color:orange">prediction</span> $\color{orange}h = 80$.
+
+$$y_1 = 72 \:\:\:\:\:\:\:\:\:\: y_2 = 90 \:\:\:\:\:\:\:\:\:\: y_3 = 61 \:\:\:\:\:\:\:\:\:\: y_4 = 85 \:\:\:\:\:\:\:\:\:\: y_5 = 92$$
+
+
+<center>
+
+<img src="imgs/resid.png" width=75%>
+
+</center>
+
+---
+
+### Squared loss vs. absolute loss
+
+- When we use squared loss, $h^*$ is the point at which the average squared loss is minimized.
+
+- When we use absolute loss, $h^*$ is the point at which the average absolute loss is minimized.
+
+<br>
+
+<center>
+
+<img src="imgs/number-line.png" width=90%>
+
+</center>
+
+---
+
+### Mean absolute error
+
+- Suppose we collect $n$ commute times, $y_1, y_2, ..., y_n$.
+- The **<u>average</u> absolute loss**, or **<u>mean</u> absolute error (MAE)**, of the prediction $h$ is: 
+
+$$R_\text{abs}(h) = \frac{1}{n} \sum_{i = 1}^n |y_i - h|$$
+
+- We'd like to find the best prediction, $h^*$.
+
+- Previously, we used calculus to find the optimal model parameter $h^*$ that minimized $R_\text{sq}$ – that is, when using squared loss.
+
+- Can we use calculus to minimize $R_\text{abs}(h)$, too?
+
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Minimizing mean absolute error
+
+---
+
+### Minimizing using calculus, again
+
+We'd like to minimize:
+
+$$R_\text{abs}(h) = \frac{1}{n} \sum_{i = 1}^n |y_i - h|$$
+
+In order to minimize $R_\text{abs}(h)$, we:
+1. take its derivative with respect to $h$,
+2. set it equal to 0,
+3. solve for the resulting $h^*$, and
+4. perform a second derivative test to ensure we found a minimum.
+
+---
+
+### Step 0: The derivative of $|y_i-h|$
+
+<div style="width: 100%;">
+    <div style="width: 40%; float: left"> 
+<br>
+<img src="imgs/absolute-loss.png" width=100%>
+    </div>
+    <div style="margin-left: 45%; height: 100px;" markdown="1"> 
+
+Remember that $|x|$ is a **piecewise linear** function of $x$:
+
+$$|x| = \begin{cases} x & x > 0 \\ 0 &x=0 \\ -x &x < 0 \end{cases}$$
+
+So, $| y_i - h|$ is also a piecewise linear function of $h$:
+
+<!-- $$|y_i - h | = \begin{cases} y_i - h &y_i > h\\ 0 &y_i = h \\ h-y_i &y_i < h \end{cases}$$ -->
+
+$$|y_i - h | = \begin{cases} y_i - h &h < y_i\\ 0 &y_i = h \\ h-y_i &h > y_i \end{cases}$$
+
+</div>
+</div>
+
+---
+
+### Step 0: The "derivative" of $|y_i-h|$
+
+<div style="width: 100%;">
+    <div style="width: 40%; float: left"> 
+<br>
+<img src="imgs/absolute-loss.png" width=100%>
+    </div>
+    <div style="margin-left: 45%; height: 100px;" markdown="1"> 
+
+
+$$|y_i - h | = \begin{cases} y_i - h &h < y_i\\ 0 &y_i = h \\ h-y_i &h > y_i \end{cases}$$
+
+What is $\frac{d}{dh} |y_i - h|$?
+
+</div>
+</div>
+
+---
+
+### Step 1: The "derivative" of $R_\text{abs}(h)$
+
+$$\frac{d}{dh}R_\text{abs}(h) = \frac{d}{dh} \left( \frac{1}{n} \sum_{i = 1}^n |y_i - h| \right) $$
+
+---
+
+### Steps 2 and 3: Set to 0 and solve for the minimizer, $h^*$
+
+
+---
+
+### The median minimizes mean absolute error!
+
+- The new problem we set out to solve was, find the $h^*$ that minimizes:
+
+$$R_\text{abs}(h) = \frac{1}{n} \sum_{i = 1}^n |y_i - h|$$
+
+- The answer is:
+
+$$h^* = \text{Median}(y_1, y_2, ..., y_n)$$
+
+- This is because the median has an equal number of data points to the left of it and to the right of it.
+
+- To make a bit more sense of this result, let's graph $R_\text{abs}(h)$.
+
+---
+
+### Visualizing mean absolute error
+
+<div style="width: 100%;">
+    <div style="width: 60%; float: left"> 
+<br>
+<img src="imgs/r-abs-odd.png" width=100%>
+    </div>
+    <div style="margin-left: 65%; height: 100px;" markdown="1"> 
+
+Consider, again, our example dataset of five commute times.
+
+$$72, 90, 61, 85, 92$$
+
+Where are the "bends" in the graph of $R_\text{abs}(h)$ – that is, where does its slope change?
+
+</div>
+</div>
+
+---
+
+### Visualizing mean absolute error, with an even number of points
+
+<div style="width: 100%;">
+    <div style="width: 60%; float: left"> 
+<br>
+<img src="imgs/r-abs-even.png" width=100%>
+    </div>
+    <div style="margin-left: 65%; height: 100px;" markdown="1"> 
+
+<br>
+
+What if we add a sixth data point?
+
+$$72, 90, 61, 85, 92, 75$$
+
+
+Is there a unique $h^*$?
+
+</div>
+</div>
+
+---
+
+### The median minimizes mean absolute error!
+
+- The new problem we set out to solve was, find the $h^*$ that minimizes:
+
+$$R_\text{abs}(h) = \frac{1}{n} \sum_{i = 1}^n |y_i - h|$$
+
+- The answer is:
+
+$$h^* = \text{Median}(y_1, y_2, ..., y_n)$$
+
+- The **best constant prediction**, in terms of mean absolute error, is always the **median**.
+  - When $n$ is odd, this answer is unique.
+  - When $n$ is even, any number between the middle two data points (when sorted) also minimizes mean absolute error.
+  - When $n$ is even, define the median to be the mean of the middle two data points.
+
+---
+
+### The modeling recipe, again
+
+We've now made two full passes through our "modeling recipe."
+
+1. Choose a model.
+
+<br>
+
+2. Choose a loss function.
+
+<br>
+
+3. Minimize average loss to find optimal model parameters.
+
+---
+
+### Empirical risk minimization
+
+- The formal name for the process of minimizing average loss is **empirical risk minimization**.
+
+- Another name for "average loss" is **empirical risk**.
+
+- When we use the squared loss function, $L_\text{sq}(y_i, h) = (y_i - h)^2$, the corresponding empirical risk is mean squared error:
+
+$$R_\text{sq}(h) = \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2$$
+
+- When we use the absolute loss function, $L_\text{abs}(y_i, h) = |y_i - h|$, the corresponding empirical risk is mean absolute error:
+
+$$R_\text{abs}(h) = \frac{1}{n} \sum_{i = 1}^n |y_i - h|$$
+
+---
+
+### Empirical risk minimization, in general
+
+**Key idea**: If $L(y_i, h)$ is **any** loss function, the corresponding empirical risk is:
+
+$$R(h) = \frac{1}{n} \sum_{i = 1}^n L(y_i, h)$$
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>What questions do you have?</b></big></center>
+
+---
+
+### Summary, next time
+
+- $h^* = \text{Mean}(y_1, y_2, ..., y_n)$ minimizes mean squared error, $R_\text{sq}(h) = \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2$.
+
+- $h^* = \text{Median}(y_1, y_2, ..., y_n)$ minimizes mean absolute error, $R_\text{abs}(h) = \frac{1}{n} \sum_{i = 1}^n |y_i - h|$.
+
+- $R_\text{sq}(h)$ and $R_\text{abs}(h)$ are examples of **empirical risk** – that is, average loss.
+
+- **Next time**: What's the relationship between the mean and median? What is the significance of $R_\text{sq}(h^*)$ and $R_\text{abs}(h^*)$?
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## A practice exam problem
+
+---
+
+### An exam problem? Already?
+
+- Homework 1 is going to be released tomorrow.
+- In it, you'll be asked to _show_ or _prove_ that various facts hold true – but you may have never done this before!
+- To help you practice, we'll walk through an old exam problem together.
+- We'll be releasing another problem walkthrough video sometime over the weekend, that also shows you how to use the Overleaf template and type up your solutions.
+
+---
+
+Define the extreme mean ($\text{EM}$) of a dataset to be the average of its largest and smallest values. Let $f(x) = -3x + 4$.
+
+Show that for any dataset $x_1 \leq x_2 \leq ... \leq x_n$,
+
+$$\text{EM}(f(x_1), f(x_2), ..., f(x_n)) = f(\text{EM}(x_1, x_2, ..., x_n))$$
+
+---
+

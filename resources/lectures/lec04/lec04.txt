@@ -1,0 +1,489 @@
+---
+marp: true
+paginate: true
+---
+
+<!-- These set styles for the entire document. -->
+<style>
+
+h1 {
+  background: linear-gradient(90.2deg, rgba(190, 70, 102, 0.93) -15.6%, rgb(252, 154, 154) -15.6%, rgba(190, 70, 102, 0.92) 17.9%, rgb(58, 13, 48) 81.6%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 { font-size: 72px }
+
+h2 { font-size: 48px; color: #fff; }
+
+h3 { font-size: 36px; vertical-align: top; }
+
+h3, h4, h5 {
+  background: rgb(58, 13, 48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3, h4, h5 { color: #444 }
+
+section {
+  position: absolute;
+  height: inherit;
+  vertical-align: bottom;
+  margin: 0;
+  display: table-cell;
+}
+
+</style>
+
+<br><br><br>
+
+##### Lecture 4
+
+# Simple Linear Regression
+
+#### DSC 40A, Spring 2024
+
+---
+
+### Announcements
+
+- Homework 1 is due **tonight**.
+  - Before working on it, watch the [Walkthrough Videos](https://www.youtube.com/playlist?list=PLDNbnocpJUhYtg3s2__3pbh1kNKYxXaFM) on problem solving and using Overleaf.
+  - Using the Overleaf template is required for Homework 2 (and only Homework 2).
+- Look at the office hours schedule [here](https://dsc40a.com/calendar) and plan to start regularly attending!
+- Remember to take a look at the supplementary readings linked on the course website.
+
+---
+
+### Agenda
+
+- Recap: Center and spread.
+- Simple linear regression.
+- Minimizing mean squared error for the simple linear model.
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>Remember, you can always ask questions at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform">q.dsc40a.com</a>!</b></big>
+
+If the direct link doesn't work, click the "🤔 Lecture Questions" <br>link in the top right corner of [dsc40a.com](https://dsc40a.com).
+</center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Recap: Center and spread
+
+---
+
+### The relationship between $h^*$ and $R(h^*)$
+
+- Recall, for a general loss function $L$ and the constant model $H(x) = h$, empirical risk is of the form:
+
+$$R(h) = \frac{1}{n} \sum_{i = 1}^n L(y_i, h)$$
+
+- $h^*$, the value of $h$ that minimizes empirical risk, represents the **center** of the dataset in some way.
+- $R(h^*)$, the smallest possible value of empirical risk, represents the **spread** of the dataset in some way.
+- The specific center and spread depend on the choice of loss function.
+
+---
+
+### Examples
+
+<div style="width: 100%;">
+<div style="width: 50%; float: left">
+
+When using **squared loss**:
+
+- $h^* = \text{Mean}(y_1, y_2, ..., y_n)$.
+- $R_\text{sq}(h^*) = \text{Variance}(y_1, y_2, ..., y_n)$.
+
+
+<img src="imgs/risk.png" width=100%>
+</div>
+
+<div style="margin-left: 50%; height: 100px;" markdown="1"> 
+
+When using **absolute loss**:
+
+- $h^* = \text{Median}(y_1, y_2, ..., y_n)$.
+- $R_\text{abs}(h^*) = \text{MAD from the median}$.
+
+<img src="imgs/r-abs-odd.png" width=100%>
+
+</div>
+</div>
+
+---
+
+### 0-1 loss
+
+- The empirical risk for the 0-1 loss is:
+
+$$R_{0,1}(h) = \frac{1}{n} \sum_{i = 1}^n \begin{cases} 0 & y_i = h \\ 1 & y_i \neq h \end{cases}$$
+
+- This is the proportion (between 0 and 1) of data points not equal to $h$.
+
+- $R_{0,1}(h)$ is minimized when $h^* = \text{Mode}(y_1, y_2, ..., y_n)$.
+
+- Therefore, $R_{0,1}(h^*)$ is the proportion of data points not equal to the mode.
+
+- **Example**: What's the proportion of values not equal to the mode in the dataset $2, 3, 3, 4, 5$?
+
+---
+
+### A poor way to measure spread
+
+- The minimum value of $R_{0,1}(h)$ is the proportion of data points not equal to the mode.
+
+- A higher value means less of the data is clustered at the mode.
+
+- Just as the mode is a very basic way of measuring the center of the data, $R_{0,1}(h^*)$ is a very basic and uninformative way of measuring spread.
+
+---
+
+### Summary of center and spread
+
+- Different loss functions $L(y_i, h)$ lead to different empirical risk functions $R(h)$, which are minimized at various measures of **center**.
+
+- The minimum values of empirical risk, $R(h^*)$, are various measures of **spread**.
+
+- There are many different ways to measure both center and spread; these are sometimes called **descriptive statistics**.
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Simple linear regression
+
+---
+
+### What's next?
+
+<div style="width: 100%;">
+    <div style="width: 50%; float: left"> 
+    <br>
+<img src="imgs/scatter-1.png" width=100%>
+    </div>
+    <div style="margin-left: 50%; height: 100px;" markdown="1"> 
+
+- In Lecture 1, we introduced the idea of a hypothesis function, $H(x)$.
+- We've focused on finding the best **constant model**, $H(x) = h$.
+- Now that we understand the modeling recipe, we can apply it to find the best **simple linear regression model**, $H(x) = w_0 + w_1 x$.
+- This will allow us to make predictions that aren't all the same for every data point.
+
+</div>
+</div>
+
+---
+
+<style scoped>
+.imgContainer{
+    float:left;
+}
+</style>
+
+### Recap: Hypothesis functions and parameters
+
+A hypothesis function, $H$, takes in an $x$ as input and returns a predicted $y$.
+<span style="color: purple"><b>Parameters</b></span> define the relationship between the input and output of a hypothesis function.
+
+The simple linear regression model, $H(x) = {\color{purple}w_0} + {\color{purple}w_1}x$, has two parameters: $\color{purple} w_0$ and $\color{purple} w_1$.
+
+<div align="center">
+    <div class="imgContainer">
+        &nbsp;
+        <img src="imgs/slr-1.png" height="375"/>
+    </div>
+    <div class="imgContainer">
+        <img src="imgs/slr-2.png" height="375"/>
+    </div>
+</div>
+
+---
+
+### The modeling recipe
+
+1. Choose a model.
+
+<br><br>
+
+2. Choose a loss function.
+
+<br><br>
+
+3. Minimize average loss to find optimal model parameters.
+
+---
+
+### Minimizing mean squared error for the simple linear model
+
+- We'll choose squared loss, since it's the easiest to minimize.
+- Our goal, then, is to find the linear hypothesis function $H^*(x)$ that minimizes empirical risk:
+
+$$R_{\text{sq}} (H) = \frac{1}{n} \sum_{i = 1}^n \left( y_i - H(x_i) \right)^2$$
+
+- Since linear hypothesis functions are of the form $H(x) = w_0 + w_1x$, we can re-write $R_\text{sq}$ as a function of $w_0$ and $w_1$:
+
+$$\boxed{R_\text{sq}(w_0, w_1) = \frac{1}{n} \sum_{i = 1}^n \left( y_i - (w_0 + w_1 x_i) \right)^2}$$
+
+- **How do we find the parameters $w_0^*$ and $w_1^*$ that minimize $R_\text{sq}(w_0, w_1)$?**
+
+---
+
+### Loss surface
+
+<div style="width: 100%;">
+<div style="width: 40%; float: left">
+
+For the constant model, the graph of $R_\text{sq}(h)$ looked like a parabola.
+
+
+<img src="imgs/risk.png" width=100%>
+</div>
+
+<div style="margin-left: 50%; height: 100px;" markdown="1"> 
+
+What does the graph of $R_\text{sq}(w_0, w_1)$ look like for the simple linear regression model?
+
+<img src="imgs/surface.png" width=100%>
+
+</div>
+</div>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Minimizing mean squared error for the simple linear model
+
+---
+
+
+### Minimizing multivariate functions
+
+- Our goal is to find the parameters $w_0^*$ and $w_1^*$ that minimize mean squared error:
+
+$$R_\text{sq}(w_0, w_1) = \frac{1}{n} \sum_{i = 1}^n \left( y_i - (w_0 + w_1 x_i) \right)^2$$
+
+- $R_\text{sq}$ is a function of two variables: $w_0$ and $w_1$.
+- To minimize a function of multiple variables:
+  - Take partial derivatives with respect to each variable.
+  - Set all partial derivatives to 0.
+  - Solve the resulting system of equations.
+  - Ensure that you've found a minimum, rather than a maximum or saddle point (using the [second derivative test](https://math.stackexchange.com/questions/2058469/how-can-we-minimize-a-function-of-two-variables) for multivariate functions).
+
+---
+
+### Example
+
+Find the point $(x, y, z)$ at which the following function is minimized.
+
+$$f(x, y) = x^2 - 8x + y^2 + 6y - 7$$
+
+---
+
+### Minimizing mean squared error
+
+$$R_\text{sq}(w_0, w_1) = \frac{1}{n} \sum_{i = 1}^n \left( y_i - (w_0 + w_1 x_i) \right)^2$$
+
+To find the $w_0^*$ and $w_1^*$ that minimize $R_\text{sq}(w_0, w_1)$, we'll:
+
+1. Find $\frac{\partial R_\text{sq}}{\partial w_0}$ and set it equal to 0.
+1. Find $\frac{\partial R_\text{sq}}{\partial w_1}$ and set it equal to 0.
+1. Solve the resulting system of equations.
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+$$R_\text{sq}(w_0, w_1) = \frac{1}{n} \sum_{i = 1}^n \left( y_i - (w_0 + w_1 x_i) \right)^2$$
+
+Which of the following is equal to $\frac{\partial R_\text{sq}}{\partial w_0}$?
+
+<div style="width: 100%;">
+<div style="width: 50%; float: left"> 
+
+- A. $\displaystyle\frac{1}{n} \sum_{i=1}^n \left( y_i - (w_0 + w_1x_i) \right)$
+- B. $-\displaystyle\frac{1}{n} \sum_{i=1}^n \left( y_i - (w_0 + w_1x_i) \right)$
+
+</div>
+<div style="margin-left: 50%; height: 100px;" markdown="1">
+
+- C. $\displaystyle-\frac{2}{n} \sum_{i=1}^n \left( y_i - (w_0 + w_1x_i)\right) x_i$
+- D. $\displaystyle-\frac{2}{n} \sum_{i=1}^n \left( y_i - (w_0 + w_1x_i) \right)$
+</div>
+
+---
+
+$\displaystyle R_\text{sq}(w_0, w_1) = \frac{1}{n} \sum_{i = 1}^n \left( y_i - (w_0 + w_1 x_i) \right)^2$
+
+$\displaystyle \frac{\partial R_\text{sq}}{\partial w_0} = \:$
+
+---
+
+$\displaystyle R_\text{sq}(w_0, w_1) = \frac{1}{n} \sum_{i = 1}^n \left( y_i - (w_0 + w_1 x_i) \right)^2$
+
+$\displaystyle \frac{\partial R_\text{sq}}{\partial w_1} = \:$
+
+---
+
+### Strategy
+
+We have a system of two equations and two unknowns ($w_0$ and $w_1$):
+
+$$
+-\frac{2}{n} \sum_{i=1}^n \left( y_i - (w_0 + w_1x_i) \right) = 0
+        \qquad
+-\frac{2}{n} \sum_{i=1}^n \left( y_i - (w_0 + w_1x_i) \right) x_i = 0$$
+
+To proceed, we'll:
+
+1. Solve for $w_0$ in the first equation. <br>The result becomes $w_0^*$, because it's the "best intercept."
+1. Plug $w_0^*$ into the second equation and solve for $w_1$. <br>The result becomes $w_1^*$, because it's the "best slope."
+
+---
+
+### Solving for $w_0^*$
+
+$\displaystyle -\frac{2}{n} \sum_{i=1}^n \left( y_i - (w_0 + w_1x_i) \right) = 0$
+
+---
+
+### Solving for $w_1^*$
+
+$\displaystyle -\frac{2}{n} \sum_{i=1}^n \left( y_i - (w_0 + w_1x_i) \right) x_i = 0$
+
+---
+
+### Least squares solutions
+
+We've found that the values $w_0^*$ and $w_1^*$ that minimize $R_\text{sq}$ are:
+
+$$\begin{align*}
+    w_1^* &=
+        \frac{
+            \displaystyle
+            \sum_{i=1}^n (y_i - \bar y)x_i
+        }{
+            \displaystyle
+            \sum_{i=1}^n (x_i - \bar x)x_i
+        }
+        \qquad
+        \qquad
+    w_0^* =
+        \bar y - w_1^* \bar x
+\end{align*}$$
+
+where:
+
+$$\bar{x} = \frac{1}{n} \sum_{i = 1}^n x_i \qquad \qquad \bar{y} = \frac{1}{n} \sum_{i = 1}^n y_i$$
+
+**These formulas work, but let's re-write $w_1^*$ to be a little more symmetric.**
+
+---
+
+### An equivalent formula for $w_1^*$
+
+Claim:
+$$
+  w_1^* =
+      \frac{
+          \displaystyle
+          \sum_{i=1}^n (y_i - \bar y)x_i
+      }{
+          \displaystyle
+          \sum_{i=1}^n (x_i - \bar x)x_i
+      }
+      = 
+                          \frac{
+          \displaystyle
+          \sum_{i=1}^n (x_i - \bar x)(y_i - \bar y)
+      }{
+          \displaystyle
+          \sum_{i=1}^n (x_i - \bar x)^2
+      }
+$$
+
+Proof:
+
+---
+
+### Least squares solutions
+
+- The **least squares solutions** for the intercept $w_0$ and slope $w_1$ are:
+
+$$
+\boxed{\begin{align*}
+w_1^* &=
+    \frac{
+        \displaystyle
+        \sum_{i=1}^n (x_i - \bar x)(y_i - \bar y)
+    }{
+        \displaystyle
+        \sum_{i=1}^n (x_i - \bar x)^2
+    }
+    \qquad
+    \qquad
+w_0^* =
+    \bar y - w_1 \bar x
+\end{align*}}
+$$
+
+- We say $w_0^*$ and $w_1^*$ are **optimal parameters**, and the resulting line is called the **regression line**.
+- The process of minimizing empirical risk to find optimal parameters is also called "**fitting to the data**."
+- To make predictions about the future, we use $\boxed{H^*(x) = w_0^* + w_1^*x}$.
+
+---
+
+Let's test these formulas out in code! Follow along [here](http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec04/lec04-code.ipynb).
+
+<br>
+
+<center>
+
+<img src="imgs/model.png" width=60%>
+
+</center>
+
+---
+
+### Causality
+
+<center>
+
+<img src="imgs/model.png" width=50%>
+
+</center>
+
+Can we conclude that leaving later **causes** you to get to school earlier?
+
+---
+
+### What's next?
+
+We now know how to find the optimal slope and intercept for linear hypothesis functions. Next, we'll:
+
+- See how the formulas we just derived connect to the formulas for the slope and intercept of the regression line we saw in DSC 10.
+  - They're the same, but we need to do a bit of work to prove that.
+- Learn how to interpret the slope of the regression line.
+- Discuss _causality_.
+- Learn how to build regression models with **multiple inputs**.
+  - To do this, we'll need linear algebra!
