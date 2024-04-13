@@ -25,5 +25,7 @@ days:
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
       - name: HW 2
         type: hw
-        title: Homework 2
+        title: <b>Homework 2</b>
+        problems: resources/homeworks/hw02.pdf
+        template: https://www.overleaf.com/read/ccvngthkfqqw#e3c6f9
 ---
