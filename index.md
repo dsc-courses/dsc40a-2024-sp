@@ -17,7 +17,7 @@ nav_order: 1
 
 
 {: .green }
-> **Take a look at the [Week 2 Lecture FAQs](https://edstem.org/us/courses/57667/discussion/4766452) thread on Ed!**
+> **Take a look at the new [Lecture FAQs](faqs) tab on the course website!**
 
 {% for module in site.modules %}
 {{ module }}

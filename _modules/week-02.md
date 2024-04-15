@@ -26,7 +26,7 @@ days:
         filled: resources/lectures/lec04/lec04-filled.pdf
         code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec04/lec04-code.ipynb
         podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/4
-        faqs: https://edstem.org/us/courses/57667/discussion/4766452
+        faqs: faqs#week-2-loss-functions-center-and-spread-and-simple-linear-regression
       - name: HW 1
         type: hw
         title: <b>Homework 1</b>
