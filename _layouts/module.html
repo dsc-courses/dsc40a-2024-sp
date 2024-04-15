@@ -35,8 +35,8 @@
                 {%- if event.podcast -%}
                 <small>&nbsp;&nbsp;<a href="{{ event.podcast }}"><button type="button" class="btn btn-info">🎥 podcast</button></a></small>
                 {%- endif -%}
-                {%- if event.reading -%}
-                <small>&nbsp;&nbsp;<a href="{{ event.reading }}"><button type="button" class="btn btn-info">📖 read pg. 1-5</button></a></small>
+                {%- if event.faqs -%}
+                <small>&nbsp;&nbsp;<a href="{{ event.faqs }}"><button type="button" class="btn btn-info">🙋 FAQs</button></a></small>
                 {%- endif -%}
               {%- endif -%}
               {%- if event.type == "hw" or event.type == "disc" -%}
