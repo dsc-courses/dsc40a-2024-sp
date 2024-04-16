@@ -14,6 +14,9 @@ days:
       - name: LEC 5
         type: lecture
         title: Simple Linear Regression, Continued
+        blank: resources/lectures/lec05/lec05-blank.pdf
+        code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec05/lec05-code.ipynb
+
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
