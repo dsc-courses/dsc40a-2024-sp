@@ -33,7 +33,7 @@ The degree of a polynomial defines several of its key features.
 
 ## Point Representation
 
-The first key feature is that **a polynomial of degree $$n$$ is uniquely determined by a set of $$n+1$$ points**. This is a concept you may be familiar with, in regards to a line – given any two points in the Cartesian plane, there is exactly one line (i.e. a polynomial of degree 1) that passes through these points. It's impossible to draw a different line that also passes through these two points. However, given just one point in the plane, there is an infinite number of points that pass through it.
+The first key feature is that **a polynomial of degree $$n$$ is uniquely determined by a set of $$n+1$$ points**. This is a concept you may be familiar with, in regards to a line – given any two points in the Cartesian plane, there is exactly one line (i.e. a polynomial of degree 1) that passes through these points. It's impossible to draw a different line that also passes through these two points. However, given just one point in the plane, there is an infinite number of lines that pass through it.
 
 This applies of polynomials of all degrees. Any three points uniquely determine a parabola (a polynomial of degree 2), however given any two or fewer points, an infinite number of parabolas pass through them. 
 
