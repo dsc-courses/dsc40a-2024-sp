@@ -26,7 +26,8 @@ days:
     events:
       - name: LEC 6
         type: lecture
-        title: Regression and Linear Algebra
+        title: Dot Products and Projections
+        blank: resources/lectures/lec06/lec06-blank.pdf
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
