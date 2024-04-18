@@ -29,8 +29,8 @@ days:
         title: Dot Products and Projections
         blank: resources/lectures/lec06/lec06-blank.pdf
         # url: resources/lectures/lec03/lec03.html
-        # filled: resources/lectures/lec03/lec03-filled.html
-        # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
+        filled: resources/lectures/lec06/lec06-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/wi24/dsc40a_b00/6
       - name: HW 2
         type: hw
         title: <b>Homework 2</b>
