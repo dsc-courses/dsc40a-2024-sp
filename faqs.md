@@ -5,14 +5,16 @@ description: Answers to frequently asked questions each week.
 nav_order: 7
 ---
 
-#  🙋FAQs
+# 🙋FAQs
 
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
 
 Moving forward, we're going to **try** and update this page each week to provide answers to questions asked (1) live in lecture, (2) at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform) during lecture, (3) on Ed, and (4) in the relevant Reflection and Feedback Form. If you have other related questions, feel free to post them on Ed.
 
 Jump to:
+
 - [Week 2: Loss Functions, Center and Spread, and Simple Linear Regression](#week-2-loss-functions-center-and-spread-and-simple-linear-regression)
+- [Week 3: Simple Linear Regression, Dot Products and Projections](#week-3-simple-linear-regression-dot-products-and-projections)
 
 ## Week 2: Loss Functions, Center and Spread, and Simple Linear Regression
 
@@ -25,6 +27,7 @@ The key idea is that different loss functions lead to different "best" parameter
 ### Does empirical risk = mean squared error?
 
 "Empirical risk" is another term for "average loss for whatever loss function you're using." Any loss function $$L(y_i, h)$$ can be used to create an empirical risk function $$R(h)$$. We've seen two common loss function choices:
+
 - When using absolute loss, $$L_\text{abs}(y_i, h) = \lvert y_i - h\rvert$$, the empirical risk, $$R_\text{abs}(y_i, h) = \frac{1}{n} \sum_{i = 1}^n \lvert y_i - h\rvert$$, has a special name: "mean absolute error."
 - When using squared loss, $$L_\text{sq}(y_i, h) = (y_i - h)^2$$, the empirical risk, $$R_\text{sq}(y_i, h) = \frac{1}{n} \sum_{i = 1}^n (y_i - h)^2$$, has a special name: "mean squared error."
 
@@ -43,7 +46,6 @@ For example, in the dataset 72, 90, 61, 85, 92, 75, there are an infinite number
 <img src="../assets/images/faq2-unique.png">
 
 </center>
-
 
 ### What was the point of plugging in $$h^*$$ into $$R(h)$$?
 
@@ -130,3 +132,23 @@ So, we have to use the computer to approximate the answer. Regression with squar
 ### Can you post the slides earlier than 20 minutes before lecture?
 
 I'll try, but I'm making lots of changes to the lectures this quarter, and that usually takes me until right before lecture 😅
+
+## Week 3: Simple Linear Regression, Dot Products and Projections
+
+### Is there a more detailed version of the MSE proof shown in Lecture 5?
+
+Yes! Check below:
+
+$$\text{Note: Since } \sigma_x^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2, \ \text{then }  \sum_{i=1}^n (x_i - \bar{x})^2 = n \sigma_x^2$$
+
+$$R_{\text{sq}}( w_0^*, w_1^* )$$ = $$\frac{1}{n} \sum_{i=1}^{n} (y_i - \bar{y} - w_1^*(x_i - \bar{x}))^2 $$ \\
+= $$ \frac{1}{n} \sum_{i=1}^{n} \left[ (y_i - \bar{y})^2 - 2 w_1^*(x_i - \bar{x})(y_i - \bar{y}) + w_1^{*2} (x_i - \bar{x})^2 \right] $$ \\
+= $$ \frac{1}{n} \sum_{i=1}^{n} (y_i - \bar{y})^2 - \frac{2w_1^*}{n} \sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y})) + \frac{w_1^{*2}}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2 $$ \\
+ = $$\sigma_y^2 - \frac{2w_1^*}{n} \sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y})) + w_1^{*2} \sigma_x^2 $$\\
+ = $$\sigma_y^2 - \frac{2w_1^*}{n} \frac{\sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y}))}{\sum_{i=1}^{n} (x_i - \bar{x})^2} (\sum_{i=1}^{n} (x_i - \bar{x})^2) + r^2 \sigma_y^2 $$\\
+ = $$\sigma_y^2 - 2w_1^* \frac{\sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y}))}{\sum_{i=1}^{n} (x_i - \bar{x})^2} \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n} + r^2 \sigma_y^2$$ \\
+= $$\sigma_y^2 - 2w_1^{*2} \sigma_x^2 + r^2 \sigma_y^2 $$ \\
+= $$\sigma_y^2 - 2(r^2\frac{\sigma_y^2}{\sigma_x^2}) \sigma_x^2 + r^2 \sigma_y^2 $$\\
+= $$\sigma_y^2 - 2r^2\sigma_y^2 + r^2 \sigma_y^2 $$\\
+= $$\sigma_y^2 - r^2 \sigma_y^2$$ \\
+= $$\sigma_y^2 (1 - r^2)$$
