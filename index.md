@@ -17,7 +17,7 @@ nav_order: 1
 
 
 {: .green }
-> **Take a look at the new [Lecture FAQs](faqs) page on the course website!**
+> **Take a look at the new [Lecture FAQs](faqs) tab on the course website!**
 
 {% for module in site.modules %}
 {{ module }}
