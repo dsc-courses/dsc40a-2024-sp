@@ -1,0 +1,10 @@
+test = {   'name': 'q6b',
+    'points': 3,
+    'suites': [   {   'cases': [   {'code': '>>> callable(least_squares_regression) and len(least_squares_regression(x_values, y_values)) == 2\nTrue', 'hidden': False, 'locked': False},
+                                   {   'code': '>>> least_squares_regression(x_values, y_values)[0] < least_squares_regression(x_values, y_values)[1] # Make sure the order is correct!\nTrue',
+                                       'hidden': False,
+                                       'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}
