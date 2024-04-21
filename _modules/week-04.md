@@ -23,7 +23,11 @@ days:
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
+  - date: '2024-04-27'
+    events:
       - name: HW 3
         type: hw
-        title: Homework 3
+        title: <b>Homework 3 (note the later deadline!)</b>
+        problems: resources/homeworks/hw03.pdf
+        template: https://www.overleaf.com/read/jvcppyynngzj#1d92c5
 ---
