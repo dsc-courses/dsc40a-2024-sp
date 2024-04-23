@@ -13,7 +13,8 @@ days:
     events:
       - name: LEC 7
         type: lecture
-        title: Regression and Linear Algebra, Continued
+        title: Orthogonal Projections
+        blank: resources/lectures/lec07/lec07-blank.pdf
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
@@ -21,7 +22,7 @@ days:
     events:
       - name: LEC 8
         type: lecture
-        title: Multiple Linear Regression and Feature Engineering
+        title: Multiple Linear Regression
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
