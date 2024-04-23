@@ -17,7 +17,7 @@ days:
         blank: resources/lectures/lec07/lec07-blank.pdf
         # url: resources/lectures/lec03/lec03.html
         filled: resources/lectures/lec07/lec07-filled.pdf
-        podcast: https://podcast.ucsd.edu/watch/wi24/dsc40a_b00/7
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/7
   - date: "2024-04-25"
     events:
       - name: LEC 8
