@@ -2,23 +2,23 @@
 title: "Week 4 – Multiple Linear Regression<br><small>📘 Read <a href='resources/notes/notes_chapter_2.pdf#page=10'>Note 2, Pages 10-19</a>.</small>"
 weekNumber: 4
 days:
-  - date: '2024-04-22'
+  - date: "2024-04-22"
     events:
       - name: DISC 3
         type: disc
         title: Groupwork 3
         problems: resources/groupworks/gw03.pdf
         template: https://www.overleaf.com/read/jrgfccrsytzq#eef2e5
-  - date: '2024-04-23'
+  - date: "2024-04-23"
     events:
       - name: LEC 7
         type: lecture
         title: Orthogonal Projections
         blank: resources/lectures/lec07/lec07-blank.pdf
         # url: resources/lectures/lec03/lec03.html
-        # filled: resources/lectures/lec03/lec03-filled.html
-        # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
-  - date: '2024-04-25'
+        filled: resources/lectures/lec07/lec07-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/wi24/dsc40a_b00/7
+  - date: "2024-04-25"
     events:
       - name: LEC 8
         type: lecture
@@ -26,7 +26,7 @@ days:
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
-  - date: '2024-04-27'
+  - date: "2024-04-27"
     events:
       - name: HW 3
         type: hw
