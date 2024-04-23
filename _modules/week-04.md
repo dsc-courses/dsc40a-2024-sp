@@ -7,6 +7,8 @@ days:
       - name: DISC 3
         type: disc
         title: Groupwork 3
+        problems: resources/groupworks/gw03.pdf
+        template: https://www.overleaf.com/read/jrgfccrsytzq#eef2e5
   - date: '2024-04-23'
     events:
       - name: LEC 7
