@@ -1,0 +1,515 @@
+<!-- These set styles for the entire document. -->
+<style>
+
+h1 {
+  background: linear-gradient(90.2deg, rgba(190, 70, 102, 0.93) -15.6%, rgb(252, 154, 154) -15.6%, rgba(190, 70, 102, 0.92) 17.9%, rgb(58, 13, 48) 81.6%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 { font-size: 72px }
+
+h2 { font-size: 48px; color: #fff; }
+
+h3 { font-size: 36px; vertical-align: top; }
+
+h3, h4, h5 {
+  background: rgb(58, 13, 48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3, h4, h5 { color: #444 }
+
+section {
+  position: absolute;
+  height: inherit;
+  vertical-align: bottom;
+  margin: 0;
+  display: table-cell;
+}
+
+</style>
+
+<br><br><br>
+
+##### Lecture 5
+
+# More Simple Linear Regression
+
+#### DSC 40A, Spring 2024
+
+---
+
+### Announcements
+
+- Homework 2 is due on **Thursday**. Remember that using the Overleaf template is required for Homework 2 (and only Homework 2).
+
+- Homework 1, Groupwork 1, and Groupwork 2 solutions are all available on [Ed](https://edstem.org/us/courses/57667/discussion/4730099).
+
+- Check out the [new FAQs page](https://dsc40a.com/faqs) and the [tutor-created supplemental resources](https://dsc40a.com/resources/#tutor-created-supplemental-resources) on the course website.
+
+- If you asked for an alternate Final Exam and/or have OSD accommodations, you should've received an email from me a few days ago with the details of your Final Exam arrangement.
+
+- You can access the Markdown source code for lectures [here](https://github.com/dsc-courses/dsc40a-2024-sp/tree/gh-pages/resources/lectures) (potentially useful if you want to write your own notes).
+
+---
+
+### Agenda
+
+- Recap: Simple linear regression.
+- Correlation.
+- Interpreting the formulas.
+- Connections to related models.
+- Introduction to linear algebra.
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>Remember, you can always ask questions at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform">q.dsc40a.com</a>!</b></big>
+
+If the direct link doesn't work, click the "🤔 Lecture Questions" <br>link in the top right corner of [dsc40a.com](https://dsc40a.com).
+</center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Recap: Simple linear regression
+
+---
+
+### Recap
+
+<div style="width: 100%;">
+    <div style="width: 50%; float: left"> 
+    <br>
+<img src="imgs/scatter-1.png" width=100%>
+    </div>
+    <div style="margin-left: 50%; height: 100px;" markdown="1"> 
+
+- In Lecture 4, our goal was to fit a **simple linear regression** model, $H(x) = w_0 + w_1 x$, to our commute times dataset.
+    - $x_i$: The $i$th home departure time (e.g. 8.5, for 8:30 AM).
+    - $y_i$: The $i$th actual commute time (e.g. 76 minutes).
+    - $H(x_i)$: The $i$th predicted commute time.
+- To do so, we used squared loss.
+
+</div>
+</div>
+
+---
+
+### The modeling recipe
+
+1. Choose a model.
+
+<br><br>
+
+2. Choose a loss function.
+
+<br><br>
+
+3. Minimize average loss to find optimal model parameters.
+
+---
+
+### Least squares solutions
+
+- Our goal was to find the parameters $w_0^*$ and $w_1$* that minimized:
+
+$$R_\text{sq}(w_0, w_1) = \frac{1}{n} \sum_{i = 1}^n \left( y_i - (w_0 + w_1 x_i) \right)^2$$
+
+- To do so, we used calculus, and we found that the minimizing values are:
+
+$$
+\boxed{\begin{align*}
+w_1^* &=
+    \frac{
+        \displaystyle
+        \sum_{i=1}^n (x_i - \bar x)(y_i - \bar y)
+    }{
+        \displaystyle
+        \sum_{i=1}^n (x_i - \bar x)^2
+    }
+    \qquad
+    \qquad
+w_0^* =
+    \bar y - w_1^* \bar x
+\end{align*}}
+$$
+
+- We say $w_0^*$ and $w_1^*$ are **optimal parameters**, and the resulting line is called the **regression line**.
+
+---
+
+
+<center>
+
+<img src="imgs/model.png" width=65%>
+
+</center>
+
+
+---
+
+### Now what?
+
+We've found the optimal slope and intercept for linear hypothesis functions using squared loss (i.e. for the regression line). Now, we'll:
+
+- See how the formulas we just derived connect to the formulas for the slope and intercept of the regression line we saw in DSC 10.
+  - They're the same, but we need to do a bit of work to prove that.
+- Learn how to interpret the slope of the regression line.
+- Understand connections to other related models.
+- Learn how to build regression models with **multiple inputs**.
+  - To do this, we'll need linear algebra!
+
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+Consider a dataset with just two points, $(2, 5)$ and $(4, 15)$. Suppose we want to fit a linear hypothesis function to this dataset using squared loss. What are the values of $w_0^*$ and $w_1^*$ that minimize empirical risk?
+
+- A. $w_0^* = 2$, $w_1^* = 5$
+- B. $w_0^* = 3$, $w_1^* = 10$
+- C. $w_0^* = -2$, $w_1^* = 5$
+- D. $w_0^* = -5$, $w_1^* = 5$
+
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Correlation
+
+---
+
+### Quantifying patterns in scatter plots
+
+<div style="width: 100%;">
+    <div style="width: 50%; float: left"> 
+    <br>
+
+- In DSC 10, you were introduced to the idea of the **correlation coefficient**, $r$.
+- It is a measure of the strength of the **linear association** of two variables, $x$ and $y$.
+- Intuitively, it measures how tightly clustered a scatter plot is around a straight line.
+- It ranges between -1 and 1. 
+    </div>
+    <div style="margin-left: 50%; height: 100px;" markdown="1"> 
+
+<br>
+
+<img src="imgs/correlations1.png" width=100%>
+
+</div>
+</div>
+
+---
+
+### The correlation coefficient
+
+- The correlation coefficient, $r$, is defined as the **average of the product of $x$ and $y$, when both are in standard units**.
+- Let $\sigma_x$ be the standard deviation of the $x_i$s, and $\bar{x}$ be the mean of the $x_i$s.
+- $x_i$ in standard units is $\frac{x_i - \bar{x}}{\sigma_x}$.
+- The correlation coefficient, then, is:
+
+$$r = \frac{1}{n} \sum_{i = 1}^n \left( \frac{x_i - \bar{x}}{\sigma_x} \right) \left( \frac{y_i - \bar{y}}{\sigma_y} \right) $$
+
+
+
+---
+
+### The correlation coefficient, visualized
+
+<br>
+
+
+<center>
+
+<img src="imgs/correlations.png" width=80%>
+
+</center>
+
+---
+
+### Another way to express $w_1^*$
+
+- It turns out that $w_1^*$, the optimal slope for the linear hypothesis function when using squared loss (i.e. the regression line), can be written in terms of $r$!
+
+    $$w_1^* = \frac{
+                        \displaystyle
+                        \sum_{i=1}^n (x_i - \bar x)(y_i - \bar y)
+                    }{
+                        \displaystyle
+                        \sum_{i=1}^n (x_i - \bar x)^2
+                    } = r \frac{\sigma_y}{\sigma_x}$$
+
+- It's not surprising that $r$ is related to $w_1^*$, since $r$ is a measure of linear association.
+
+- Concise way of writing $w_0^*$ and $w_1^*$:
+
+    $$w_1^* = r\frac{\sigma_y}{\sigma_x} \qquad w_0^* = \bar{y} - w_1^* \bar{x}$$
+
+
+---
+
+### Proof that $w_1^* = r\frac{\sigma_y}{\sigma_x}$
+
+---
+
+Let's test these new formulas out in code! Follow along [here](http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec05/lec05-code.ipynb).
+
+<br>
+
+<center>
+
+<img src="imgs/model.png" width=60%>
+
+</center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Interpreting the formulas
+
+---
+
+### Interpreting the slope
+
+$$w_1^* = r \frac{\sigma_y}{\sigma_x}$$
+
+- The units of the slope are **units of $y$ per units of $x$**.
+- In our commute times example, in $H(x) = 142.25 - 8.19x$, our predicted commute time **decreases by 8.19 minutes per hour**.
+
+
+---
+
+### Interpreting the slope
+
+$$w_1^* = r \frac{\sigma_y}{\sigma_x}$$
+
+<center>
+
+<img src="imgs/default.png" width=350><img src="imgs/spready.png" width=350><img src="imgs/spreadx.png" width=350>
+
+</center>
+
+- Since $\sigma_x \geq 0$ and $\sigma_y \geq 0$, the slope's sign is $r$'s sign.
+
+- As the $y$ values get more spread out, $\sigma_y$ increases, so the slope gets steeper.
+
+- As the $x$ values get more spread out, $\sigma_x$ increases, so the slope gets shallower.
+
+---
+
+### Interpreting the intercept
+
+<div style="width: 100%;">
+<div style="width: 50%; float: left"> 
+<br>
+<img src="imgs/model.png">
+
+</div>
+    <div style="margin-left: 50%; height: 100px;" markdown="1"> 
+
+$$w_0^* = \bar{y} - w_1^* \bar{x}$$
+
+<br>
+
+- What are the units of the intercept?<br><br><br>
+- What is the value of $H^*(\bar{x})$?
+
+</div>
+</div>
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+We fit a regression line to predict commute times given departure hour. Then, we add 75 minutes to all commute times in our dataset. What happens to the resulting regression line?
+
+- A. Slope increases, intercept increases.
+- B. Slope decreases, intercept increases.
+- C. Slope stays the same, intercept increases.
+- D. Slope stays the same, intercept stays the same.
+
+---
+
+### Correlation and mean squared error
+
+- **Claim**: Suppose that $w_0^*$ and $w_1^*$ are the optimal intercept and slope for the regression line. Then,
+
+$${\color{purple}R_\text{sq}(w_0^*, w_1^*)} = \sigma_y^2 (1 - {\color{blue}r}^2)$$
+
+- That is, the <span style="color:purple">mean squared error of the regression line's predictions</span> and the correlation coefficient, ${\color{blue}r}$, always satisfy the relationship above.
+
+- Even if it's true, why do we care?
+    - In machine learning, we often use both the <span style="color:purple">mean squared error</span> and ${\color{blue}r}^2$ to compare the performances of different models.
+    - If we can prove the above statement, we can show that **finding models that minimize <span style="color:purple">mean squared error</span>** is equivalent to **finding models that maximize ${\color{blue}r}^2$**.
+
+---
+
+### Proof that $R_\text{sq}(w_0^*, w_1^*) = \sigma_y^2 (1 - r^2)$
+
+---
+
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Connections to related models
+
+---
+
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+Suppose we chose the model $H(x) = w_1 x$ and squared loss.<br>What is the optimal model parameter, $w_1^*$?
+
+
+<div style="width: 100%;">
+<div style="width: 50%; float: left">
+
+- A. $\displaystyle \frac{\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i = 1}^n (x_i - \bar{x})^2}$
+
+- B. $\displaystyle \frac{\sum_{i = 1}^n x_iy_i}{\sum_{i = 1}^n x_i^2}$
+
+</div>
+<div style="margin-left: 50%; height: 100px;" markdown="1"> 
+
+- C. $\displaystyle \frac{\sum_{i = 1}^n x_iy_i}{\sum_{i = 1}^n x_i^2}$
+
+- D. $\displaystyle \frac{\sum_{i = 1}^n y_i}{\sum_{i = 1}^n x_i}$
+
+</div>
+</div>
+
+
+---
+
+### Exercise
+
+Suppose we chose the model $H(x) = w_1 x$ and squared loss.<br>What is the optimal model parameter, $w_1^*$?
+
+
+---
+
+<center>
+
+<img src="imgs/both-models.png" width=75%>
+
+</center>
+
+---
+
+### Exercise
+
+Suppose we choose the model $H(x) = w_0$ and squared loss.<br>What is the optimal model parameter, $w_0^*$?
+
+
+---
+
+### Comparing mean squared errors
+
+- With both:
+    - the constant model, $H(x) = h$, and 
+    - the simple linear regression model, $H(x) = w_0 + w_1x$, 
+   
+   when we chose squared loss, we minimized mean squared error to find optimal parameters:
+
+$$R_\text{sq}(H) = \frac{1}{n} \sum_{i = 1}^n \left( y_i - H(x_i) \right)^2$$
+
+- **Which model minimizes mean squared error more?**
+
+---
+
+### Comparing mean squared errors
+
+<div style="width: 100%;">
+<div style="width: 65%; float: left"> 
+<center>
+
+<img src="imgs/constant-to-slr.png">
+
+</center>
+
+</div>
+    <div style="margin-left: 66%; height: 100px;" markdown="1"> 
+
+
+$$\text{MSE} = \frac{1}{n} \sum_{i = 1}^n \left( y_i - H(x_i) \right)^2$$
+
+- The MSE of the best <span style="color:red">simple linear regression model</span> is $\approx 97$.
+- The MSE of the best <span style="color:purple">constant model</span> is $\approx 167$.
+- The <span style="color:red">simple linear regression model</span> is a more flexible version of the <span style="color:purple">constant model</span>.
+
+</div>
+</div>
+
+
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Linear algebra review
+
+---
+
+### Wait... why do we need linear algebra?
+
+- Soon, we'll want to make predictions using more than one feature.
+    - Example: Predicting commute times using departure hour and temperature.
+- Thinking about linear regression in terms of **matrices and vectors** will allow us to find hypothesis functions that:
+    - Use multiple features (input variables).
+    - Are non-linear, e.g. $H(x) = w_0 + w_1 x + w_2 x^2$.
+- Before we dive in, let's review.
+
+---
+
+### Spans of vectors
+
+
+- One of the most important ideas you'll need to remember from linear algebra is the concept of the **span** of two or more vectors.
+- To jump start our review of linear algebra, let's start by watching [🎥 **this video by <span style="color:blue">3blue</span><span style="color:brown">1brown</span>**](https://youtu.be/k7RM-ot2NWY?si=HRt1nlqIWJPLI0cp).
+
+<center>
+
+<img src="imgs/span.png" width=50%>
+
+</center>
+
+---
+
+### Next time
+
+- We'll review the necessary linear algebra prerequisites.
+- We'll then start to formulate the problem of minimizing mean squared error for the simple linear regression model **using matrices and vectors**.
+- We'll send some relevant linear algebra review videos on Ed.
