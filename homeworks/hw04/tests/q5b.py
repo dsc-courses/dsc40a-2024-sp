@@ -1,0 +1,10 @@
+test = {   'name': 'q5b',
+    'points': 2,
+    'suites': [   {   'cases': [   {'code': '>>> isinstance(X_two_features, np.ndarray) and X_two_features.shape == (244, 3)\nTrue', 'hidden': False, 'locked': False},
+                                   {'code': '>>> isinstance(w_two_features, np.ndarray) and w_two_features.shape == (3,)\nTrue', 'hidden': False, 'locked': False},
+                                   {'code': '>>> isinstance(mse_two_features, float) and mse_two_features > 1\nTrue', 'hidden': False, 'locked': False},
+                                   {'code': '>>> isinstance(much_more_accurate, bool)\nTrue', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

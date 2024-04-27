@@ -1,0 +1,10 @@
+test = {   'name': 'q5c',
+    'points': 2,
+    'suites': [   {   'cases': [   {'code': '>>> isinstance(w_two_features_standardized, np.ndarray) and len(w_two_features_standardized) == 3\nTrue', 'hidden': False, 'locked': False},
+                                   {'code': '>>> np.all(np.diff(w_two_features_standardized) < 0) # Making sure the coefficients are in the right order.\nTrue', 'hidden': False, 'locked': False},
+                                   {'code': ">>> more_important in ['total_bill', 'table_size']\nTrue", 'hidden': False, 'locked': False},
+                                   {'code': ">>> more_important == 'total_bill'\nTrue", 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}
