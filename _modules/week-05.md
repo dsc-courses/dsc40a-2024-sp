@@ -25,5 +25,7 @@ days:
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
       - name: HW 4
         type: hw
-        title: Homework 4
+        title: <b>Homework 4</b>
+        problems: resources/homeworks/hw04.pdf
+        template: https://www.overleaf.com/read/qfndvkfjchqm#11ae69
 ---
