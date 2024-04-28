@@ -7,6 +7,8 @@ days:
       - name: DISC 4
         type: disc
         title: Groupwork 4
+        problems: resources/groupworks/gw04.pdf
+        # template: 
   - date: '2024-04-30'
     events:
       - name: LEC 9
