@@ -8,7 +8,7 @@ days:
         type: disc
         title: Groupwork 4
         problems: resources/groupworks/gw04.pdf
-        # template: 
+        template: https://www.overleaf.com/read/fnhwmtrtrmhj#cbd4a6
   - date: '2024-04-30'
     events:
       - name: LEC 9
