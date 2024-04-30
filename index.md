@@ -17,7 +17,7 @@ nav_order: 1
 
 
 {: .green }
-> **Take a look at the new [Lecture FAQs](faqs) page on the course website!**
+> **The Midterm Exam is on Tuesday, May 7th during lecture! Prepare by attempting past exam problems at [practice.dsc40a.com](https://practice.dsc40a.com).**
 
 {% for module in site.modules %}
 {{ module }}
