@@ -1,4 +1,3 @@
-<!-- These set styles for the entire document. -->
 <style>
 
 h1 {
@@ -244,7 +243,7 @@ $$
 \end{bmatrix}
 $$
 
-- Then, our hypothesis function is
+- Then, our hypothesis function is:
 $$\begin{align*}
                 H({\color{#007aff} \vec x}) &= w_0 + w_1 {\color{#007aff} x^{(1)}} + w_2 {\color{#007aff} x^{(2)}} + \ldots + w_d {\color{#007aff} x^{(d)}}\\
                                &=    \vec w \cdot \text{Aug}({\color{#007aff} \vec x})
@@ -394,7 +393,7 @@ $$H(\text{square feet}, \text{competitors}) =
 -  Features are measured in different units, i.e. different scales.
     -  Suppose I fit one hypothesis function, $H_1$, with sales in US dollars, and another hypothesis function, $H_2$, with sales in Japanese yen (1 USD $\approx$ 157 yen).
     -  Sales is just as important in both hypothesis functions.
-    -  But the weight of sales in $H_1$ will be 157 times smaller than the weight of sales in $H_2$. 
+    -  But the weight of sales in $H_1$ will be 157 times larger than the weight of sales in $H_2$. 
 - **Solution**: If you care about the interpretability of the resulting weights, **standardize** each feature before performing regression, i.e. convert each feature to standard units.
     
 
@@ -545,7 +544,7 @@ $$
 
 ### Finding the optimal parameter vector, $\vec{w}^*$
 
--  As long as the form of the hypothesis function permits us to write $\vec h = X\vec w$ for some $X$ and $\vec w$, the mean squared error is
+-  As long as the form of the hypothesis function permits us to write $\vec h = X\vec w$ for some $X$ and $\vec w$, the mean squared error is:
 $$R_\text{sq}(\vec w)
     =
     \frac{1}{n} \|
