@@ -2,14 +2,14 @@
 title: "Week 5 – Gradient Descent and Convexity<br><small>📘 Read <a href='resources/notes/notes_chapter_1.pdf#page=16'>Note 1, Pages 16-17</a>.</small>"
 weekNumber: 5
 days:
-  - date: '2024-04-29'
+  - date: "2024-04-29"
     events:
       - name: DISC 4
         type: disc
         title: Groupwork 4
         problems: resources/groupworks/gw04.pdf
         template: https://www.overleaf.com/read/fnhwmtrtrmhj#cbd4a6
-  - date: '2024-04-30'
+  - date: "2024-04-30"
     events:
       - name: LEC 9
         type: lecture
@@ -17,16 +17,16 @@ days:
         blank: resources/lectures/lec09/lec09-blank.pdf
         code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec09/lec09-code.ipynb
         # url: resources/lectures/lec03/lec03.html
-        # filled: resources/lectures/lec09/lec09-filled.pdf
-        # podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/9
-  - date: '2024-05-02'
+        filled: resources/lectures/lec09/lec09-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/9
+  - date: "2024-05-02"
     events:
       - name: LEC 10
         type: lecture
         title: Gradient Descent in Multiple Dimensions
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
-        # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
+        # podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/10
       - name: HW 4
         type: hw
         title: <b>Homework 4</b>
