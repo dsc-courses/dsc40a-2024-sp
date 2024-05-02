@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 🙋 FAQs (new!)
+title: 🙋 FAQs
 description: Answers to frequently asked questions each week.
 nav_order: 7
 ---
@@ -13,8 +13,57 @@ Moving forward, we're going to **try** and update this page each week to provide
 
 Jump to:
 
+- [Weeks 3-5: Regression and Linear Algebra](#weeks3-5-regression-and-linear-algebra)
 - [Week 2: Loss Functions, Center and Spread, and Simple Linear Regression](#week-2-loss-functions-center-and-spread-and-simple-linear-regression)
-- [Week 3: Simple Linear Regression, Dot Products and Projections](#week-3-simple-linear-regression-dot-products-and-projections)
+
+---
+
+## Weeks 3-5: Regression and Linear Algebra
+
+Coming soon...
+
+### Can you recap the proof of the formula for $$w_1^*$$ that includes $$r$$?
+
+### What do you mean by "the inner dimensions need to match in order to perform matrix multiplication"?
+
+### What's the relationship between spans, projections, and multiple linear regression?
+
+### Why does the design matrix have a column of all 1s?
+
+### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
+
+### Do the normal equations work even when there is only one column in the matrix $$X$$?
+
+### When do two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$? When do $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$?
+
+### When $$X^TX$$ isn't invertible, how do we solve the normal equations?
+
+### What does it mean for a matrix to be full rank?
+
+### In multiple linear regression, is $$\vec{h}^*$$ orthogonal to $$\vec{y}$$?
+
+### Why does the multiple linear regression model with two features look like a plane?
+
+### Is there a more detailed version of the MSE proof shown in Lecture 5?
+
+Yes. Here's a proof of the fact that $$R_\text{sq}(w_0^*, w_1^*) = \sigma_y^2 (1 - r^2)$$.
+
+First, note that since $$\sigma_x^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2$$, we have that $$\sum_{i = 1}^n (x_i - \bar{x})^2 = n \sigma_x^2$$. Then:
+
+$$R_{\text{sq}}( w_0^*, w_1^* )$$ = $$\frac{1}{n} \sum_{i=1}^{n} (y_i - \bar{y} - w_1^*(x_i - \bar{x}))^2 $$ \\
+= $$ \frac{1}{n} \sum_{i=1}^{n} \left[ (y_i - \bar{y})^2 - 2 w_1^*(x_i - \bar{x})(y_i - \bar{y}) + w_1^{*2} (x_i - \bar{x})^2 \right] $$ \\
+= $$ \frac{1}{n} \sum_{i=1}^{n} (y_i - \bar{y})^2 - \frac{2w_1^*}{n} \sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y})) + \frac{w_1^{*2}}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2 $$ \\
+ = $$\sigma_y^2 - \frac{2w_1^*}{n} \sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y})) + w_1^{*2} \sigma_x^2 $$\\
+ = $$\sigma_y^2 - \frac{2w_1^*}{n} \frac{\sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y}))}{\sum_{i=1}^{n} (x_i - \bar{x})^2} (\sum_{i=1}^{n} (x_i - \bar{x})^2) + r^2 \sigma_y^2 $$\\
+ = $$\sigma_y^2 - 2w_1^* \frac{\sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y}))}{\sum_{i=1}^{n} (x_i - \bar{x})^2} \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n} + r^2 \sigma_y^2$$ \\
+= $$\sigma_y^2 - 2w_1^{*2} \sigma_x^2 + r^2 \sigma_y^2 $$ \\
+= $$\sigma_y^2 - 2(r^2\frac{\sigma_y^2}{\sigma_x^2}) \sigma_x^2 + r^2 \sigma_y^2 $$\\
+= $$\sigma_y^2 - 2r^2\sigma_y^2 + r^2 \sigma_y^2 $$\\
+= $$\sigma_y^2 - r^2 \sigma_y^2$$ \\
+= $$\sigma_y^2 (1 - r^2)$$
+
+
+---
 
 ## Week 2: Loss Functions, Center and Spread, and Simple Linear Regression
 
@@ -132,23 +181,3 @@ So, we have to use the computer to approximate the answer. Regression with squar
 ### Can you post the slides earlier than 20 minutes before lecture?
 
 I'll try, but I'm making lots of changes to the lectures this quarter, and that usually takes me until right before lecture 😅
-
-## Week 3: Simple Linear Regression, Dot Products and Projections
-
-### Is there a more detailed version of the MSE proof shown in Lecture 5?
-
-Yes! Check below:
-
-$$\text{Note: Since } \sigma_x^2 = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2, \ \text{then }  \sum_{i=1}^n (x_i - \bar{x})^2 = n \sigma_x^2$$
-
-$$R_{\text{sq}}( w_0^*, w_1^* )$$ = $$\frac{1}{n} \sum_{i=1}^{n} (y_i - \bar{y} - w_1^*(x_i - \bar{x}))^2 $$ \\
-= $$ \frac{1}{n} \sum_{i=1}^{n} \left[ (y_i - \bar{y})^2 - 2 w_1^*(x_i - \bar{x})(y_i - \bar{y}) + w_1^{*2} (x_i - \bar{x})^2 \right] $$ \\
-= $$ \frac{1}{n} \sum_{i=1}^{n} (y_i - \bar{y})^2 - \frac{2w_1^*}{n} \sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y})) + \frac{w_1^{*2}}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2 $$ \\
- = $$\sigma_y^2 - \frac{2w_1^*}{n} \sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y})) + w_1^{*2} \sigma_x^2 $$\\
- = $$\sigma_y^2 - \frac{2w_1^*}{n} \frac{\sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y}))}{\sum_{i=1}^{n} (x_i - \bar{x})^2} (\sum_{i=1}^{n} (x_i - \bar{x})^2) + r^2 \sigma_y^2 $$\\
- = $$\sigma_y^2 - 2w_1^* \frac{\sum_{i=1}^{n} ((x_i - \bar{x})(y_i - \bar{y}))}{\sum_{i=1}^{n} (x_i - \bar{x})^2} \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n} + r^2 \sigma_y^2$$ \\
-= $$\sigma_y^2 - 2w_1^{*2} \sigma_x^2 + r^2 \sigma_y^2 $$ \\
-= $$\sigma_y^2 - 2(r^2\frac{\sigma_y^2}{\sigma_x^2}) \sigma_x^2 + r^2 \sigma_y^2 $$\\
-= $$\sigma_y^2 - 2r^2\sigma_y^2 + r^2 \sigma_y^2 $$\\
-= $$\sigma_y^2 - r^2 \sigma_y^2$$ \\
-= $$\sigma_y^2 (1 - r^2)$$
