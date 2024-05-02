@@ -23,8 +23,10 @@ days:
     events:
       - name: LEC 10
         type: lecture
-        title: Gradient Descent in Multiple Dimensions
-        # url: resources/lectures/lec03/lec03.html
+        title: Feature Engineering, Gradient Descent
+        blank: resources/lectures/lec10/lec10-blank.pdf
+        code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec10/lec10-code.ipynb
+        animations: resources/lectures/lec10
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/10
       - name: HW 4
