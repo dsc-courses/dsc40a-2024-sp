@@ -27,7 +27,7 @@ days:
         blank: resources/lectures/lec10/lec10-blank.pdf
         code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec10/lec10-code.ipynb
         animations: resources/lectures/lec10
-        # filled: resources/lectures/lec03/lec03-filled.html
+        # filled: resources/lectures/lec10/lec10-filled.pdf
         # podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/10
       - name: HW 4
         type: hw
