@@ -1,5 +1,5 @@
 ---
-title: "Week 5 – Gradient Descent and Convexity<br><small>📘 Read <a href='resources/notes/notes_chapter_1.pdf#page=16'>Note 1, Pages 16-17</a>.</small>"
+title: "Week 5 – Multiple Linear Regression, Feature Engineering<br><small>📘 Read <a href='resources/notes/notes_chapter_1.pdf#page=16'>Note 1, Pages 16-17</a>.</small>"
 weekNumber: 5
 days:
   - date: "2024-04-29"
@@ -23,9 +23,11 @@ days:
     events:
       - name: LEC 10
         type: lecture
-        title: Gradient Descent in Multiple Dimensions
-        # url: resources/lectures/lec03/lec03.html
-        # filled: resources/lectures/lec10/lec10-filled.pdf
+        title: Feature Engineering, Gradient Descent
+        blank: resources/lectures/lec10/lec10-blank.pdf
+        code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec10/lec10-code.ipynb
+        animations: resources/lectures/lec10
+        # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/10
       - name: HW 4
         type: hw

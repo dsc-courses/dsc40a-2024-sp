@@ -1,5 +1,5 @@
 ---
-title: "Week 6 – Midterm Exam, Clustering"
+title: "Week 6 – Midterm Exam, Gradient Descent"
 weekNumber: 6
 days:
   - date: '2024-05-06'
@@ -16,7 +16,7 @@ days:
     events:
       - name: LEC 11
         type: lecture
-        title: Clustering
+        title: Gradient Descent in Multiple Dimensions
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
