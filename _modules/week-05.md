@@ -1,5 +1,5 @@
 ---
-title: "Week 5 – Gradient Descent and Convexity<br><small>📘 Read <a href='resources/notes/notes_chapter_1.pdf#page=16'>Note 1, Pages 16-17</a>.</small>"
+title: "Week 5 – Multiple Linear Regression, Feature Engineering<br><small>📘 Read <a href='resources/notes/notes_chapter_1.pdf#page=16'>Note 1, Pages 16-17</a>.</small>"
 weekNumber: 5
 days:
   - date: "2024-04-29"

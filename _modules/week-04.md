@@ -1,5 +1,5 @@
 ---
-title: "Week 4 – Multiple Linear Regression<br><small>📘 Read <a href='resources/notes/notes_chapter_2.pdf#page=10'>Note 2, Pages 10-19</a>.</small>"
+title: "Week 4 – Regression and Linear Algebra<br><small>📘 Read <a href='resources/notes/notes_chapter_2.pdf#page=10'>Note 2, Pages 10-19</a>.</small>"
 weekNumber: 4
 days:
   - date: "2024-04-22"
