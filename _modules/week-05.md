@@ -34,4 +34,12 @@ days:
         title: <b>Homework 4</b>
         problems: resources/homeworks/hw04.pdf
         template: https://www.overleaf.com/read/qfndvkfjchqm#11ae69
+  - date: "2024-05--3"
+    events:
+      - name: REV
+        type: lecture
+        title: Midterm Review Session (Center Hall 109, 2-5PM)
+        blank: resources/review/mt-review-blank.pdf
+        # filled: resources/lectures/lec10/lec10-filled.pdf
+        # podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/10
 ---

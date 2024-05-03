@@ -17,7 +17,7 @@ nav_order: 1
 
 
 {: .green }
-> **The Midterm Exam is on Tuesday, May 7th during lecture! Prepare by attempting past exam problems at [practice.dsc40a.com](https://practice.dsc40a.com).**
+> **The Midterm Exam is on Tuesday, May 7th during lecture! Prepare by attempting past exam problems at [practice.dsc40a.com](https://practice.dsc40a.com) and come to the review session tomorrow (Friday) in Center Hall 109 from 2-5PM.**
 
 {% for module in site.modules %}
 {{ module }}
