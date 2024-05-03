@@ -17,7 +17,10 @@ nav_order: 1
 
 
 {: .green }
-> **The Midterm Exam is on Tuesday, May 7th during lecture! Prepare by attempting past exam problems at [practice.dsc40a.com](https://practice.dsc40a.com) and come to the review session tomorrow (Friday) in Center Hall 109 from 2-5PM.**
+> **The Midterm Exam is on Tuesday, May 7th during lecture! Read the [logistics post on Ed ASAP](https://edstem.org/us/courses/57667/discussion/4898894), and prepare by:**
+> - Coming to the review session TODAY (Friday) in Center Hall 109 from 2-5PM. View the problems we'll take up [**here**](https://edstem.org/us/courses/57667/discussion/4898851). It'll be podcasted if you can't make it.
+> - Attempting past exam problems at [**practice.dsc40a.com**](https://practice.dsc40a.com).
+> - Creating your own index card to bring to the exam, using [**our example index card**](https://dsc40a.com/resources/index-card.pdf) as inspiration (if you want).
 
 {% for module in site.modules %}
 {{ module }}
