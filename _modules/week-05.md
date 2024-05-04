@@ -41,5 +41,5 @@ days:
         title: Midterm Review Session (Center Hall 109, 2-5PM)
         blank: resources/review/mt-review-blank.pdf
         filled: resources/review/mt-review-filled.pdf
-        # podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/10
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_a00/21
 ---
