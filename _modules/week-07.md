@@ -23,7 +23,7 @@ days:
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
-      - name: HW 6
+      - name: HW 5
         type: hw
-        title: Homework 6
+        title: Homework 5
 ---
