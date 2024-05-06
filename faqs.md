@@ -225,7 +225,7 @@ $$
 
 Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), and $$\vec{x}$$ is the feature vector. In other words, $$\vec{w}^*$$ provides the specific coefficients with which to form a linear combination of your feature vector $$\vec{x}$$ to make predictions $$\hat{y}$$.
 
-So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$, and $$w^*$$ is the set of scalars used to make this projection when multiplied with \vec{x}$$
+So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$, and $$w^*$$ is the set of scalars used to make this projection when multiplied with $$\vec{x}$$
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
 
