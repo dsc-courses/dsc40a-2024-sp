@@ -137,6 +137,18 @@ Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), an
 
 ### When do two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$? When do $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$?
 
+Two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$ when they are linearly independent (You cannot express one as a scalar multiple of the other). In other words, if $$\vec{u}$$ and $$\vec{v}$$ are two vectors in $$\mathbb{R}^2$$, they will span all of $$\mathbb{R}^2$$ if $$\vec{u}$$ and $$\vec{v}$$ are not collinear, or on the same line. 
+
+Similarly, $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$ when they are linearly independent. This means that no vector in the set can be expressed as a linear combination of the others.
+
+**Intuition**
+
+To span a space means to cover it entirely
+
+Think of two vectors in $$\mathbb{R}^2$$. If one vector is a scalar multiple of the other, then they both point in the same direction or opposite directions, essentially lying on the same line. This means they can only cover that line and cannot cover any other directions.
+
+In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3$$, three linearly independent vectors point in different directions and can cover all of three-dimensional space. If one is a linear combination of the others, then the three vectors all lie on the same plane, and can only span that plane.
+
 ### When $$X^TX$$ isn't invertible, how do we solve the normal equations?
 
 ### What does it mean for a matrix to be full rank?
