@@ -81,7 +81,7 @@ $$
 
 Let's call $$C$$ the product matrix between the $$2$$.
 
-As we discussed in lecture, every entry of this resulting matrix $$C$$ will be the result of the dot product of a row of $$A$$ with a column of $$B$$. For example, one entry of the product matrix $$C$$ is formed by dotting $$\begin{bmatrix} a_{11} & a_{12} & a_{13}\end{bmatrix}$$ with $$\begin{bmatrix}b_{11} \\ b_{21} \\ b{31} \end{bmatrix}$$.
+As we discussed in lecture, every entry of this resulting matrix $$C$$ will be the result of the dot product of a row of $$A$$ with a column of $$B$$. For example, one entry of the product matrix $$C$$ is formed by dotting $$\begin{bmatrix} a_{11} & a_{12} & a_{13}\end{bmatrix}$$ with $$\begin{bmatrix}b_{11} \\ b_{21} \\ b_{31} \end{bmatrix}$$.
 
 This dot product is only possible if the "length" of each row in $$A$$ is equal to the "height" of each column in $$B$$. In our example, this dot product is defined by
 
@@ -89,9 +89,13 @@ $$
 \begin{bmatrix} a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot b_{31} \end{bmatrix}
 $$
 
-If this were not the case, we would "run out" of numbers to include in our dot product and have an invalid result. 
+Clearly, if the number of entries in the first row of $$A$$ were not equal to the number of entries in the first column of $$B$$, this dot product would not make sense. We would have something like
 
-Of course, the "length" of a row in $$A$$ refers to the number of columns in $$A$$, and the "height" of each column in $$B$$ refers to the number of rows in $$B$$.
+$$
+\begin{bmatrix} a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot \text{...? We only have 2 entries in this column} \end{bmatrix}
+$$
+
+And we could not compute the entry of $$C$$, making our matrix multiplication impossible.
 
 In essence, the multiplication of matrices occurs when the inner dimensions of A and B, columns and rows, respectively, match.
 If they do not, the dot product between the rows of $$A$$ and the columns of $$B$$ would not be possible, and we cannot create a product matrix $$C$$.
