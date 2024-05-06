@@ -26,13 +26,11 @@ Coming soon...
 
 Sure!
 
-Let's start with the formula for $$w_1^*$$:
+Let's start with the formulas for $$w_1^*$$ and $$r$$:
 
 $$
 w_1^* = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2}
 $$
-
-Also, we have the Pearson correlation coefficient $$r$$ defined as:
 
 $$
 r = \frac{1}{n} \sum_{i=1}^n \left(\frac{(x_i - \bar{x})}{\sigma_x}\right) \left(\frac{(y_i - \bar{y})}{\sigma_y}\right).
@@ -42,49 +40,49 @@ Let's try to rewrite the formula for $$w_1^*$$ in terms of $$r$$.
 
 #### Step 1: Numerator
 
-First, we can simplify the formula for $$r$$ by factoring $$\sigma_x \sigma_y$$ out of the summation to get:
+First, we can simplify the formula for $$r$$ by factoring $$\sigma_x \sigma_y$$ out of the summation.
 
 $$
 r = \frac{1}{n \sigma_x \sigma_y} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y}).
 $$
 
-Rearranging this gives us the very pretty:
+Rearranging this gives us the very pretty
 
 $$
-\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y}) = r \cdot n \cdot \sigma_x \cdot \sigma_y.
+\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y}) = rn\sigma_x\sigma_y.
 $$
 
-Therefore, the numerator of the formula for $$w_1^*$$ can be expressed as $$r \cdot n \cdot \sigma_x \cdot \sigma_y$$.
+Therefore, the numerator of the formula for $$w_1^*$$ can be expressed as $$rn\sigma_x\sigma_y$$.
 
 
 #### Step 2: Denominator
 
-Let's start with the formula standard deviation $$\sigma_x$$ defined as:
+Let's start with the formula standard deviation $$\sigma_x$$ defined as
 
 $$
 \sigma_x = \sqrt{\frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2}.
 $$
 
-This means that the variance $$\sigma_x^2$$ is:
+This means that the variance $$\sigma_x^2$$ is
 
 $$
 \sigma_x^2 = \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2.
 $$
 
-Multiplying through by $$n$$ gives:
+Multiplying through by $$n$$ gives
 
 $$
-n \cdot \sigma_x^2 = \sum_{i=1}^n (x_i - \bar{x})^2.
+n\sigma_x^2 = \sum_{i=1}^n (x_i - \bar{x})^2.
 $$
 
-Therefore, the denominator of the formula for $$w_1^*$$ can be expressed as $n \cdot \sigma_x^2$.
+Therefore, the denominator of the formula for $$w_1^*$$ can be expressed as $n\sigma_x^2$.
 
 #### Conclusion
 
 Putting these parts together, we can rewrite the original formula for $w_1^*$:
 
 $$
-w_1^* = \frac{r \cdot n \cdot \sigma_x \cdot \sigma_y}{n \cdot \sigma_x^2}.
+w_1^* = \frac{rn\sigma_x\sigma_y}{n\sigma_x^2}.
 $$
 
 And, simplifying this expression, we arrive at a beautiful result:
@@ -168,7 +166,54 @@ I hope this helps!
 
 ### Why does the design matrix have a column of all 1s?
 
+In linear regression, the design matrix $$\mathbf{X}$$ represents the features $$x_1, x_2, \ldots, x_k$$. Each row of $$\mathbf{X}$$ corresponds to one data point, and each column corresponds to one feature. Further, the parameter vector $$\vec{w}$$ contains the weights for each feature, including the intercept or bias term $$w_0$$.
 
+The term $$w_0$$ is a constant that helps adjust the linear regression model vertically, ensuring that the line fits the data better. This term is universal between predictions. In other words, regardless of the values of the other features $$x_1, x_2, \ldots, x_k$$, the value of $$w_0$ will be the same. Let's explore how this relates to our design matrix.
+
+When the design matrix $$\mathbf{X}$$ is multiplied by the parameter vector $$\mathbf{w}$$, each row of $$\mathbf{X}$$ produces a prediction $$y$$ depending on the values of the features in the row. Each value in the row is multiplied with its associated weight in the parameter vector, and the resulting products are summed to form a prediction. However, we want the weight associated with $$w_0$$ to output the same constant bias term no matter the values in $$X$$.
+
+To ensure this, we include a column of 1s at the beginning of the design matrix $$\mathbf{X}$$. This column represents the constant contribution of the bias term $$w_0$$, and will always be multiplied by $$w_0$$ when a particular observation is being used to make a prediction. In other words, regardless of the values of the features in $$X$$, every prediction will have $$w_0 \cdot 1$$ added to it.
+Let's give a quick example of this.
+
+Suppose we have a linear regression problem with two features. The design matrix $$\mathbf{X}$$ is:
+
+$$
+\mathbf{X} = \begin{bmatrix}
+1 & x_{11} & x_{12} \\
+1 & x_{21} & x_{22} \\
+1 & x_{31} & x_{32}
+\end{bmatrix}
+$$
+
+And the parameter vector $$\vec{w}$$ is:
+
+$$
+\vec{w} = \begin{bmatrix}
+w_0 \\
+w_1 \\
+w_2
+\end{bmatrix}
+$$
+
+To obtain the predicted values $$\vec{y}$$:
+
+$$
+\vec{y} = \mathbf{X} \vec{w} = \begin{bmatrix}
+1 & x_{11} & x_{12} \\
+1 & x_{21} & x_{22} \\
+1 & x_{31} & x_{32}
+\end{bmatrix} \begin{bmatrix}
+w_0 \\
+w_1 \\
+w_2
+\end{bmatrix} = \begin{bmatrix}
+w_0 + w_1 x_{11} + w_2 x_{12} \\
+w_0 + w_1 x_{21} + w_2 x_{22} \\
+w_0 + w_1 x_{31} + w_2 x_{32}
+\end{bmatrix}
+$$
+
+As you can see in this example, our predictions all included the constant bias term $$w_0$$, because in forming our predictions, $$w_0$$ was always scaled by $$1$$, the first entry in each row of our design matrix. This setup ensures that the intercept is included in the model, and does not interfere with the relationship between the other features and the prediction.
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
