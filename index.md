@@ -24,6 +24,9 @@ nav_order: 1
 > - Reviewing [**assignment solutions**](https://edstem.org/us/courses/57667/discussion/4730099).
 > - Double-checking your seat assignment in the [**logistics post above**](https://edstem.org/us/courses/57667/discussion/4898894).
 
+**Office hours on Monday, May 6th will be held remotely via Zoom at the following link:**
+
+[Zoom link](https://ucsd.zoom.us/j/96170150611){: .btn .btn-blue }
 
 {% for module in site.modules %}
 {{ module }}
