@@ -75,11 +75,11 @@ $$
 n\sigma_x^2 = \sum_{i=1}^n (x_i - \bar{x})^2.
 $$
 
-Therefore, the denominator of the formula for $$w_1^*$$ can be expressed as $n\sigma_x^2$.
+Therefore, the denominator of the formula for $$w_1^*$$ can be expressed as $$n\sigma_x^2$$.
 
 #### Conclusion
 
-Putting these parts together, we can rewrite the original formula for $w_1^*$:
+Putting these parts together, we can rewrite the original formula for $$w_1^*$$:
 
 $$
 w_1^* = \frac{rn\sigma_x\sigma_y}{n\sigma_x^2}.
