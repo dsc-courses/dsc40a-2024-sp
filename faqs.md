@@ -165,16 +165,16 @@ In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3
 
 ### Why does the multiple linear regression model with two features look like a plane?
 - ### Think about it like this:
-    - Take any equation of the form $y = mx + c$.
-    - The reason this is a straight line passing through $c$ is because $y$ is dependent only on 1 variable. To further understand this:
-        - Start with $y = x$. This is just a straight line passing through $(0,0)$ such that each value of y is equivalent to x. 
-        - Making the equation $y = mx$ such that $m \ != 0$ multiplies the $x$ value with a constant. This simply scales the line up.
-        - Finally, adding $c$ moves the line up/down depending on the value of c.
-        - ### Note that in this example, it did not matter what we did with $x$, the equation always remained a line.
-    - Now, take the example of $y = mx_1 + nx_2 + c$. The reason this line is a plane is:
-        - Start with $y = x$. This is just a straight line passing through $(0,0)$ such that each value of y is equivalent to x. 
-        - Making the equation $y = mx_1$ such that $m \ != 0$ multiplies the $x_1$ value with a constant. This simply scales the line up.
-        - ### Now, making the equation $y = mx_1 + nx_2$ introduces another independent variable. This introduces a new field into the original equation. Now, instead of a simple line, there exists a plane for each unique combination of $$(x_1, x_2)$$.
+    - Take any equation of the form $$y = mx + c$$.
+    - The reason this is a straight line passing through $$c$$ is because $$y$$ is dependent only on 1 variable. To further understand this:
+        - Start with $$y = x$$. This is just a straight line passing through $$(0,0)$$ such that each value of y is equivalent to x. 
+        - Making the equation $$y = mx$$ such that $$m \ != 0$$ multiplies the $$x$$ value with a constant. This simply scales the line up.
+        - Finally, adding $$c$$ moves the line up/down depending on the value of c.
+        - ### Note that in this example, it did not matter what we did with $$x$$, the equation always remained a line.
+    - Now, take the example of $$y = mx_1 + nx_2 + c$$. The reason this line is a plane is:
+        - Start with $$y = x$$. This is just a straight line passing through $$(0,0)$$ such that each value of y is equivalent to x. 
+        - Making the equation $$y = mx_1$ such that $$m \ != 0$$ multiplies the $$x_1$$ value with a constant. This simply scales the line up.
+        - ### Now, making the equation $$y = mx_1 + nx_2$$ introduces another independent variable. This introduces a new field into the original equation. Now, instead of a simple line, there exists a plane for each unique combination of $$(x_1, x_2)$$.
 
 ### Is there a more detailed version of the MSE proof shown in Lecture 5?
 
