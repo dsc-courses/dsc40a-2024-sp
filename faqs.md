@@ -91,6 +91,10 @@ $$
 w_1^* = r \cdot \frac{\sigma_y}{\sigma_x}.
 $$
 
+#### Lecture(s) to Review
+
+[Lecture 5](https://dsc40a.com/resources/lectures/lec05/lec05-filled.pdf) (Slide 18)
+
 
 ### What do you mean by "the inner dimensions need to match in order to perform matrix multiplication"?
 
@@ -121,6 +125,12 @@ And we could not compute the entry of $$C$$, making our matrix multiplication im
 
 In essence, the multiplication of matrices occurs when the inner dimensions of A and B, columns and rows, respectively, match.
 If they do not, the dot product between the rows of $$A$$ and the columns of $$B$$ would not be possible, and we cannot create a product matrix $$C$$.
+
+#### Lecture(s) to Review:
+
+[Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 17)
+
+[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf) (Slide 20)
 
 ### What's the relationship between spans, projections, and multiple linear regression?
 
@@ -163,6 +173,12 @@ $$
 $$
 
 For more visual intuition of this idea, check out [this tutor-made animation!](https://www.youtube.com/watch?v=dJcbJKpYywk)
+
+#### Lecture(s) to Review:
+
+[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
+
+[Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf)
 
 ### Why does the design matrix have a column of all 1s?
 
@@ -215,6 +231,10 @@ $$
 
 As you can see in this example, our predictions all included the constant bias term $$w_0$$, because in forming our predictions, $$w_0$$ was always scaled by $$1$$, the first entry in each row of our design matrix. This setup ensures that the intercept is included in the model, and does not interfere with the relationship between the other features and the prediction.
 
+#### Lecture(s) to Review:
+
+[Lecture 9](https://dsc40a.com/resources/lectures/lec09/lec09-filled.pdf)
+
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
 In multiple linear regression, the orthogonal projection of the vector $$\vec{y}$$ onto the span of the vectors $$\vec{x}^{(1)}, ]vec{x}^{(2)}, ..., vec{x}^{(n)}$$ is expressed as:
@@ -226,6 +246,10 @@ $$
 Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), and $$X$$ is the design matrix. In other words, $$\vec{w}^*$$ provides the specific coefficients with which to form a linear combinations of your features to make predictions $$\vec{h}^*$$.
 
 So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec{y}$$ onto $$\text{span}\vec{x}^{(1)}, ]vec{x}^{(2)}, ..., vec{x}^{(n)}$$, and $$w^*$$ is the set of scalars used to make this projection when multiplied with $$\vec{x}$$
+
+#### Lecture(s) to Review:
+
+[Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 28)
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
 
@@ -288,6 +312,11 @@ $$
 
 So, to answer your question, we can absolutely use the normal equations when our design matrix $$X$$ has only one column!
 
+#### Lecture(s) to Review:
+
+[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
+[Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf)
+
 
 ### When do two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$? When do $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$?
 
@@ -303,11 +332,19 @@ Think of two vectors in $$\mathbb{R}^2$$. If one vector is a scalar multiple of 
 
 In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3$$, three linearly independent vectors point in different directions and can cover all of three-dimensional space. However, if one is a linear combination of the others, then the three vectors lie on the same plane, and can only span that plane.
 
+#### Lecture(s) to Review:
+
+[Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 26)
+
 ### When $$X^TX$$ isn't invertible, how do we solve the normal equations?
 
 When $$X^TX$$, we cannot solve the normal equations using traditional methods. That is, if we cannot invert $$X^TX$$, we cannot solve $$w = (X^\mathrm{T}X)^{-1}X^\mathrm{T}y$$. 
 
 Generally, this situation arises when one of the columns of our design matrix $$X$$ is a linear combination of the other columns in $$X$$. This leads to an infinite amount of solutions satisfying the normal equations, and so finding a unique solution is impossible. However, if you are interested in other methods with which to solve the normal equations when $$X$$ is not invertible, feel free to explore them! As a starting point, try researching the Moore-Penrose pseudo-inverse and ridge regression as two other approaches to solving for an optimal parameter vector!
+
+#### Lecture(s) to Review:
+
+[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf) (Slide 34)
 
 ### What does it mean for a matrix to be full rank?
 
@@ -327,12 +364,20 @@ In linear regression, the design matrix $$X$$ must be full rank to have a unique
 - **Not Full Rank:**  
     If $$X$$ is not full rank, then some columns of $$X$$ are linear combinations of other columns. This leads to multicollinearity, which results in infinitely many solutions for the normal equations.
 
+#### Lecture(s) to Review:
+
+[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
+
 
 ### In multiple linear regression, is $$\vec{h}^*$$ orthogonal to $$\vec{y}$$?
 
-In Lecture $$8$$, we introduced $$\vec{h}^*$$ as the optimal hypothesis vector; That is, $$\vec{h}^* = X\vec{w}^*$$. This means that $$\vec{h}^*$$ is the orthogonal projection of our observation vector $$\vec{y}$$ into the span of our feature vectors $$\vec{x}^{(1)}, \vec{x}^{(2)}, ..., \vec{x}^{(d)}$$. As such, $$\vec{h}^*$$ is orthogonal to the error vector $$\vec{e} = \vec{y} - \vec{h}^*$$. However, this relationship does not imply orthogonality with $$\vec{y}$$, or any other vector aside from the error vector $$\vec{e}$$
+$$\vec{h}^*$$ is the optimal hypothesis vector; That is, $$\vec{h}^* = X\vec{w}^*$$. This means that $$\vec{h}^*$$ is the orthogonal projection of our observation vector $$\vec{y}$$ into the span of our feature vectors $$\vec{x}^{(1)}, \vec{x}^{(2)}, ..., \vec{x}^{(d)}$$. As such, $$\vec{h}^*$$ is orthogonal to the error vector $$\vec{e} = \vec{y} - \vec{h}^*$$. However, this relationship does not imply orthogonality with $$\vec{y}$$, or any other vector aside from the error vector $$\vec{e}$$
 
-This concept is discussed in depth in Lectures 7 and 8, so check them out if you would like a deeper explanation of these properties!
+#### Lecture(s) to Review:
+
+[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
+[Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf)
+
 
 ### Why does the multiple linear regression model with two features look like a plane?
 
@@ -356,6 +401,11 @@ If we had a nonlinear prediction function with $$2$$ features, we could see a pr
 
 For more visual intuition of this idea, check out the first 35 seconds of [this video](https://www.youtube.com/watch?v=dJcbJKpYywk)!
 
+#### Lecture(s) to Review:
+
+[Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 23)
+[Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf) (Slide 30)
+
 
 ### Is there a more detailed version of the MSE proof shown in Lecture 5?
 
@@ -375,6 +425,9 @@ $$R_{\text{sq}}( w_0^*, w_1^* )$$ = $$\frac{1}{n} \sum_{i=1}^{n} (y_i - \bar{y} 
 = $$\sigma_y^2 - r^2 \sigma_y^2$$ \\
 = $$\sigma_y^2 (1 - r^2)$$
 
+#### Lecture(s) to Review:
+
+[Lecture 5](https://dsc40a.com/resources/lectures/lec05/lec05-filled.pdf) (Slide 25)
 
 ---
 
