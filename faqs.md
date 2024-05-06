@@ -313,7 +313,7 @@ Generally, this situation arises when one of the columns of our design matrix $$
 
 A matrix is full rank when each column in the matrix is linearly independent.
 
-In linear regression, the design matrix \(\mathbf{X}\) must be full rank to have a unique solution for the normal equations. If $$\mathbf{X}$$ is not full rank, it implies multicollinearity among the features, which leads to an infinite amount of solutions when solving for the optimal parameters $$\vec{w}$$. For clarity:
+In linear regression, the design matrix $$\mathbf{X}$$ must be full rank to have a unique solution for the normal equations. If $$\mathbf{X}$$ is not full rank, it implies multicollinearity among the features, which leads to an infinite amount of solutions when solving for the optimal parameters $$\vec{w}$$. For clarity:
 
 - **Full Rank:**  
     If the design matrix $$\mathbf{X}$$ is full rank, then all of its columns are linearly independent. This allows the normal equations:
