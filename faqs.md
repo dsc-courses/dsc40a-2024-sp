@@ -304,18 +304,33 @@ Think of two vectors in $$\mathbb{R}^2$$. If one vector is a scalar multiple of 
 In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3$$, three linearly independent vectors point in different directions and can cover all of three-dimensional space. However, if one is a linear combination of the others, then the three vectors lie on the same plane, and can only span that plane.
 
 ### When $$X^TX$$ isn't invertible, how do we solve the normal equations?
-- $$X^TX$$ needs to be invertible to find a **unique** minimizer. This is why the formula is $$w^* = (X^TX)^{-1}X^TY$$
-- Therefore, when $$X^TX$$ isn't invertible, solving the equation is possible but redundant since there are **infinitely many possible solutions**.
+
+When $$X^TX$$, we cannot solve the normal equations using traditional methods. That is, if we cannot invert $$X^TX$$, we cannot solve $$w = (X^\mathrm{T}X)^{-1}X^\mathrm{T}y$$. 
+
+Generally, this situation arises when one of the columns of our design matrix $$\mathbf{X}$$ is a linear combination of the other columns in $$\mathbf{X}$$. This leads to an infinite amount of solutions satisfying the normal equations, and so finding a unique solution is impossible. However, if you are interested in other methods with which to solve the normal equations when $$\mathbf{X}$$ is not invertible, feel free to explore them! As a starting point, try researching the Moore-Penrose pseudo-inverse and ridge regression as two other approaches to solving for an optimal parameter vector!
 
 ### What does it mean for a matrix to be full rank?
-- A matrix is full rank when each column within the matrix is linearly independent.
-- Take the example of $$\vec{A} = \begin{bmatrix} 1 \ 0 \\ 0 \ 1 \end{bmatrix}$$. $$\vec{A}$$ is full rank given that each vector within $$\vec{A}$$ is linearly independent.
-- ### Take the example of $$\vec{B} = \begin{bmatrix} 1 \ 0 \ 1 \\ 0 \ 1 \ 1 \end{bmatrix}$$. $$\vec{B}$$ is not full rank. This is immediately possible to tell given:
-    - $$\vec{B}$$ has a dimension of $$(2 \cdot 3)$$, and since (number of columns) > (number of rows), it is immediately deducible.
-    - The third vector in $$\vec{B}$$ is a linear combination of the first 2.
-- Your key takeaway here should be that if the **number of columns in the matrix is more than the number of rows**, then the matrix is **automatically not full rank**.
+
+A matrix is full rank when each column in the matrix is linearly independent.
+
+In linear regression, the design matrix \(\mathbf{X}\) must be full rank to have a unique solution for the normal equations. If $$\mathbf{X}$$ is not full rank, it implies multicollinearity among the features, which leads to an infinite amount of solutions when solving for the optimal parameters $$\vec{w}$$. For clarity:
+
+- **Full Rank:**  
+    If the design matrix $$\mathbf{X}$$ is full rank, then all of its columns are linearly independent. This allows the normal equations:
+
+    $$
+    \mathbf{X}^T \mathbf{X} \mathbf{b} = \mathbf{X}^T \mathbf{y}
+    $$
+
+    to have a unique solution.
+
+- **Not Full Rank:**  
+    If $$\mathbf{X}$$ is not full rank, then some columns of $$\mathbf{X}$$ are linear combinations of other columns. This leads to multicollinearity, which results in infinitely many solutions for the normal equations.
+
 
 ### In multiple linear regression, is $$\vec{h}^*$$ orthogonal to $$\vec{y}$$?
+
+
 
 ### Why does the multiple linear regression model with two features look like a plane?
 - ### Think about it like this:
