@@ -162,23 +162,25 @@ $$
 \vec{w}^* = (X^\mathrm{T}X)^{-1}X^\mathrm{T}\vec{y}.
 $$
 
-I hope this helps!
+For more visual intuition of this idea, check out this tutor-made animation!
+
+[Projecting $$\vec{y}$$ into the span of $$\vec{x}_1$$ and $$\vec{x}_2$$] (https://www.youtube.com/watch?v=dJcbJKpYywk)
 
 ### Why does the design matrix have a column of all 1s?
 
-In linear regression, the design matrix $$\mathbf{X}$$ represents the features $$x_1, x_2, \ldots, x_k$$. Each row of $$\mathbf{X}$$ corresponds to one data point, and each column corresponds to one feature. The parameter vector $$\vec{w}$$, which we multiply by $$\mathbf{X}$$ to obtain our predictions $$\vec{y}$$, contains the weights for each feature, including the intercept or bias term $$w_0$$.
+In linear regression, the design matrix $$X$$ represents the features $$x_1, x_2, \ldots, x_d$$. Each row of $$X$$ corresponds to one data point, and each column corresponds to one feature. The parameter vector $$\vec{w}$$, which we multiply by $$X$$ to obtain our predictions $$\vec{h}$$, contains the weights for each feature, including the intercept or bias term $$w_0$$.
 
-The term $$w_0$$ is a constant that helps adjust the linear regression model vertically. This term is universal between predictions. In other words, regardless of the values of the other features $$x_1, x_2, \ldots, x_k$$, the value of $$w_0$$ will be the same. Let's explore how this relates to our design matrix.
+The term $$w_0$$ is a constant that helps adjust the linear regression model vertically. This term is universal between predictions. In other words, regardless of the values of the other features $$x_1, x_2, \ldots, x_d$$, the value of $$w_0$$ will be the same. Let's explore how this relates to our design matrix.
 
-When the design matrix $$\mathbf{X}$$ is multiplied by the parameter vector $$\mathbf{w}$$, each row of $$\mathbf{X}$$ produces a prediction $$y$$ depending on the values of the features in the row. Each value in the row is multiplied with its associated weight in the parameter vector, and the resulting products are summed to form a prediction. However, we want the weight associated with $$w_0$$ to output the same constant bias term no matter the values in $$X$$.
+When the design matrix $$X$$ is multiplied by the parameter vector $$\mathbf{w}$$, each row of $$X$$ produces a prediction $$h$$ depending on the values of the features in the row. Each value in the row is multiplied by its associated weight in the parameter vector, and the resulting products are summed to form a prediction. However, we want the weight associated with $$w_0$$ to output the same constant bias term no matter the values in $$X$$.
 
-To ensure this, we include a column of 1s at the beginning of the design matrix $$\mathbf{X}$$. This column represents the constant contribution of the bias term $$w_0$$, and will always be multiplied by $$w_0$$ when a particular observation is being used to make a prediction. In other words, regardless of the values of the features in $$X$$, every prediction will have $$w_0 \cdot 1$$ added to it.
+To ensure this, we include a column of 1s at the beginning of the design matrix $$X$$. This column represents the constant contribution of the bias term $$w_0$$, and will always be multiplied by $$w_0$$ when a particular observation is being used to make a prediction. In other words, regardless of the values of the features in $$X$$, every prediction will have $$w_0 \cdot 1$$ added to it.
 Let's give a quick example of this.
 
-Suppose we have a linear regression problem with two features. The design matrix $$\mathbf{X}$$ is:
+Suppose we have a linear regression problem with two features. The design matrix $$X$$ is:
 
 $$
-\mathbf{X} = \begin{bmatrix}
+X = \begin{bmatrix}
 1 & x_{11} & x_{12} \\
 1 & x_{21} & x_{22} \\
 1 & x_{31} & x_{32}
@@ -195,10 +197,10 @@ w_2
 \end{bmatrix}
 $$
 
-To obtain the predicted values $$\vec{y}$$:
+To obtain the predicted values $$\vec{h}$$:
 
 $$
-\vec{y} = \mathbf{X} \vec{w} = \begin{bmatrix}
+\vec{h} = X \vec{w} = \begin{bmatrix}
 1 & x_{11} & x_{12} \\
 1 & x_{21} & x_{22} \\
 1 & x_{31} & x_{32}
@@ -217,15 +219,15 @@ As you can see in this example, our predictions all included the constant bias t
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
-In multiple linear regression, the orthogonal projection of the vector $$\vec{y}$$ onto the span of the vector $$\vec{x}$$ is expressed as:
+In multiple linear regression, the orthogonal projection of the vector $$\vec{y}$$ onto the span of the vectors $$\vec{x}^{(1)}, ]vec{x}^{(2)}, ..., vec{x}^{(n)}$$ is expressed as:
 
 $$
-\hat{y} = \vec{w}^* \vec{x}.
+\vec{h}^* = X\vec{w}^*.
 $$
 
-Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), and $$\vec{x}$$ is the feature vector. In other words, $$\vec{w}^*$$ provides the specific coefficients with which to form a linear combination of your feature vector $$\vec{x}$$ to make predictions $$\hat{y}$$.
+Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), and $$X$$ is the design matrix. In other words, $$\vec{w}^*$$ provides the specific coefficients with which to form a linear combinations of your features to make predictions $$\vec{h}^*$$.
 
-So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$, and $$w^*$$ is the set of scalars used to make this projection when multiplied with $$\vec{x}$$
+So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec{y}$$ onto $$\text{span}\vec{x}^{(1)}, ]vec{x}^{(2)}, ..., vec{x}^{(n)}$$, and $$w^*$$ is the set of scalars used to make this projection when multiplied with $$\vec{x}$$
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
 
