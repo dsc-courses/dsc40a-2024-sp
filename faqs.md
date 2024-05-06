@@ -26,13 +26,13 @@ Coming soon...
 
 Sure!
 
-Given a set of data points $(x_i, y_i)_{i=1}^n$, the slope $w_1^*$ of the best-fit line in a simple linear regression is given by:
+Given a set of data points $$(x_i, y_i)_{i=1}^n$$, the slope $$w_1^*$$ of the best-fit line in a simple linear regression is given by:
 
 $$
 w_1^* = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2},
 $$
 
-where $\bar{x}$ and $\bar{y}$ are the means of the $x$ and $y$ values, respectively.
+where $$\bar{x}$$ and $$\bar{y}$$ are the means of the $x$ and $y$ values, respectively.
 
 Additionally, the Pearson correlation coefficient \(r\) is defined as:
 
@@ -40,19 +40,19 @@ $$
 r = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 \sum_{i=1}^n (y_i - \bar{y})^2}}.
 $$
 
-We want to express $w_1^*$ in terms of $r$. Rearranging the formula for $r$, we have:
+We want to express $$w_1^*$$ in terms of $$r$$. Rearranging the formula for $$r$$, we have:
 
 $$
 r \cdot \sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 \sum_{i=1}^n (y_i - \bar{y})^2} = \sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y}).
 $$
 
-To match the original formula for $w_1^*$, we need to divide both sides by $\sum_{i=1}^n (x_i - \bar{x})^2$:
+To match the original formula for $$w_1^*$$, we need to divide both sides by $$\sum_{i=1}^n (x_i - \bar{x})^2$$:
 
 $$
 w_1 = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2} = r \cdot \frac{\sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2}}.
 $$
 
-Finally, recognizing that the standard deviations of $x$ and $y$ are:
+Finally, recognizing that the standard deviations of $$x$$ and $$y$$ are:
 
 $$
 \text{std}_x = \sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 / (n - 1)}
