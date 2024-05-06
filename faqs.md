@@ -159,7 +159,7 @@ In other words, how close can we get to the observed values of $$\vec{y}$$, whil
 This framing of multiple linear regression also leads us to the **normal equations**
 
 $$
-w = (X^\mathrm{T}X)^{-1}X^\mathrm{T}y.
+\vec{w}^* = (X^\mathrm{T}X)^{-1}X^\mathrm{T}\vec{y}.
 $$
 
 I hope this helps!
