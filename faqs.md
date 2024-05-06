@@ -230,7 +230,7 @@ So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
 
 
-Yes! Let's look at $$2$$ different cases where this is the case.
+Yes! Let's look at two different cases where this can occur.
 
 
 #### Case 1: $$\mathbf{X}$$ is a column of ones
