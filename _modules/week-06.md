@@ -6,7 +6,7 @@ days:
     events:
       - name: DISC 5
         type: disc
-        title: Groupwork 5
+        title: Midterm Exam Review (no worksheet, no required attendance)
   - date: '2024-05-07'
     events:
       - name: EXAM

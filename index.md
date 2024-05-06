@@ -21,6 +21,8 @@ nav_order: 1
 > - Attempting past exam problems at [**practice.dsc40a.com**](https://practice.dsc40a.com).
 > - Creating your own index card to bring to the exam, using [**our example index card**](https://dsc40a.com/resources/index-card.pdf) as inspiration (if you want).
 > - Reviewing the podcast of the review session, linked in Week 5 below.
+> - Reviewing [**assignment solutions**](https://edstem.org/us/courses/57667/discussion/4730099).
+> - Double-checking your seat assignment in the [**logistics post above**](https://edstem.org/us/courses/57667/discussion/4898894).
 
 
 {% for module in site.modules %}
