@@ -72,9 +72,10 @@ $$
 
 ### What do you mean by "the inner dimensions need to match in order to perform matrix multiplication"?
 
-- Think about the multiplication of 2 matrices $A = \begin{bmatrix} a_{00} & a_{01} & a_{02}\\ a_{10} & a_{11} & a_{12}\end{bmatrix}$ and $B = \begin{bmatrix} b_{00} & b_{01} \\ b_{10} & b_{11} \\ b_{20} & b_{21}\end{bmatrix}$ such that $C$ is the product matrix between the 2, and $c_{ij} = a_{i} \cdot b_{j}$.
+- Think about the multiplication of 2 matrices
+  $$A = \begin{bmatrix} a_{00} & a_{01} & a_{02}\\ a_{10} & a_{11} & a_{12}\end{bmatrix}$$ and $$B = \begin{bmatrix} b_{00} & b_{01} \\ b_{10} & b_{11} \\ b_{20} & b_{21}\end{bmatrix}$$ such that $$C$$ is the product matrix between the 2, and $$c_{ij} = a_{i} \cdot b_{j}$$.
 - In essence, the multiplication of matrices here occurs since the inner dimensions of A and B match (2 rows and 2 columns respectively).
-- If this did not match, the dot product itself would not be possible - the dot product can only occur when the inner dimensions match. If they don't, taking the "product" is impossible! Think about what would happen if $A$ was of dimensions $(2 \cdot 4)$ instead of $(2 \cdot 3)$.
+- If this did not match, the dot product itself would not be possible - the dot product can only occur when the inner dimensions match. If they don't, taking the "product" is impossible! Think about what would happen if $$A$$ was of dimensions $$(2 \cdot 4)$$ instead of $$(2 \cdot 3)$$.
 
 ### What's the relationship between spans, projections, and multiple linear regression?
 
