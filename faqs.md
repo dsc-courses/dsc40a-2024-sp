@@ -330,9 +330,9 @@ In linear regression, the design matrix $$\mathbf{X}$$ must be full rank to have
 
 ### In multiple linear regression, is $$\vec{h}^*$$ orthogonal to $$\vec{y}$$?
 
-In lecture $8$, we introduced $$\vec{h}^*$$ as the optimal hypothesis vector; That is, $$\vec{h}^* = \mathbf{X}\vec{w}^*$$. This means that $$\vec{h}^*$$ is the orthogonal projection of our observation vector $$\vec{y}$$ into the span of our feature vectors $$\vec{x}_1, \vec{x}_2, ..., \vec{x}_k$$. As such, $$\vec{h}^*$$ is orthogonal to the error vector $$\vec{e} = \vec{y} - \vec{h}^*$$. However, this relationship does not imply orthogonality with $$\vec{y}$$, or any other vector aside from the error vector $$\vec{e}$$
+In lecture $$8$$, we introduced $$\vec{h}^*$$ as the optimal hypothesis vector; That is, $$\vec{h}^* = \mathbf{X}\vec{w}^*$$. This means that $$\vec{h}^*$$ is the orthogonal projection of our observation vector $$\vec{y}$$ into the span of our feature vectors $$\vec{x}_1, \vec{x}_2, ..., \vec{x}_k$$. As such, $$\vec{h}^*$$ is orthogonal to the error vector $$\vec{e} = \vec{y} - \vec{h}^*$$. However, this relationship does not imply orthogonality with $$\vec{y}$$, or any other vector aside from the error vector $$\vec{e}$$
 
-$$\textit{This concept is discussed in depth in lectures 7 and 8, so check them out if you would like a deeper explanation of these properties!}$$
+This concept is discussed in depth in lectures 7 and 8, so check them out if you would like a deeper explanation of these properties!
 
 ### Why does the multiple linear regression model with two features look like a plane?
 - ### Think about it like this:
