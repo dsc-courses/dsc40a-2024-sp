@@ -172,7 +172,7 @@ $$
 
 For more visual intuition of this idea, check out this tutor-made animation!
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=dJcbJKpYywk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dJcbJKpYywk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 #### Lecture(s) to Review:
 
@@ -403,7 +403,7 @@ If we had a nonlinear prediction function with $$2$$ features, we could see a pr
 
 For more visual intuition of this idea, check out the first 35 seconds of this video!
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=dJcbJKpYywk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dJcbJKpYywk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 #### Lecture(s) to Review:
 
