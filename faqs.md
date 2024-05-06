@@ -143,14 +143,15 @@ I hope this helps!
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
-- ### There is a common misconception to be addressed here. 
-    - The span of $$R^n$$ is a set of $$n$$ linearly independent vectors such that there exists a linear combination of **those same** $$n$$ vectors for **any** vector in $$R^n$$.
-        - Note that saying **those same** $$n$$ vectors does not mean that **only** those $$n$$ vectors span $$R^n$$. This observation was simply made to help identify if a set of $$n$$ vectors provided to you spans $$R^n$$.
-    - The span of a vector in $$R^n$$ is any linear combination of this vector itself. Therefore, it follows that the span of a vector in $$R^n$$ is $$c \cdot \vec{x}$$ such that $$c \in R$$.
-- Let $$\vec{x}$$ be $$\begin{bmatrix} 1 \\ 1 \end{bmatrix}$$. The span of $$\vec{x}$$ is any vector $$c \cdot \vec{x}$$ such that $$c \in R$$. 
-- Now, let $$\vec{y}$$ be $$\begin{bmatrix} 0 \\ 1 \end{bmatrix}$$. The span of $$\vec{y}$$ is any vector $$c \cdot \vec{y}$$ such that $$c \in R$$.
-- Now, projecting $$\vec{y}$$ onto the span of $$\vec{x}$$ is a matter of using the formula $$w^* = \frac{\vec{x} \cdot \vec{y}}{\vec{x} \cdot \vec{x}}$$ and plugging this into the formula: $$w^*\cdot\vec{x}$$
-- $$w^* = \frac{1}{2}$$. Therefore, the projection of $$\vec{y}$$ onto the span of $$\vec{x}$$ is $$\begin{bmatrix} \frac{1}{2} \\ \frac{1}{2} \end{bmatrix}$$.
+In multiple linear regression, the orthogonal projection of the vector $$\vec{y}$$ onto the span of the vector $$\vec{x}$$ is expressed as:
+
+$$
+\hat{y} = \vec{w}^* \vec{x}.
+$$
+
+Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), and $$\vec{x}$$ is the feature vector. In other words, $$\vec{w}^*$$ provides the specific coefficients with which to form a linear combination of your feature vector $$\vec{x}$$ to make predictions $$\hat{y}$$.
+
+So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$, and $$w^*$$ is the set of scalars used to make this projection when multiplied with \vec{x}$$
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
 - Technically 🤓.
