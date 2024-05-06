@@ -123,6 +123,15 @@ I hope this helps!
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
+In multiple linear regression, the orthogonal projection of the vector $$\vec{y}$$ onto the span of the vector $$\vec{x}$$ is expressed as:
+
+$$
+\hat{y} = \vec{w}^* \vec{x}.
+$$
+
+Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), and $$\vec{x}$$ is the feature vector. In other words, $$\vec{w}^*$$ represents how to form a linear combination of your feature vector $$\vec{x}$$ to make predictions $$\hat{y}$$.
+
+
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
 
 ### When do two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$? When do $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$?
