@@ -46,7 +46,7 @@ $$
 r \cdot \sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 \sum_{i=1}^n (y_i - \bar{y})^2} = \sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y}).
 $$
 
-To match the original formula for $w_1$, we need to divide both sides by $\sum_{i=1}^n (x_i - \bar{x})^2$ :
+To match the original formula for $w_1$, we need to divide both sides by $\sum_{i=1}^n (x_i - \bar{x})^2$:
 
 $$
 w_1 = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2} = r \cdot \frac{\sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2}}.
