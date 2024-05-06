@@ -74,6 +74,47 @@ $$
 
 ### What's the relationship between spans, projections, and multiple linear regression?
 
+#### Spans
+
+The **span** of a set of vectors $$\{x_1, x_2, \ldots, x_p\}$$ is the set of all possible linear combinations of these vectors. In other words, the span defines a subspace in $$\mathbb{R}^n$$ that contains all possible combinations of the independent variables.
+
+$$
+\text{Span}\{x_1, x_2, \ldots, x_p\} = \{w_1 x_1 + w_2 x_2 + \ldots + w_p x_p\}.
+$$
+
+In the context of multiple linear regression, the span of the feature vectors represents all possible linear combinations of those variables, which means all possible values that can be predicted using a linear combination of the feature vectors.
+
+#### Projections
+
+A **projection** of the observation vector $$y$$ onto the span of the feature vectors $$\{x_1, x_2, \ldots, x_p\}$$ is any vector $\hat{y}$ that lies in the span of $x$:
+
+The distance between the observations and the projection of $$y$$ into the span of the feature vectors represents the error of a prediction. That is, each projection of $$y$$ into the span of the feature vectors is defined by scaling each of the feature vectors by a certain amount ($w_1$, $w_2$, etc.) and summing them; the distance from this linear combination of the feature vectors to the actual observed values of $$y$$ is the error of a certain prediction.
+
+This error is written as
+
+$$
+\vec{e} = y - X\vec{w}
+$$,
+
+where $X$ represents the design matrix made up of the feature vectors, and $\vec{w}$ represents the coefficients that you are scaling the feature vectors by to obtain some projection of $$y$$ into the span of $X$.
+
+The **orthogonal projection** of $$y$$ into $$X$$ is the one that minimizes the error vector (Or the distance between the predicted values of $$y$$ and the actual values of $$y$$).
+
+#### The Normal Equations
+
+Presenting linear regression as a projection problem also leads to the normal equations, which gives the optimal parameter vector $\vec{w}$.
+
+$$
+w = (X^\mathrm{T}X)^{-1}X^\mathrm{T}y.
+$$
+
+#### Relationship Summary
+
+1. **Span**: The span of the independent variables represents all possible linear combinations of those variables.
+2. **Projections**: The projection of the dependent variable $$y$$ onto the span of the independent variables is the set of predicted values $\hat{y}$. The orthogonal projection minimizes the error vector $e = y - Xw$.
+
+Thus, the concept of span helps in understanding the possible space of predictions, and the orthogonal projection minimizes the difference between actual and predicted values in this space.
+
 ### Why does the design matrix have a column of all 1s?
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
