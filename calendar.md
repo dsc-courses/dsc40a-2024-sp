@@ -20,6 +20,6 @@ All office hours are held in person.
 >
 > [Zoom link](https://ucsd.zoom.us/j/96170150611){: .btn .btn-blue }
 >
-> **A decision has not yet been made about tomorrow's exam – stay tuned.**
+> **Regarding the Midterm Exam, see [this Ed post](https://edstem.org/us/courses/57667/discussion/4918886) with our tentative plans.**
 
 <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FLos_Angeles&bgcolor=%23ffffff&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=WEEK&src=Y18yMTk0OTE4ODc5Y2UyNjZhODBkNGU0MTkwZjNjMDkxM2EwOWNlZjE3MzkxZjU5OTVmM2RjNWNjZDI2NDMwM2QxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=Y19lM2EzYzQ4ODBkOWU3MTJhOTYyMGNjMTBmYzM3MGEwZmVhY2U3MGNlZDU3MTcyZTYyYTlmOTUxNDIwNWY4ZGQ4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=Y19iZWNiMGU3NzZmN2RhM2QwOWJmOTFkZDJkZjU4YTMwMTExOWMwMTMwOThiYjBmN2QzYmVjMDAwNzNiZWE4ZDBkQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23009688&color=%23B39DDB&color=%233F51B5" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>

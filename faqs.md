@@ -5,7 +5,7 @@ description: Answers to frequently asked questions each week.
 nav_order: 7
 ---
 
-# 🙋FAQs
+# 🙋FAQs (new)
 
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
 
@@ -19,8 +19,6 @@ Jump to:
 ---
 
 ## Weeks 3-5: Regression and Linear Algebra
-
-Coming soon...
 
 ### Can you recap the proof of the formula for $$w_1^*$$ that includes $$r$$?
 
