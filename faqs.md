@@ -72,13 +72,13 @@ $$
 
 ### What do you mean by "the inner dimensions need to match in order to perform matrix multiplication"?
 
-- Think about the multiplication of 2 matrices $$A = \begin{bmatrix} a_{00} & a_{01} & a_{02}\\ a_{10} & a_{11} & a_{12}\end{bmatrix}$$ and $$B = \begin{bmatrix} b_{00} & b_{01} \\ b_{10} & b_{11} \\ b_{20} & b_{21}\end{bmatrix}$$ such that $$C$$ is the product matrix between the 2, and $$c_{ij} = a_{i} \cdot b_{j}$$.
-- In essence, the multiplication of matrices here occurs since the inner dimensions of A and B match (2 rows and 2 columns respectively).
-- If this did not match, the dot product itself would not be possible - the dot product can only occur when the inner dimensions match. If they don't, taking the "product" is impossible! Think about what would happen if $$A$$ was of dimensions $$(2 \cdot 4)$$ instead of $$(2 \cdot 3)$$.
+Think about the multiplication of 2 matrices $$A = \begin{bmatrix} a_{00} & a_{01} & a_{02}\\ a_{10} & a_{11} & a_{12}\end{bmatrix}$$ and $$B = \begin{bmatrix} b_{00} & b_{01} \\ b_{10} & b_{11} \\ b_{20} & b_{21}\end{bmatrix}$$ such that $$C$$ is the product matrix between the 2, and $$c_{ij} = a_{i} \cdot b_{j}$$. </br >
+In essence, the multiplication of matrices here occurs since the inner dimensions of A and B match (2 rows and 2 columns respectively). </br >
+If this did not match, the dot product itself would not be possible - the dot product can only occur when the inner dimensions match. If they don't, taking the "product" is impossible! Think about what would happen if $$A$$ was of dimensions $$(2 \cdot 4)$$ instead of $$(2 \cdot 3)$$.
 
 ### What's the relationship between spans, projections, and multiple linear regression?
 
-## Spans
+#### Spans
 
 The **span** of a set of vectors $$\{x_1, x_2, \ldots, x_p\}$$ is the set of all possible linear combinations of these vectors. In other words, the span defines a subspace in $$\mathbb{R}^n$$ that contains all possible combinations of the independent variables.
 
@@ -88,7 +88,7 @@ $$
 
 In the context of multiple linear regression, the span of the feature vectors represents all possible values that can be predicted using a linear combination of the feature vectors.
 
-## Projections
+#### Projections
 
 A **projection** of the observation vector $$y$$ onto the span of the feature vectors $$\{x_1, x_2, \ldots, x_p\}$$ is any vector $$\hat{y}$$ that lies in the span of $$x$$:
 
@@ -104,7 +104,7 @@ where $$X$$ represents the design matrix made up of the feature vectors, and $$\
 
 The **orthogonal projection** of $$y$$ into $$X$$ is the one that minimizes the error vector (Or the distance between the predicted values of $$y$$ and the actual values of $$y$$).
 
-## Multiple Linear Regression
+#### Multiple Linear Regression
 
 Tying this all together, one can frame multiple linear regression as a projection problem; Given some set of feature vectors $$\vec{x}_1, \vec{x}_2, ... , \vec{x}_n$$, and an observation vector $$\vec{y}$$, what are the scalars $$ w_1, w_2, ... , w_n $$ that give a vector in the span of the feature vectors that is the closest to $$\vec{y}$$?
 
@@ -122,7 +122,7 @@ I hope this helps!
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
-- ## There is a common misconception to be addressed here. 
+- #### There is a common misconception to be addressed here. 
     - The span of $$R^n$$ is a set of $$n$$ linearly independent vectors such that there exists a linear combination of **those same** $$n$$ vectors for **any** vector in $$R^n$$.
         - Note that saying **those same** $$n$$ vectors does not mean that **only** those $$n$$ vectors span $$R^n$$. This observation was simply made to help identify if a set of $$n$$ vectors provided to you spans $$R^n$$.
     - The span of a vector in $$R^n$$ is any linear combination of this vector itself. Therefore, it follows that the span of a vector in $$R^n$$ is $$c \cdot \vec{x}$$ such that $$c \in R$$.
