@@ -100,13 +100,20 @@ where $$X$$ represents the design matrix made up of the feature vectors, and $$\
 
 The **orthogonal projection** of $$y$$ into $$X$$ is the one that minimizes the error vector (Or the distance between the predicted values of $$y$$ and the actual values of $$y$$).
 
-### The Normal Equations
+### Multiple Linear Regression
 
-Presenting linear regression as a projection problem also leads to the normal equations, which gives the optimal parameter vector $$\vec{w}^*$$.
+Tying this all together, one can frame multiple linear regression as a projection problem; Given some set of feature vectors $$\vec{x}_1, \vec{x}_2, ... , \vec{x}_n$$, and an observation vector $$\vec{y}$$, what are the scalars $$ w_1, w_2, ... , w_n $$ that give a vector in the span of the feature vectors that is the closest to $$\vec{y}$$?
+
+In other words, how close can we get to the observed values of $$\vec{y}$$, while in the span of our feature vectors?
+
+This framing of multiple linear regression also leads us to the **Normal Equations**
 
 $$
 w = (X^\mathrm{T}X)^{-1}X^\mathrm{T}y.
 $$
+
+I hope this helps!
+
 
 ### Why does the design matrix have a column of all 1s?
 
