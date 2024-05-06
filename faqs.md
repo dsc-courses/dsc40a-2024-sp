@@ -170,7 +170,9 @@ $$
 \vec{w}^* = (X^\mathrm{T}X)^{-1}X^\mathrm{T}\vec{y}.
 $$
 
-For more visual intuition of this idea, check out [this tutor-made animation!](https://www.youtube.com/watch?v=dJcbJKpYywk)
+For more visual intuition of this idea, check out this tutor-made animation!
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=dJcbJKpYywk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 #### Lecture(s) to Review:
 
@@ -399,7 +401,9 @@ If this question also concerns why these predictions form a plane instead of som
 
 If we had a nonlinear prediction function with $$2$$ features, we could see a prediction function that forms a curved surface in $$3$$ dimensions. However, as a consequence of performing linear regression, our prediction function will form a plane.
 
-For more visual intuition of this idea, check out the first 35 seconds of [this video](https://www.youtube.com/watch?v=dJcbJKpYywk)!
+For more visual intuition of this idea, check out the first 35 seconds of this video!
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=dJcbJKpYywk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 #### Lecture(s) to Review:
 
