@@ -335,17 +335,25 @@ In lecture $$8$$, we introduced $$\vec{h}^*$$ as the optimal hypothesis vector; 
 This concept is discussed in depth in lectures 7 and 8, so check them out if you would like a deeper explanation of these properties!
 
 ### Why does the multiple linear regression model with two features look like a plane?
-- ### Think about it like this:
-    - Take any equation of the form $$y = mx + c$$.
-    - The reason this is a straight line passing through $$c$$ is because $$y$$ is dependent only on 1 variable. To further understand this:
-        - Start with $$y = x$$. This is just a straight line passing through $$(0,0)$$ such that each value of y is equivalent to x. 
-        - Making the equation $$y = mx$$ such that $$m \ != 0$$ multiplies the $$x$$ value with a constant. This simply scales the line up.
-        - Finally, adding $$c$$ moves the line up/down depending on the value of c.
-        - ### Note that in this example, it did not matter what we did with $$x$$, the equation always remained a line.
-    - Now, take the example of $$y = mx_1 + nx_2 + c$$. The reason this line is a plane is:
-        - Start with $$y = x$$. This is just a straight line passing through $$(0,0)$$ such that each value of y is equivalent to x. 
-        - Making the equation $$y = mx$$ such that $$m \ != 0$$ multiplies the $$x$$ value with a constant. This simply scales the line up.
-        - ### Now, making the equation $$y = mx_1 + nx_2$$ introduces another independent variable. This introduces a new field into the original equation. Now, instead of a simple line, there exists a plane for each unique combination of $$(x_1, x_2)$$.
+
+When we perform multiple linear regression with two features, we take information from two independent variables and predict some value for our target variable. Let's think about this relates to a plane, both algebraically and geometrically. 
+
+Algebraically, if our features are $$\vec{x}_1$$ and $$\vec{x}_2$$, our prediction function takes the form
+
+$$
+H(\vec{x}) = w_0 + w_1x_1 + w_2x_2,
+$$
+
+which is the general formula for a plane.
+
+Geometrically, multiple linear regression with two features is the same idea:
+
+Each feature ($$\vec{x}_1$$ and $$\vec{x}_2$$) corresponds to one axis, and our target variable (the variable we are trying to predict), is represented by the vertical axis. When we vary the values on the $$x_1$$ and $$x_2$$ axes, we are exploring the values of our prediction function when we can vary $$2$$ features- this forms a $$2$$-dimensional surface.
+
+If this question also concerns why these predictions form a plane instead of some other surface, perhaps with curves or bends, we can also briefly address that. In a linear regression model, the relationship between the input features and the target variable is linear. This means that the predicted value is a linear combination of the input features, with each feature having a fixed weight (or coefficient). Another way to say this is that in a linear model with $$2$$ feature vectors, our predictions must be within the span of our feature vectors. In $$3$$ dimensions, this span is a plane (This concept is addressed in lectures 5 and 6, if you want a refresher on span!)
+
+If we had a nonlinear prediction function with $$2$$ features, we could see a prediction function that forms a curved surface in $$3$$ dimensions. However, as a consequence of performing linear regression, our prediction function will form a plane.
+
 
 ### Is there a more detailed version of the MSE proof shown in Lecture 5?
 
