@@ -26,49 +26,73 @@ Coming soon...
 
 Sure!
 
-Given a set of data points $$(x_i, y_i)_{i=1}^n$$, the slope $$w_1^*$$ of the best-fit line in a simple linear regression is given by:
+Let's start with the formula for $$w_1^*$$:
 
 $$
-w_1^* = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2},
+w_1^* = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2}
 $$
 
-where $$\bar{x}$$ and $$\bar{y}$$ are the means of the $$x$$ and $$y$$ values, respectively.
-
-Additionally, the Pearson correlation coefficient \(r\) is defined as:
+Also, we have the Pearson correlation coefficient $$r$$ defined as:
 
 $$
-r = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 \sum_{i=1}^n (y_i - \bar{y})^2}}.
+r = \frac{1}{n} \sum_{i=1}^n \left(\frac{(x_i - \bar{x})}{\sigma_x}\right) \left(\frac{(y_i - \bar{y})}{\sigma_y}\right).
 $$
 
-We want to express $$w_1^*$$ in terms of $$r$$. Rearranging the formula for $$r$$, we have:
+Let's try to rewrite the formula for $$w_1^*$$ in terms of $$r$$.
+
+#### Step 1: Numerator
+
+First, we can simplify the formula for $$r$$ by factoring $$\sigma_x \sigma_y$$ out of the summation to get:
 
 $$
-r \cdot \sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 \sum_{i=1}^n (y_i - \bar{y})^2} = \sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y}).
+r = \frac{1}{n \sigma_x \sigma_y} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y}).
 $$
 
-To match the original formula for $$w_1^*$$, we need to divide both sides by $$\sum_{i=1}^n (x_i - \bar{x})^2$$:
+Rearranging this gives us the very pretty:
 
 $$
-w_1 = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2} = r \cdot \frac{\sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2}}.
+\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y}) = r \cdot n \cdot \sigma_x \cdot \sigma_y.
 $$
 
-Finally, recognizing that the standard deviations of $$x$$ and $$y$$ are:
+Therefore, the numerator of the formula for $$w_1^*$$ can be expressed as $$r \cdot n \cdot \sigma_x \cdot \sigma_y$$.
+
+
+#### Step 2: Denominator
+
+Let's start with the formula standard deviation $$\sigma_x$$ defined as:
 
 $$
-\text{std}_x = \sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 / (n - 1)}
+\sigma_x = \sqrt{\frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2}.
 $$
 
-and
+This means that the variance $$\sigma_x^2$$ is:
 
 $$
-\text{std}_y = \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2 / (n - 1)},
+\sigma_x^2 = \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2.
 $$
 
-we can conclude that:
+Multiplying through by $$n$$ gives:
 
 $$
-w_1^* = r \cdot \frac{\text{std}_y}{\text{std}_x}.
+n \cdot \sigma_x^2 = \sum_{i=1}^n (x_i - \bar{x})^2.
 $$
+
+Therefore, the denominator of the formula for $$w_1^*$$ can be expressed as $n \cdot \sigma_x^2$.
+
+#### Conclusion
+
+Putting these parts together, we can rewrite the original formula for $w_1^*$:
+
+$$
+w_1^* = \frac{r \cdot n \cdot \sigma_x \cdot \sigma_y}{n \cdot \sigma_x^2}.
+$$
+
+And, simplifying this expression, we arrive at a beautiful result:
+
+$$
+w_1^* = r \cdot \frac{\sigma_y}{\sigma_x}.
+$$
+
 
 ### What do you mean by "the inner dimensions need to match in order to perform matrix multiplication"?
 
@@ -143,7 +167,8 @@ $$
 I hope this helps!
 
 ### Why does the design matrix have a column of all 1s?
-- This is done to enable the dot product between the design matrix and coefficient matrix to obtain $$y$$. If this wasn't the case, it would not be possible to multiply the 2 matrices and hence obtain the $$y$$ matrix!
+
+
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
