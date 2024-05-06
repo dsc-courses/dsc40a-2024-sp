@@ -162,9 +162,7 @@ $$
 \vec{w}^* = (X^\mathrm{T}X)^{-1}X^\mathrm{T}\vec{y}.
 $$
 
-For more visual intuition of this idea, check out this tutor-made animation!
-
-[Projecting $$\vec{y}$$ into the span of $$\vec{x}_1$$ and $$\vec{x}_2$$] (https://www.youtube.com/watch?v=dJcbJKpYywk)
+For more visual intuition of this idea, check out [this tutor-made animation!](https://www.youtube.com/watch?v=dJcbJKpYywk)
 
 ### Why does the design matrix have a column of all 1s?
 
@@ -235,34 +233,34 @@ So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec
 Yes! Let's look at two different cases where this can occur.
 
 
-#### Case 1: $$\mathbf{X}$$ is a column of ones
+#### Case 1: $$X$$ is a column of ones
 
-If $$\mathbf{X}$$ is a column of ones, the model $$y = w$$ fits a constant line through the data. Using the normal equations,
+If $$X$$ is a column of ones, the model $$H(\vec{x}) = w_0$$ fits a constant line through the data. Using the normal equations,
 
 $$
-\vec{1}^T \vec{1} \vec{w} = \vec{1}^T \vec{y}.
+\vec{1}^T \vec{1} w_0^* = \vec{1}^T \vec{y}.
 $$
 
 $$\vec{1}^T \vec{1} = n$$, where $$n$$ is the number of data points, and $$\vec{1}^T \mathbf{y} = \sum_{i=1}^n y_i$$. Thus, the normal equations become:
 
 $$
-n \cdot w = \sum_{i=1}^n y_i.
+n \cdot w_0^* = \sum_{i=1}^n y_i.
 $$
 
-And, solving for $$w$$, we get
+And, solving for $$w_0^*$$, we get
 
 $$
-w = \frac{1}{n} \sum_{i=1}^n y_i,
+w_0^* = \frac{1}{n} \sum_{i=1}^n y_i,
 $$
 
 which is the mean of the target values.
 
-#### Case 2: $$\mathbf{X}$$ has different values
+#### Case 2: $$X$$ has different values
 
-Now, let's imagine that $$\mathbf{X}$$ is a column vector with different values for each data point, representing a single feature:
+Now, let's imagine that $$X$$ is a column vector with different values for each data point, representing a single feature:
 
 $$
-\mathbf{X} = \begin{bmatrix}
+X = \begin{bmatrix}
 x_1 \\
 x_2 \\
 \vdots \\
@@ -270,25 +268,25 @@ x_n
 \end{bmatrix}.
 $$
 
-In this case, the model $$y = wx$$ fits a line through the origin. The normal equations become
+In this case, the model $$H(x) = w_1^*x$$ fits a line through the origin. The normal equations become
 
 $$
-\mathbf{X}^T \mathbf{X} \mathbf{w} = \mathbf{X}^T \vec{y}.
+X^T X w_1^* = X^T \vec{y}.
 $$
 
 Calculating the elements, we have
 
 $$
-\sum_{i=1}^n x_i^2 \cdot w = \sum_{i=1}^n x_i y_i,
+\sum_{i=1}^n x_i^2 \cdot w_1^* = \sum_{i=1}^n x_i y_i,
 $$
 
-and the normal equations reduce to
+and the normal equations are reduced to
 
 $$
-w = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2}.
+w_1^* = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2}.
 $$
 
-So, to answer your question, we can absolutely use the normal equations when our design matrix $$\mathbf{X}$$ has only one column!
+So, to answer your question, we can absolutely use the normal equations when our design matrix $$X$$ has only one column!
 
 
 ### When do two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$? When do $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$?
@@ -309,30 +307,30 @@ In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3
 
 When $$X^TX$$, we cannot solve the normal equations using traditional methods. That is, if we cannot invert $$X^TX$$, we cannot solve $$w = (X^\mathrm{T}X)^{-1}X^\mathrm{T}y$$. 
 
-Generally, this situation arises when one of the columns of our design matrix $$\mathbf{X}$$ is a linear combination of the other columns in $$\mathbf{X}$$. This leads to an infinite amount of solutions satisfying the normal equations, and so finding a unique solution is impossible. However, if you are interested in other methods with which to solve the normal equations when $$\mathbf{X}$$ is not invertible, feel free to explore them! As a starting point, try researching the Moore-Penrose pseudo-inverse and ridge regression as two other approaches to solving for an optimal parameter vector!
+Generally, this situation arises when one of the columns of our design matrix $$X$$ is a linear combination of the other columns in $$X$$. This leads to an infinite amount of solutions satisfying the normal equations, and so finding a unique solution is impossible. However, if you are interested in other methods with which to solve the normal equations when $$X$$ is not invertible, feel free to explore them! As a starting point, try researching the Moore-Penrose pseudo-inverse and ridge regression as two other approaches to solving for an optimal parameter vector!
 
 ### What does it mean for a matrix to be full rank?
 
 A matrix is full rank when each column in the matrix is linearly independent.
 
-In linear regression, the design matrix $$\mathbf{X}$$ must be full rank to have a unique solution for the normal equations. If $$\mathbf{X}$$ is not full rank, it implies multicollinearity among the features, which leads to an infinite amount of solutions when solving for the optimal parameters $$\vec{w}$$. For clarity:
+In linear regression, the design matrix $$X$$ must be full rank to have a unique solution for the normal equations. If $$X$$ is not full rank, it implies multicollinearity among the features, which leads to an infinite amount of solutions when solving for the optimal parameters $$\vec{w}^*$$. For clarity:
 
 - **Full Rank:**  
-    If the design matrix $$\mathbf{X}$$ is full rank, then all of its columns are linearly independent. This allows the normal equations:
+    If the design matrix $$X$$ is full rank, then all of its columns are linearly independent. This allows the normal equations:
 
     $$
-    \mathbf{X}^T \mathbf{X} \mathbf{b} = \mathbf{X}^T \mathbf{y}
+    X^T X \vec{w}^* = X^T \vec{y}
     $$
 
     to have a unique solution.
 
 - **Not Full Rank:**  
-    If $$\mathbf{X}$$ is not full rank, then some columns of $$\mathbf{X}$$ are linear combinations of other columns. This leads to multicollinearity, which results in infinitely many solutions for the normal equations.
+    If $$X$$ is not full rank, then some columns of $$X$$ are linear combinations of other columns. This leads to multicollinearity, which results in infinitely many solutions for the normal equations.
 
 
 ### In multiple linear regression, is $$\vec{h}^*$$ orthogonal to $$\vec{y}$$?
 
-In lecture $$8$$, we introduced $$\vec{h}^*$$ as the optimal hypothesis vector; That is, $$\vec{h}^* = \mathbf{X}\vec{w}^*$$. This means that $$\vec{h}^*$$ is the orthogonal projection of our observation vector $$\vec{y}$$ into the span of our feature vectors $$\vec{x}_1, \vec{x}_2, ..., \vec{x}_k$$. As such, $$\vec{h}^*$$ is orthogonal to the error vector $$\vec{e} = \vec{y} - \vec{h}^*$$. However, this relationship does not imply orthogonality with $$\vec{y}$$, or any other vector aside from the error vector $$\vec{e}$$
+In Lecture $$8$$, we introduced $$\vec{h}^*$$ as the optimal hypothesis vector; That is, $$\vec{h}^* = \mathbf{X}\vec{w}^*$$. This means that $$\vec{h}^*$$ is the orthogonal projection of our observation vector $$\vec{y}$$ into the span of our feature vectors $$\vec{x}^{(1)}, \vec{x}^{(2)}, ..., \vec{x}^{(d)}$$. As such, $$\vec{h}^*$$ is orthogonal to the error vector $$\vec{e} = \vec{y} - \vec{h}^*$$. However, this relationship does not imply orthogonality with $$\vec{y}$$, or any other vector aside from the error vector $$\vec{e}$$
 
 This concept is discussed in depth in lectures 7 and 8, so check them out if you would like a deeper explanation of these properties!
 
@@ -355,6 +353,8 @@ Each feature ($$\vec{x}_1$$ and $$\vec{x}_2$$) corresponds to one axis, and our 
 If this question also concerns why these predictions form a plane instead of some other surface, perhaps with curves or bends, we can also briefly address that. In a linear regression model, the relationship between the input features and the target variable is linear. This means that the predicted value is a linear combination of the input features, with each feature having a fixed weight (or coefficient). Another way to say this is that in a linear model with $$2$$ feature vectors, our predictions must be within the span of our feature vectors. In $$3$$ dimensions, this span is a plane (This concept is addressed in lectures 5 and 6, if you want a refresher on span!)
 
 If we had a nonlinear prediction function with $$2$$ features, we could see a prediction function that forms a curved surface in $$3$$ dimensions. However, as a consequence of performing linear regression, our prediction function will form a plane.
+
+For more visual intuition of this idea, check out the first 35 seconds of [this video](https://www.youtube.com/watch?v=dJcbJKpYywk)!
 
 
 ### Is there a more detailed version of the MSE proof shown in Lecture 5?
