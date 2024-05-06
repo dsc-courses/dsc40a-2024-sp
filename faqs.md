@@ -126,10 +126,10 @@ If they do not, the dot product between the rows of $$A$$ and the columns of $$B
 
 #### Spans
 
-The **span** of a set of vectors $$\{x_1, x_2, \ldots, x_p\}$$ is the set of all possible linear combinations of these vectors. In other words, the span defines a subspace in $$\mathbb{R}^n$$ that contains all possible combinations of the independent variables.
+The **span** of a set of vectors $$\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_p\}$$ is the set of all possible linear combinations of these vectors. In other words, the span defines a subspace in $$\mathbb{R}^n$$ that contains all possible combinations of the independent variables.
 
 $$
-\text{Span}\{x_1, x_2, \ldots, x_p\} = \{w_1 x_1 + w_2 x_2 + \ldots + w_p x_p\}.
+\text{Span}\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_p\} = \{w_1 \vec{x}_1 + w_2 \vec{x}_2 + \ldots + w_p \vec{x}_p\}.
 $$
 
 In the context of multiple linear regression, the span of the feature vectors represents all possible values that can be predicted using a linear combination of the feature vectors.
