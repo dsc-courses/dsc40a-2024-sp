@@ -94,14 +94,14 @@ $$
 
 ### What do you mean by "the inner dimensions need to match in order to perform matrix multiplication"?
 
-Think about the multiplication of $$2$$ matrices: 
+Think about the multiplication of two matrices: 
 
 $$
 A = \begin{bmatrix} a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\end{bmatrix} \text{ and }
 B = \begin{bmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \\ b_{31} & b_{32}\end{bmatrix}
 $$
 
-Let's call $$C$$ the product matrix between the $$2$$.
+Let's call $$C$$ the product matrix between the two.
 
 As we discussed in lecture, every entry of this resulting matrix $$C$$ will be the result of the dot product of a row of $$A$$ with a column of $$B$$. For example, one entry of the product matrix $$C$$ is formed by dotting $$\begin{bmatrix} a_{11} & a_{12} & a_{13}\end{bmatrix}$$ with $$\begin{bmatrix}b_{11} \\ b_{21} \\ b_{31} \end{bmatrix}$$.
 
