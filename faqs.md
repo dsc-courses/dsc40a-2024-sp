@@ -57,7 +57,9 @@ Finally, recognizing that the standard deviations of \(x\) and \(y\) are:
 $$
 \text{std}_x = \sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 / (n - 1)}
 $$
+
 and
+
 $$
 \text{std}_y = \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2 / (n - 1)},
 $$
