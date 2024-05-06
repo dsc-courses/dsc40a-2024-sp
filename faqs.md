@@ -72,13 +72,13 @@ $$
 
 ### What do you mean by "the inner dimensions need to match in order to perform matrix multiplication"?
 
-Think about the multiplication of 2 matrices $$A = \begin{bmatrix} a_{00} & a_{01} & a_{02}\\ a_{10} & a_{11} & a_{12}\end{bmatrix}$$ and $$B = \begin{bmatrix} b_{00} & b_{01} \\ b_{10} & b_{11} \\ b_{20} & b_{21}\end{bmatrix}$$ such that $$C$$ is the product matrix between the 2, and $$c_{ij} = a_{i} \cdot b_{j}$$. </br >
-In essence, the multiplication of matrices here occurs since the inner dimensions of A and B match (2 rows and 2 columns respectively). </br >
-If this did not match, the dot product itself would not be possible - the dot product can only occur when the inner dimensions match. If they don't, taking the "product" is impossible! Think about what would happen if $$A$$ was of dimensions $$(2 \cdot 4)$$ instead of $$(2 \cdot 3)$$.
+- Think about the multiplication of 2 matrices $$A = \begin{bmatrix} a_{00} & a_{01} & a_{02}\\ a_{10} & a_{11} & a_{12}\end{bmatrix}$$ and $$B = \begin{bmatrix} b_{00} & b_{01} \\ b_{10} & b_{11} \\ b_{20} & b_{21}\end{bmatrix}$$ such that $$C$$ is the product matrix between the 2, and $$c_{ij} = a_{i} \cdot b_{j}$$.
+- In essence, the multiplication of matrices here occurs since the inner dimensions of A and B match (2 rows and 2 columns respectively).
+- If this did not match, the dot product itself would not be possible - the dot product can only occur when the inner dimensions match. If they don't, taking the "product" is impossible! Think about what would happen if $$A$$ was of dimensions $$(2 \cdot 4)$$ instead of $$(2 \cdot 3)$$.
 
 ### What's the relationship between spans, projections, and multiple linear regression?
 
-#### Spans
+### Spans
 
 The **span** of a set of vectors $$\{x_1, x_2, \ldots, x_p\}$$ is the set of all possible linear combinations of these vectors. In other words, the span defines a subspace in $$\mathbb{R}^n$$ that contains all possible combinations of the independent variables.
 
@@ -88,7 +88,7 @@ $$
 
 In the context of multiple linear regression, the span of the feature vectors represents all possible values that can be predicted using a linear combination of the feature vectors.
 
-#### Projections
+### Projections
 
 A **projection** of the observation vector $$y$$ onto the span of the feature vectors $$\{x_1, x_2, \ldots, x_p\}$$ is any vector $$\hat{y}$$ that lies in the span of $$x$$:
 
@@ -104,7 +104,7 @@ where $$X$$ represents the design matrix made up of the feature vectors, and $$\
 
 The **orthogonal projection** of $$y$$ into $$X$$ is the one that minimizes the error vector (Or the distance between the predicted values of $$y$$ and the actual values of $$y$$).
 
-#### Multiple Linear Regression
+### Multiple Linear Regression
 
 Tying this all together, one can frame multiple linear regression as a projection problem; Given some set of feature vectors $$\vec{x}_1, \vec{x}_2, ... , \vec{x}_n$$, and an observation vector $$\vec{y}$$, what are the scalars $$ w_1, w_2, ... , w_n $$ that give a vector in the span of the feature vectors that is the closest to $$\vec{y}$$?
 
@@ -122,7 +122,7 @@ I hope this helps!
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
-- #### There is a common misconception to be addressed here. 
+- ### There is a common misconception to be addressed here. 
     - The span of $$R^n$$ is a set of $$n$$ linearly independent vectors such that there exists a linear combination of **those same** $$n$$ vectors for **any** vector in $$R^n$$.
         - Note that saying **those same** $$n$$ vectors does not mean that **only** those $$n$$ vectors span $$R^n$$. This observation was simply made to help identify if a set of $$n$$ vectors provided to you spans $$R^n$$.
     - The span of a vector in $$R^n$$ is any linear combination of this vector itself. Therefore, it follows that the span of a vector in $$R^n$$ is $$c \cdot \vec{x}$$ such that $$c \in R$$.
@@ -132,6 +132,8 @@ I hope this helps!
 - $$w^* = \frac{1}{2}$$. Therefore, the projection of $$\vec{y}$$ onto the span of $$\vec{x}$$ is $$\begin{bmatrix} \frac{1}{2} \\ \frac{1}{2} \end{bmatrix}$$.
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
+- Technically :nerd_face:.
+- However, there isn't really a point in performing the normal equations operations on a matrix of 1 column, but the math is possible even with a matrix $$X$$ that has only 1 column.
 
 ### When do two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$? When do $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$?
 
@@ -148,12 +150,31 @@ Think of two vectors in $$\mathbb{R}^2$$. If one vector is a scalar multiple of 
 In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3$$, three linearly independent vectors point in different directions and can cover all of three-dimensional space. If one is a linear combination of the others, then the three vectors all lie on the same plane, and can only span that plane.
 
 ### When $$X^TX$$ isn't invertible, how do we solve the normal equations?
+- $$X^TX$$ needs to be invertible to find a **unique** minimizer. This is why the formula is $$w^* = (X^TX)^{-1}X^TY$$
+- Therefore, when $$X^TX$$ isn't invertible, solving the equation is possible but redundant since there are **infinitely many possible solutions**.
 
 ### What does it mean for a matrix to be full rank?
+- A matrix is full rank when each column within the matrix is linearly independent.
+- Take the example of $$\vec{A} = \begin{bmatrix} 1 \ 0 \\ 0 \ 1 \end{bmatrix}$$. $$\vec{A}$$ is full rank given that each vector within $$\vec{A}$$ is linearly independent.
+- ### Take the example of $$\vec{B} = \begin{bmatrix} 1 \ 0 \ 1 \\ 0 \ 1 \ 1 \end{bmatrix}$$. $$\vec{B}$$ is not full rank. This is immediately possible to tell given:
+    - $$\vec{B}$$ has a dimension of $$(2 \cdot 3)$$, and since (number of columns) > (number of rows), it is immediately deducible.
+    - The third vector in $$\vec{B}$$ is a linear combination of the first 2.
+- Your key takeaway here should be that if the **number of columns in the matrix is more than the number of rows**, then the matrix is **automatically not full rank**.
 
 ### In multiple linear regression, is $$\vec{h}^*$$ orthogonal to $$\vec{y}$$?
 
 ### Why does the multiple linear regression model with two features look like a plane?
+- ### Think about it like this:
+    - Take any equation of the form $y = mx + c$.
+    - The reason this is a straight line passing through $c$ is because $y$ is dependent only on 1 variable. To further understand this:
+        - Start with $y = x$. This is just a straight line passing through $(0,0)$ such that each value of y is equivalent to x. 
+        - Making the equation $y = mx$ such that $m \ != 0$ multiplies the $x$ value with a constant. This simply scales the line up.
+        - Finally, adding $c$ moves the line up/down depending on the value of c.
+        - ### Note that in this example, it did not matter what we did with $x$, the equation always remained a line.
+    - Now, take the example of $y = mx_1 + nx_2 + c$. The reason this line is a plane is:
+        - Start with $y = x$. This is just a straight line passing through $(0,0)$ such that each value of y is equivalent to x. 
+        - Making the equation $y = mx_1$ such that $m \ != 0$ multiplies the $x_1$ value with a constant. This simply scales the line up.
+        - ### Now, making the equation $y = mx_1 + nx_2$ introduces another independent variable. This introduces a new field into the original equation. Now, instead of a simple line, there exists a plane for each unique combination of $$(x_1, x_2)$$.
 
 ### Is there a more detailed version of the MSE proof shown in Lecture 5?
 
