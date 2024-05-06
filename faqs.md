@@ -86,7 +86,7 @@ As we discussed in lecture, every entry of this resulting matrix $$C$$ will be t
 This dot product is only possible if the "length" of each row in $$A$$ is equal to the "height" of each column in $$B$$. In our example, this dot product is defined by
 
 $$
-a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot b_{31} \end{bmatrix}
+\begin{bmatrix} a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot b_{31} \end{bmatrix}
 $$
 
 If this were not the case, we would "run out" of numbers to include in our dot product and have an invalid result. 
