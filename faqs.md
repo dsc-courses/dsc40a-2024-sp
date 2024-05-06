@@ -89,10 +89,10 @@ $$
 \begin{bmatrix} a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot b_{31} \end{bmatrix}
 $$
 
-Clearly, if the number of entries in the first row of $$A$$ were not equal to the number of entries in the first column of $$B$$, this dot product would not make sense. We would have something like
+Clearly, if the number of entries in the first row of $$A$$ were not equal to the number of entries in the first column of $$B$$, this dot product would not make sense. For example, say $$B$$ only had $$2$$ rows. Then, when computing the entries of our product $$C$$, we would run into a situation like this:
 
 $$
-\begin{bmatrix} a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot \text{...? We only have 2 entries in this column} \end{bmatrix}
+\begin{bmatrix} a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot \text{...?} \end{bmatrix}
 $$
 
 And we could not compute the entry of $$C$$, making our matrix multiplication impossible.
