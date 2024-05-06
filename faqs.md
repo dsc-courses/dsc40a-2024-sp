@@ -126,17 +126,17 @@ If they do not, the dot product between the rows of $$A$$ and the columns of $$B
 
 #### Spans
 
-The **span** of a set of vectors $$\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_p\}$$ is the set of all possible linear combinations of these vectors. In other words, the span defines a subspace in $$\mathbb{R}^n$$ that contains all possible combinations of the independent variables.
+The **span** of a set of vectors $$\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_d\}$$ is the set of all possible linear combinations of these vectors. In other words, the span defines a subspace in $$\mathbb{R}^n$$ that contains all possible combinations of the independent variables.
 
 $$
-\text{Span}\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_p\} = \{w_1 \vec{x}_1 + w_2 \vec{x}_2 + \ldots + w_p \vec{x}_p\}.
+\text{Span}\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_d\} = \{w_1 \vec{x}_1 + w_2 \vec{x}_2 + \ldots + w_d \vec{x}_d\}.
 $$
 
 In the context of multiple linear regression, the span of the feature vectors represents all possible values that can be predicted using a linear combination of the feature vectors.
 
 #### Projections
 
-A **projection** of the observation vector $$\vec{y}$$ onto the span of the feature vectors $$\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_p\}$$ is any vector $$\hat{y}$$ that lies in this span.
+A **projection** of the observation vector $$\vec{y}$$ onto the span of the feature vectors $$\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_p\}$$ is any vector $$\vec{h}$$ that lies in this span.
 
 The distance between the observations and the projection of $$\vec{y}$$ into the span of the feature vectors represents the error of a prediction. That is, each projection of $$\vec{y}$$ into the span of the feature vectors is defined by scaling each of the feature vectors by a certain amount ($$w_1$$, $$w_2$$, etc.) and summing them; the distance from this linear combination of the feature vectors to the actual observed values of $$\vec{y}$$ is the error of a certain prediction.
 
@@ -152,7 +152,7 @@ The **orthogonal projection** of $$\vec{y}$$ into $$X$$ is the one that minimize
 
 #### Multiple Linear Regression
 
-Tying this all together, one can frame multiple linear regression as a projection problem; Given some set of feature vectors $$\vec{x}_1, \vec{x}_2, ... , \vec{x}_p$$, and an observation vector $$\vec{y}$$, what are the scalars $$ w_1, w_2, ... , w_p $$ that give a vector in the span of the feature vectors that is the closest to $$\vec{y}$$?
+Tying this all together, one can frame multiple linear regression as a projection problem; Given some set of feature vectors $$\vec{x}_1, \vec{x}_2, ... , \vec{x}_d$$, and an observation vector $$\vec{y}$$, what are the scalars $$ w_1, w_2, ... , w_p $$ that give a vector in the span of the feature vectors that is the closest to $$\vec{y}$$?
 
 In other words, how close can we get to the observed values of $$\vec{y}$$, while in the span of our feature vectors?
 
