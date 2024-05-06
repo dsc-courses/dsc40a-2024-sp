@@ -96,7 +96,7 @@ $$
 \vec{e} = y - X\vec{w}
 $$,
 
-where $X$ represents the design matrix made up of the feature vectors, and $\vec{w}$ represents the coefficients that you are scaling the feature vectors by to obtain some projection of $$y$$ into the span of $X$.
+where $$X$$ represents the design matrix made up of the feature vectors, and $$\vec{w}$$ represents the coefficients that you are scaling the feature vectors by to obtain some projection of $$y$$ into the span of $$X$$.
 
 The **orthogonal projection** of $$y$$ into $$X$$ is the one that minimizes the error vector (Or the distance between the predicted values of $$y$$ and the actual values of $$y$$).
 
