@@ -32,7 +32,7 @@ $$
 w_1^* = \frac{\sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2},
 $$
 
-where $$\bar{x}$$ and $$\bar{y}$$ are the means of the $x$ and $y$ values, respectively.
+where $$\bar{x}$$ and $$\bar{y}$$ are the means of the $$x$$ and $$y$$ values, respectively.
 
 Additionally, the Pearson correlation coefficient \(r\) is defined as:
 
