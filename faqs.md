@@ -166,7 +166,7 @@ I hope this helps!
 
 ### Why does the design matrix have a column of all 1s?
 
-In linear regression, the design matrix $$\mathbf{X}$$ represents the features $$x_1, x_2, \ldots, x_k$$. Each row of $$\mathbf{X}$$ corresponds to one data point, and each column corresponds to one feature. The parameter vector $$\vec{w}$$, which we multiply by $$mathbf{X}$$ to obtain our predictions $$\vec{y}$$, contains the weights for each feature, including the intercept or bias term $$w_0$$.
+In linear regression, the design matrix $$\mathbf{X}$$ represents the features $$x_1, x_2, \ldots, x_k$$. Each row of $$\mathbf{X}$$ corresponds to one data point, and each column corresponds to one feature. The parameter vector $$\vec{w}$$, which we multiply by $$\mathbf{X}$$ to obtain our predictions $$\vec{y}$$, contains the weights for each feature, including the intercept or bias term $$w_0$$.
 
 The term $$w_0$$ is a constant that helps adjust the linear regression model vertically. This term is universal between predictions. In other words, regardless of the values of the other features $$x_1, x_2, \ldots, x_k$$, the value of $$w_0$$ will be the same. Let's explore how this relates to our design matrix.
 
