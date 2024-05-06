@@ -108,7 +108,7 @@ As we discussed in lecture, every entry of this resulting matrix $$C$$ will be t
 This dot product is only possible if the "length" of each row in $$A$$ is equal to the "height" of each column in $$B$$. In our example, this dot product is defined by
 
 $$
-\begin{bmatrix} a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot b_{31} \end{bmatrix}
+\begin{bmatrix} (a_{11} \cdot b_{11}) + (a_{12} \cdot b_{21}) + (a_{13} \cdot b_{31}) \end{bmatrix}
 $$
 
 Clearly, if the number of entries in the first row of $$A$$ were not equal to the number of entries in the first column of $$B$$, this dot product would not make sense. For example, say $$B$$ only had $$2$$ rows. Then, when computing the entries of our product $$C$$, we would run into a situation like this:
@@ -228,8 +228,65 @@ Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), an
 So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$, and $$w^*$$ is the set of scalars used to make this projection when multiplied with \vec{x}$$
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
-- Technically 🤓.
-- The normal equations reduce to a single vector (as seen in Lecture 7), such that $$w^* = \frac{x \cdot y}{x \cdot x}$$.
+
+Yes! Let's look at $$2$$ different cases where this is the case.
+
+
+#### Case 1: $$\mathbf{X}$$ is a column of ones
+
+If $$\mathbf{X}$$ is a column of ones, the model $$y = w$$ fits a constant line through the data. Using the normal equations,
+
+$$
+\vec{1}^T \vec{1} \vec{w} = \vec{1}^T \vec{y}
+$$
+
+and $$\vec{1}^T \vec{1} = n$$, where $$n$$ is the number of data points, and $$\mathbf{1}^T \mathbf{y} = \sum_{i=1}^n y_i$$. Thus, the normal equations become:
+
+$$
+n \cdot w = \sum_{i=1}^n y_i.
+$$
+
+Solving for $$b$$, we have:
+
+$$
+w = \frac{1}{n} \sum_{i=1}^n y_i,
+$$
+
+which is the mean of the target values.
+
+### Case 2: $$\mathbf{X}$$ has different values
+
+Suppose $$\mathbf{X}$$ is a column vector with different values for each data point, representing a single feature:
+
+$$
+\mathbf{X} = \begin{bmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{bmatrix}.
+$$
+
+In this case, the model $$y = wx$$ fits a line through the origin. The normal equations become:
+
+$$
+\mathbf{X}^T \mathbf{X} \mathbf{w} = \mathbf{X}^T \vec{y}.
+$$
+
+Calculating the elements, we have:
+
+$$
+\sum_{i=1}^n x_i^2 \cdot w = \sum_{i=1}^n x_i y_i.
+$$
+
+Therefore, the normal equations reduce to:
+
+$$
+w = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2}.
+$$
+
+So, to answer your question, we can absolutely use the normal equations when our design matrix $$\mathbf{X}$$ has only one column!
+
 
 ### When do two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$? When do $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$?
 
