@@ -119,6 +119,7 @@ $$
 I hope this helps!
 
 ### Why does the design matrix have a column of all 1s?
+- This is done to enable the dot product between the design matrix and coefficient matrix to obtain $$y$$. If this wasn't the case, it would not be possible to multiply the 2 matrices and hence obtain the $$y$$ matrix!
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
