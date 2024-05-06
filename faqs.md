@@ -93,7 +93,7 @@ $$
 
 #### Lecture(s) to Review
 
-[Lecture 5](https://dsc40a.com/resources/lectures/lec05/lec05-filled.pdf) (Slide 18)
+- [Lecture 5](https://dsc40a.com/resources/lectures/lec05/lec05-filled.pdf) (Slide 18)
 
 
 ### What do you mean by "the inner dimensions need to match in order to perform matrix multiplication"?
@@ -128,9 +128,9 @@ If they do not, the dot product between the rows of $$A$$ and the columns of $$B
 
 #### Lecture(s) to Review:
 
-[Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 17)
+- [Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 17)
 
-[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf) (Slide 20)
+- [Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf) (Slide 20)
 
 ### What's the relationship between spans, projections, and multiple linear regression?
 
@@ -176,9 +176,9 @@ For more visual intuition of this idea, check out [this tutor-made animation!](h
 
 #### Lecture(s) to Review:
 
-[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
+- [Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
 
-[Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf)
+- [Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf)
 
 ### Why does the design matrix have a column of all 1s?
 
@@ -233,7 +233,7 @@ As you can see in this example, our predictions all included the constant bias t
 
 #### Lecture(s) to Review:
 
-[Lecture 9](https://dsc40a.com/resources/lectures/lec09/lec09-filled.pdf)
+- [Lecture 9](https://dsc40a.com/resources/lectures/lec09/lec09-filled.pdf)
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
@@ -249,7 +249,7 @@ So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec
 
 #### Lecture(s) to Review:
 
-[Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 28)
+- [Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 28)
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
 
@@ -314,8 +314,9 @@ So, to answer your question, we can absolutely use the normal equations when our
 
 #### Lecture(s) to Review:
 
-[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
-[Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf)
+- [Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
+
+- [Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf)
 
 
 ### When do two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$? When do $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$?
@@ -334,7 +335,7 @@ In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3
 
 #### Lecture(s) to Review:
 
-[Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 26)
+- [Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 26)
 
 ### When $$X^TX$$ isn't invertible, how do we solve the normal equations?
 
@@ -344,7 +345,7 @@ Generally, this situation arises when one of the columns of our design matrix $$
 
 #### Lecture(s) to Review:
 
-[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf) (Slide 34)
+- [Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf) (Slide 34)
 
 ### What does it mean for a matrix to be full rank?
 
@@ -366,7 +367,7 @@ In linear regression, the design matrix $$X$$ must be full rank to have a unique
 
 #### Lecture(s) to Review:
 
-[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
+- [Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
 
 
 ### In multiple linear regression, is $$\vec{h}^*$$ orthogonal to $$\vec{y}$$?
@@ -375,8 +376,9 @@ $$\vec{h}^*$$ is the optimal hypothesis vector; That is, $$\vec{h}^* = X\vec{w}^
 
 #### Lecture(s) to Review:
 
-[Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
-[Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf)
+- [Lecture 7](https://dsc40a.com/resources/lectures/lec07/lec07-filled.pdf)
+  
+- [Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf)
 
 
 ### Why does the multiple linear regression model with two features look like a plane?
@@ -403,8 +405,9 @@ For more visual intuition of this idea, check out the first 35 seconds of [this 
 
 #### Lecture(s) to Review:
 
-[Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 23)
-[Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf) (Slide 30)
+- [Lecture 6](https://dsc40a.com/resources/lectures/lec06/lec06-filled.pdf) (Slide 23)
+  
+- [Lecture 8](https://dsc40a.com/resources/lectures/lec08/lec08-filled.pdf) (Slide 30)
 
 
 ### Is there a more detailed version of the MSE proof shown in Lecture 5?
@@ -427,7 +430,7 @@ $$R_{\text{sq}}( w_0^*, w_1^* )$$ = $$\frac{1}{n} \sum_{i=1}^{n} (y_i - \bar{y} 
 
 #### Lecture(s) to Review:
 
-[Lecture 5](https://dsc40a.com/resources/lectures/lec05/lec05-filled.pdf) (Slide 25)
+- [Lecture 5](https://dsc40a.com/resources/lectures/lec05/lec05-filled.pdf) (Slide 25)
 
 ---
 
