@@ -229,6 +229,7 @@ So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
 
+
 Yes! Let's look at $$2$$ different cases where this is the case.
 
 
@@ -237,16 +238,16 @@ Yes! Let's look at $$2$$ different cases where this is the case.
 If $$\mathbf{X}$$ is a column of ones, the model $$y = w$$ fits a constant line through the data. Using the normal equations,
 
 $$
-\vec{1}^T \vec{1} \vec{w} = \vec{1}^T \vec{y}
+\vec{1}^T \vec{1} \vec{w} = \vec{1}^T \vec{y}.
 $$
 
-and $$\vec{1}^T \vec{1} = n$$, where $$n$$ is the number of data points, and $$\mathbf{1}^T \mathbf{y} = \sum_{i=1}^n y_i$$. Thus, the normal equations become:
+$$\vec{1}^T \vec{1} = n$$, where $$n$$ is the number of data points, and $$\vec{1}^T \mathbf{y} = \sum_{i=1}^n y_i$$. Thus, the normal equations become:
 
 $$
 n \cdot w = \sum_{i=1}^n y_i.
 $$
 
-Solving for $$b$$, we have:
+And, solving for $$w$$, we get
 
 $$
 w = \frac{1}{n} \sum_{i=1}^n y_i,
@@ -254,9 +255,9 @@ $$
 
 which is the mean of the target values.
 
-### Case 2: $$\mathbf{X}$$ has different values
+#### Case 2: $$\mathbf{X}$$ has different values
 
-Suppose $$\mathbf{X}$$ is a column vector with different values for each data point, representing a single feature:
+Now, let's imagine that $$\mathbf{X}$$ is a column vector with different values for each data point, representing a single feature:
 
 $$
 \mathbf{X} = \begin{bmatrix}
@@ -267,19 +268,19 @@ x_n
 \end{bmatrix}.
 $$
 
-In this case, the model $$y = wx$$ fits a line through the origin. The normal equations become:
+In this case, the model $$y = wx$$ fits a line through the origin. The normal equations become
 
 $$
 \mathbf{X}^T \mathbf{X} \mathbf{w} = \mathbf{X}^T \vec{y}.
 $$
 
-Calculating the elements, we have:
+Calculating the elements, we have
 
 $$
-\sum_{i=1}^n x_i^2 \cdot w = \sum_{i=1}^n x_i y_i.
+\sum_{i=1}^n x_i^2 \cdot w = \sum_{i=1}^n x_i y_i,
 $$
 
-Therefore, the normal equations reduce to:
+and the normal equations reduce to
 
 $$
 w = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2}.
