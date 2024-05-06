@@ -138,7 +138,7 @@ In the context of multiple linear regression, the span of the feature vectors re
 
 #### Projections
 
-A **projection** of the observation vector $$\vec{y$}$ onto the span of the feature vectors $$\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_p\}$$ is any vector $$\hat{y}$$ that lies in this span.
+A **projection** of the observation vector $$\vec{y}$$ onto the span of the feature vectors $$\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_p\}$$ is any vector $$\hat{y}$$ that lies in this span.
 
 The distance between the observations and the projection of $$\vec{y}$$ into the span of the feature vectors represents the error of a prediction. That is, each projection of $$\vec{y}$$ into the span of the feature vectors is defined by scaling each of the feature vectors by a certain amount ($$w_1$$, $$w_2$$, etc.) and summing them; the distance from this linear combination of the feature vectors to the actual observed values of $$\vec{y}$$ is the error of a certain prediction.
 
