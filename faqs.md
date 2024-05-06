@@ -102,7 +102,7 @@ If they do not, the dot product between the rows of $$A$$ and the columns of $$B
 
 ### What's the relationship between spans, projections, and multiple linear regression?
 
-### Spans
+#### Spans
 
 The **span** of a set of vectors $$\{x_1, x_2, \ldots, x_p\}$$ is the set of all possible linear combinations of these vectors. In other words, the span defines a subspace in $$\mathbb{R}^n$$ that contains all possible combinations of the independent variables.
 
@@ -112,29 +112,29 @@ $$
 
 In the context of multiple linear regression, the span of the feature vectors represents all possible values that can be predicted using a linear combination of the feature vectors.
 
-### Projections
+#### Projections
 
-A **projection** of the observation vector $$y$$ onto the span of the feature vectors $$\{x_1, x_2, \ldots, x_p\}$$ is any vector $$\hat{y}$$ that lies in the span of $$x$$:
+A **projection** of the observation vector $$\vec{y$}$ onto the span of the feature vectors $$\{\vec{x}_1, \vec{x}_2, \ldots, \vec{x}_p\}$$ is any vector $$\hat{y}$$ that lies in this span.
 
-The distance between the observations and the projection of $$y$$ into the span of the feature vectors represents the error of a prediction. That is, each projection of $$y$$ into the span of the feature vectors is defined by scaling each of the feature vectors by a certain amount ($$w_1$$, $$w_2$$, etc.) and summing them; the distance from this linear combination of the feature vectors to the actual observed values of $$y$$ is the error of a certain prediction.
+The distance between the observations and the projection of $$\vec{y}$$ into the span of the feature vectors represents the error of a prediction. That is, each projection of $$\vec{y}$$ into the span of the feature vectors is defined by scaling each of the feature vectors by a certain amount ($$w_1$$, $$w_2$$, etc.) and summing them; the distance from this linear combination of the feature vectors to the actual observed values of $$\vec{y}$$ is the error of a certain prediction.
 
 This error is written as
 
 $$
-\vec{e} = y - X\vec{w}
+\vec{e} = \vec{y} - X\vec{w}
 $$,
 
-where $$X$$ represents the design matrix made up of the feature vectors, and $$\vec{w}$$ represents the coefficients that you are scaling the feature vectors by to obtain some projection of $$y$$ into the span of $$X$$.
+where $$X$$ represents the design matrix made up of the feature vectors, and $$\vec{w}$$ represents the coefficients that you are scaling the feature vectors by to obtain some projection of $$\vec{y}$$ into the span of $$X$$.
 
-The **orthogonal projection** of $$y$$ into $$X$$ is the one that minimizes the error vector (Or the distance between the predicted values of $$y$$ and the actual values of $$y$$).
+The **orthogonal projection** of $$\vec{y}$$ into $$X$$ is the one that minimizes the error vector (Or the distance between the predicted values of $$\vec{y}$$ and the actual values of $$\vec{y}$$).
 
-### Multiple Linear Regression
+#### Multiple Linear Regression
 
-Tying this all together, one can frame multiple linear regression as a projection problem; Given some set of feature vectors $$\vec{x}_1, \vec{x}_2, ... , \vec{x}_n$$, and an observation vector $$\vec{y}$$, what are the scalars $$ w_1, w_2, ... , w_n $$ that give a vector in the span of the feature vectors that is the closest to $$\vec{y}$$?
+Tying this all together, one can frame multiple linear regression as a projection problem; Given some set of feature vectors $$\vec{x}_1, \vec{x}_2, ... , \vec{x}_p$$, and an observation vector $$\vec{y}$$, what are the scalars $$ w_1, w_2, ... , w_p $$ that give a vector in the span of the feature vectors that is the closest to $$\vec{y}$$?
 
 In other words, how close can we get to the observed values of $$\vec{y}$$, while in the span of our feature vectors?
 
-This framing of multiple linear regression also leads us to the **Normal Equations**
+This framing of multiple linear regression also leads us to the **normal equations**
 
 $$
 w = (X^\mathrm{T}X)^{-1}X^\mathrm{T}y.
