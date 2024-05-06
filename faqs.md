@@ -72,9 +72,29 @@ $$
 
 ### What do you mean by "the inner dimensions need to match in order to perform matrix multiplication"?
 
-- Think about the multiplication of 2 matrices $$A = \begin{bmatrix} a_{00} & a_{01} & a_{02}\\ a_{10} & a_{11} & a_{12}\end{bmatrix}$$ and $$B = \begin{bmatrix} b_{00} & b_{01} \\ b_{10} & b_{11} \\ b_{20} & b_{21}\end{bmatrix}$$ such that $$C$$ is the product matrix between the 2, and $$c_{ij} = a_{i} \cdot b_{j}$$.
-- In essence, the multiplication of matrices here occurs since the inner dimensions of A and B match (2 rows and 2 columns respectively).
-- If this did not match, the dot product itself would not be possible - the dot product can only occur when the inner dimensions match. If they don't, taking the "product" is impossible! Think about what would happen if $$A$$ was of dimensions $$(2 \cdot 4)$$ instead of $$(2 \cdot 3)$$.
+Think about the multiplication of $$2$$ matrices: 
+
+$$
+A = \begin{bmatrix} a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\end{bmatrix}
+B = \begin{bmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \\ b_{31} & b_{32}\end{bmatrix}
+$$
+
+Let's call $$C$$ the product matrix between the $$2$$.
+
+As we discussed in lecture, every entry of this resulting matrix $$C$$ will be the result of the dot product of a row of $$A$$ with a column of $$B$$. For example, one entry of the product matrix $$C$$ is formed by dotting $$\begin{bmatrix} a_{11} & a_{12} & a_{13}\end{bmatrix}$$ with $$\begin{bmatrix}b_{11} \\ b_{21} \\ b{31} \end{bmatrix}$$.
+
+This dot product is only possible if the "length" of each row in $$A$$ is equal to the "height" of each column in $$B$$. In our example, this dot product is defined by
+
+$$
+a_{11} \cdot b_{11} + a_{12} \cdot b_{21} + a_{13} \cdot b_{31} \end{bmatrix}
+$$
+
+If this were not the case, we would "run out" of numbers to include in our dot product and have an invalid result. 
+
+Of course, the "length" of a row in $$A$$ refers to the number of columns in $$A$$, and the "height" of each column in $$B$$ refers to the number of rows in $$B$$.
+
+In essence, the multiplication of matrices occurs when the inner dimensions of A and B, columns and rows, respectively, match.
+If they do not, the dot product between the rows of $$A$$ and the columns of $$B$$ would not be possible, and we cannot create a product matrix $$C$$.
 
 ### What's the relationship between spans, projections, and multiple linear regression?
 
