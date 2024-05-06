@@ -581,7 +581,7 @@ Yes, we can! The issue is just that there doesn't exist a closed-form solution, 
 
 $$R_\text{abs}(w_0, w_1) = \frac{1}{n} \sum_{i = 1}^n \lvert y_i - (w_0 + w_1 x_i) \rvert$$
 
-So, we have to use the computer to approximate the answer. Regression with squared loss is called "least squares regression," but regression with absolute loss is called "least absolute deviations regression." You can learn more [here](https://en.wikipedia.org/wiki/Least_absolute_deviations).
+So, we have to use the computer to approximate the answer. Regression with squared loss is called "least squares regression," but regression with absolute loss is called "least absolute deviations regression." You can learn more [here](https://en.wikipedia.org/wiki/Least_absolute_deviations)!
 
 #### Lecture(s) to Review:
 
