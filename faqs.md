@@ -297,11 +297,11 @@ Similarly, $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$ when t
 
 **Intuition**
 
-To span a space means to cover it entirely
+To span a space means to cover it entirely.
 
 Think of two vectors in $$\mathbb{R}^2$$. If one vector is a scalar multiple of the other, then they both point in the same direction or opposite directions, essentially lying on the same line. This means they can only cover that line and cannot cover any other directions.
 
-In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3$$, three linearly independent vectors point in different directions and can cover all of three-dimensional space. If one is a linear combination of the others, then the three vectors all lie on the same plane, and can only span that plane.
+In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3$$, three linearly independent vectors point in different directions and can cover all of three-dimensional space. However, if one is a linear combination of the others, then the three vectors lie on the same plane, and can only span that plane.
 
 ### When $$X^TX$$ isn't invertible, how do we solve the normal equations?
 - $$X^TX$$ needs to be invertible to find a **unique** minimizer. This is why the formula is $$w^* = (X^TX)^{-1}X^TY$$
