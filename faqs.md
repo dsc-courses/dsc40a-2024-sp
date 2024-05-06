@@ -132,8 +132,8 @@ I hope this helps!
 - $$w^* = \frac{1}{2}$$. Therefore, the projection of $$\vec{y}$$ onto the span of $$\vec{x}$$ is $$\begin{bmatrix} \frac{1}{2} \\ \frac{1}{2} \end{bmatrix}$$.
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
-- Technically :nerd_face:.
-- However, there isn't really a point in performing the normal equations operations on a matrix of 1 column, but the math is possible even with a matrix $$X$$ that has only 1 column.
+- Technically 🤓.
+- The normal equations reduce to a single vector (as seen in Lecture 7), such that $$w^* = \frac{x \cdot y}{x \cdot x}$$.
 
 ### When do two vectors in $$\mathbb{R}^2$$ span all of $$\mathbb{R}^2$$? When do $$n$$ vectors in $$\mathbb{R}^n$$ span all of $$\mathbb{R}^n$$?
 
@@ -173,7 +173,7 @@ In higher dimensions, the same principle applies. For example, in $$\mathbb{R}^3
         - ### Note that in this example, it did not matter what we did with $$x$$, the equation always remained a line.
     - Now, take the example of $$y = mx_1 + nx_2 + c$$. The reason this line is a plane is:
         - Start with $$y = x$$. This is just a straight line passing through $$(0,0)$$ such that each value of y is equivalent to x. 
-        - Making the equation $$y = mx_1$ such that $$m \ != 0$$ multiplies the $$x_1$$ value with a constant. This simply scales the line up.
+        - Making the equation $$y = mx$$ such that $$m \ != 0$$ multiplies the $$x$$ value with a constant. This simply scales the line up.
         - ### Now, making the equation $$y = mx_1 + nx_2$$ introduces another independent variable. This introduces a new field into the original equation. Now, instead of a simple line, there exists a plane for each unique combination of $$(x_1, x_2)$$.
 
 ### Is there a more detailed version of the MSE proof shown in Lecture 5?
