@@ -78,7 +78,7 @@ $$
 
 ### What's the relationship between spans, projections, and multiple linear regression?
 
-### Spans
+## Spans
 
 The **span** of a set of vectors $$\{x_1, x_2, \ldots, x_p\}$$ is the set of all possible linear combinations of these vectors. In other words, the span defines a subspace in $$\mathbb{R}^n$$ that contains all possible combinations of the independent variables.
 
@@ -88,7 +88,7 @@ $$
 
 In the context of multiple linear regression, the span of the feature vectors represents all possible values that can be predicted using a linear combination of the feature vectors.
 
-### Projections
+## Projections
 
 A **projection** of the observation vector $$y$$ onto the span of the feature vectors $$\{x_1, x_2, \ldots, x_p\}$$ is any vector $$\hat{y}$$ that lies in the span of $$x$$:
 
@@ -104,7 +104,7 @@ where $$X$$ represents the design matrix made up of the feature vectors, and $$\
 
 The **orthogonal projection** of $$y$$ into $$X$$ is the one that minimizes the error vector (Or the distance between the predicted values of $$y$$ and the actual values of $$y$$).
 
-### Multiple Linear Regression
+## Multiple Linear Regression
 
 Tying this all together, one can frame multiple linear regression as a projection problem; Given some set of feature vectors $$\vec{x}_1, \vec{x}_2, ... , \vec{x}_n$$, and an observation vector $$\vec{y}$$, what are the scalars $$ w_1, w_2, ... , w_n $$ that give a vector in the span of the feature vectors that is the closest to $$\vec{y}$$?
 
@@ -118,19 +118,18 @@ $$
 
 I hope this helps!
 
-
 ### Why does the design matrix have a column of all 1s?
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
-In multiple linear regression, the orthogonal projection of the vector $$\vec{y}$$ onto the span of the vector $$\vec{x}$$ is expressed as:
-
-$$
-\hat{y} = \vec{w}^* \vec{x}.
-$$
-
-Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), and $$\vec{x}$$ is the feature vector. In other words, $$\vec{w}^*$$ represents how to form a linear combination of your feature vector $$\vec{x}$$ to make predictions $$\hat{y}$$.
-
+- ## There is a common misconception to be addressed here. 
+    - The span of $$R^n$$ is a set of $$n$$ linearly independent vectors such that there exists a linear combination of **those same** $$n$$ vectors for **any** vector in $$R^n$$.
+        - Note that saying **those same** $$n$$ vectors does not mean that **only** those $$n$$ vectors span $$R^n$$. This observation was simply made to help identify if a set of $$n$$ vectors provided to you spans $$R^n$$.
+    - The span of a vector in $$R^n$$ is any linear combination of this vector itself. Therefore, it follows that the span of a vector in $$R^n$$ is $$c \cdot \vec{x}$$ such that $$c \in R$$.
+- Let $$\vec{x}$$ be $$\begin{bmatrix} 1 \\ 1 \end{bmatrix}$$. The span of $$\vec{x}$$ is any vector $$c \cdot \vec{x}$$ such that $$c \in R$$. 
+- Now, let $$\vec{y}$$ be $$\begin{bmatrix} 0 \\ 1 \end{bmatrix}$$. The span of $$\vec{y}$$ is any vector $$c \cdot \vec{y}$$ such that $$c \in R$$.
+- Now, projecting $$\vec{y}$$ onto the span of $$\vec{x}$$ is a matter of using the formula $$w^* = \frac{\vec{x} \cdot \vec{y}}{\vec{x} \cdot \vec{x}}$$ and plugging this into the formula: $$w^*\cdot\vec{x}$$
+- $$w^* = \frac{1}{2}$$. Therefore, the projection of $$\vec{y}$$ onto the span of $$\vec{x}$$ is $$\begin{bmatrix} \frac{1}{2} \\ \frac{1}{2} \end{bmatrix}$$.
 
 ### Do the normal equations work even when there is only one column in the matrix $$X$$?
 
