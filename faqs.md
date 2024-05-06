@@ -97,7 +97,7 @@ $$
 Think about the multiplication of $$2$$ matrices: 
 
 $$
-A = \begin{bmatrix} a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\end{bmatrix} \text{and}
+A = \begin{bmatrix} a_{11} & a_{12} & a_{13}\\ a_{21} & a_{22} & a_{23}\end{bmatrix} \text{ and }
 B = \begin{bmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \\ b_{31} & b_{32}\end{bmatrix}
 $$
 
