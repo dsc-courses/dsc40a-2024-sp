@@ -15,11 +15,6 @@ nav_order: 1
 
 [Jump to the current week](#week-5-multiple-linear-regression-feature-engineering-br-small-read-a-href-resources-notes-notes-chapter-1-pdf-page-16-note-1-pages-16-17-a-small){: .btn } [Assignment Solutions](https://edstem.org/us/courses/57667/discussion/4730099){: .btn .btn-purple }
 
-{: .red }
-> **Due to the campus closure for Monday, May 6th, discussion section is cancelled, and all office hours are being held remotely at the following link:**
->
-> [Zoom link](https://ucsd.zoom.us/j/96170150611){: .btn .btn-blue }
-
 {: .green }
 > **The Midterm Exam is on Tuesday, May 7th during lecture (yes, [campus is back in person tomorrow](https://edstem.org/us/courses/57667/discussion/4920907))! Read the [logistics post on Ed ASAP](https://edstem.org/us/courses/57667/discussion/4898894), and prepare by:**
 > - Attempting past exam problems at [**practice.dsc40a.com**](https://practice.dsc40a.com).
