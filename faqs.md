@@ -237,7 +237,7 @@ As you can see in this example, our predictions all included the constant bias t
 
 ### What is the projection of $$\vec{y}$$ onto $$\text{span}(\vec{x})$$ – is it $$w^*$$ or $$w^* \vec{x}$$?
 
-In multiple linear regression, the orthogonal projection of the vector $$\vec{y}$$ onto the span of the vectors $$\{\vec{x}^{(1)}, vec{x}^{(2)}, ..., vec{x}^{(n)}\}$$ is expressed as:
+In multiple linear regression, the orthogonal projection of the vector $$\vec{y}$$ onto the span of the vectors $$\{\vec{x}^{(1)}, \vec{x}^{(2)}, ..., \vec{x}^{(n)}\}$$ is expressed as:
 
 $$
 \vec{h}^* = X\vec{w}^*.
@@ -245,7 +245,7 @@ $$
 
 Here, $$\vec{w}^*$$ is a vector of scalar coefficients ($$ w_1, w_2$$, etc.), and $$X$$ is the design matrix. In other words, $$\vec{w}^*$$ provides the specific coefficients with which to form a linear combinations of your features to make predictions $$\vec{h}^*$$.
 
-So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec{y}$$ onto $$\text{span}\{\vec{x}^{(1)}, vec{x}^{(2)}, ..., vec{x}^{(n)}\}$$, and $$w^*$$ is the set of scalars used to make this projection when multiplied with $$\vec{x}$$
+So, to answer the question directly: $$w^* \vec{x}$$ is the projection of $$\vec{y}$$ onto $$\text{span}\{\vec{x}^{(1)}, \vec{x}^{(2)}, ..., \vec{x}^{(n)}\}$$, and $$w^*$$ is the set of scalars used to make this projection when multiplied with $$\vec{x}$$
 
 #### Lecture(s) to Review:
 
