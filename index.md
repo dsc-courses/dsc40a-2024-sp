@@ -25,7 +25,7 @@ nav_order: 1
 > - Double-checking your seat assignment in the [**logistics post above**](https://edstem.org/us/courses/57667/discussion/4898894). -->
 
 {: .green }
-**Congrats on finishing the Midterm Exam! Homework 5 will be released later this week and will be due on Thursday, May 16th. Most office hours on Wednesday (the day after the Midterm Exam) are cancelled.**
+**Midterm Exam scores are available on Gradescope; read [this Ed post](https://edstem.org/us/courses/57667/discussion/4928912) for advice on how to move forward. Homework 5 will be released later this week and will be due on Thursday, May 16th. Most office hours on Wednesday (the day after the Midterm Exam) are cancelled.**
 
 {% for module in site.modules %}
 {{ module }}
