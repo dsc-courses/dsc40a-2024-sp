@@ -16,7 +16,9 @@ days:
     events:
       - name: LEC 11
         type: lecture
-        title: Gradient Descent in Multiple Dimensions
+        title: Gradient Descent, Continued
+        blank: resources/lectures/lec11/lec11-blank.pdf
+        code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec11/lec11-code.ipynb
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
