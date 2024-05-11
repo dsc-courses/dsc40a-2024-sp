@@ -1,0 +1,10 @@
+test = {   'name': 'test-gradient-correct',
+    'points': 0,
+    'suites': [   {   'cases': [   {'code': '>>> callable(R) and callable(dR_w0) and callable(dR_w1)\nTrue', 'hidden': False, 'locked': False},
+                                   {'code': '>>> np.isclose(R([1, 1]), 12.5)\nTrue', 'hidden': False, 'locked': False},
+                                   {'code': '>>> np.isclose(dR_w0([1, 1]), -7)\nTrue', 'hidden': False, 'locked': False},
+                                   {'code': '>>> np.isclose(dR_w1([1, 1]), -11)\nTrue', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}
