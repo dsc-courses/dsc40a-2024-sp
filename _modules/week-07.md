@@ -25,5 +25,7 @@ days:
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
       - name: HW 5
         type: hw
-        title: Homework 5
+        title: <b>Homework 5</b>
+        problems: resources/homeworks/hw05.pdf
+        template: https://www.overleaf.com/read/bwwtthvhhnys#28bdf4
 ---
