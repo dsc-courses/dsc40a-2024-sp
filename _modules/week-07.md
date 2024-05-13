@@ -8,6 +8,7 @@ days:
         type: disc
         title: Groupwork 5
         problems: resources/groupworks/gw05.pdf
+        template: https://www.overleaf.com/read/zjxgsvjnsyjq#7c9823
   - date: '2024-05-14'
     events:
       - name: LEC 12
