@@ -2,20 +2,22 @@
 title: "Week 7 – Probability<br><small>📘 Read <a href='resources/#probability-roadmap'>Janine's probability roadmap</a> and <a href='http://stat88.org/textbook/content/intro.html'>Chapters 1 and 2 of this probability textbook</a>.</small>"
 weekNumber: 7
 days:
-  - date: '2024-05-13'
+  - date: "2024-05-13"
     events:
       - name: DISC 6
         type: disc
         title: Groupwork 5
         problems: resources/groupworks/gw05.pdf
         template: https://www.overleaf.com/read/zjxgsvjnsyjq#7c9823
-  - date: '2024-05-14'
+  - date: "2024-05-14"
     events:
       - name: LEC 12
         type: lecture
         title: Foundations of Probability
         blank: resources/lectures/lec12/lec12-blank.pdf
-  - date: '2024-05-16'
+        filled: resources/lectures/lec12/lec12-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/13
+  - date: "2024-05-16"
     events:
       - name: LEC 13
         type: lecture
