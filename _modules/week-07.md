@@ -13,10 +13,8 @@ days:
     events:
       - name: LEC 12
         type: lecture
-        title: Rules of Probability
-        # url: resources/lectures/lec03/lec03.html
-        # filled: resources/lectures/lec03/lec03-filled.html
-        # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
+        title: Foundations of Probability
+        blank: resources/lectures/lec12/lec12-blank.pdf
   - date: '2024-05-16'
     events:
       - name: LEC 13
