@@ -1,5 +1,5 @@
 ---
-title: "Week 6 – Midterm Exam, Gradient Descent"
+title: "Week 6 – Midterm Exam, Gradient Descent<br><small>📘 Optionally, see <a href='https://sboyles.github.io/teaching/ce377k/convexity.pdf'>these notes on convexity</a>.</small>"
 weekNumber: 6
 days:
   - date: "2024-05-06"

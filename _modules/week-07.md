@@ -1,5 +1,5 @@
 ---
-title: "Week 7 – Probability"
+title: "Week 7 – Probability<br><small>📘 Read <a href='resources/#probability-roadmap'>Janine's probability roadmap</a> and <a href='http://stat88.org/textbook/content/intro.html'>Chapters 1 and 2 of this probability textbook</a>.</small>"
 weekNumber: 7
 days:
   - date: '2024-05-13'

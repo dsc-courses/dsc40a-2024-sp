@@ -134,5 +134,6 @@ Past exam problems can be found at [practice.dsc40a.com](https://practice.dsc40a
 - Other lectures on [Loss Functions](http://ds100.org/su20/lecture/lec11) and [Simple Linear Regression](http://ds100.org/su20/lecture/lec12/).
     - These are from a different course for a different audience, and use different notation and terminology. However, the high-level ideas are similar to those in the first few weeks of our course.
 - [Gradient Descent visualizer](https://uclaacm.github.io/gradient-descent-visualiser/#playground).
+- Notes on [Convexity](https://sboyles.github.io/teaching/ce377k/convexity.pdf) by Stephen Boyles.
 
 If you find another helpful resource, let us know and we can link it here! 
