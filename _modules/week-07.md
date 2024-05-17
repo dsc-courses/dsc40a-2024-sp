@@ -24,6 +24,7 @@ days:
         title: Combinatorics
         blank: resources/lectures/lec13/lec13-blank.pdf
         filled: resources/lectures/lec13/lec13-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/14
         code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec13/lec13-code.ipynb
         videos: https://www.youtube.com/playlist?list=PLDNbnocpJUhaMR08k5YBu3AXsZxTcUWsy
         # filled: resources/lectures/lec03/lec03-filled.html
