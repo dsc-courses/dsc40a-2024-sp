@@ -25,7 +25,7 @@ days:
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
       - name: HW 6
         type: hw
-        title: <b>Homework 6<\b>
+        title: <b>Homework 6</b>
         problems: resources/homeworks/hw06.pdf
         template: https://www.overleaf.com/read/rbqyvfhwnqjj#fff6cf
 ---
