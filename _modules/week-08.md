@@ -7,6 +7,7 @@ days:
       - name: DISC 7
         type: disc
         title: Groupwork 6
+        problems: resources/groupworks/gw06.pdf
   - date: '2024-05-21'
     events:
       - name: LEC 14
