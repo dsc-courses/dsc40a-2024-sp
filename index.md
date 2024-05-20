@@ -24,8 +24,8 @@ nav_order: 1
 > - Reviewing [**assignment solutions**](https://edstem.org/us/courses/57667/discussion/4730099).
 > - Double-checking your seat assignment in the [**logistics post above**](https://edstem.org/us/courses/57667/discussion/4898894). -->
 
-{: .green }
-**Homework 5 is released and is due on Thursday, May 16th. Midterm Exam scores are available on Gradescope; read [this Ed post](https://edstem.org/us/courses/57667/discussion/4928912) for advice on how to move forward.**
+<!-- {: .green }
+**Homework 5 is released and is due on Thursday, May 16th. Midterm Exam scores are available on Gradescope; read [this Ed post](https://edstem.org/us/courses/57667/discussion/4928912) for advice on how to move forward.** -->
 
 {% for module in site.modules %}
 {{ module }}
