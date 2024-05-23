@@ -1,0 +1,522 @@
+---
+marp: true
+paginate: true
+---
+
+<!-- These set styles for the entire document. -->
+<style>
+
+h1 {
+  background: linear-gradient(90.2deg, rgba(190, 70, 102, 0.93) -15.6%, rgb(252, 154, 154) -15.6%, rgba(190, 70, 102, 0.92) 17.9%, rgb(58, 13, 48) 81.6%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 { font-size: 72px }
+
+h2 { font-size: 48px; color: #fff; }
+
+h3 { font-size: 36px; vertical-align: top; }
+
+h3, h4, h5 {
+  background: rgb(58, 13, 48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3, h4, h5 { color: #444 }
+
+section {
+  position: absolute;
+  height: inherit;
+  vertical-align: bottom;
+  margin: 0;
+  display: table-cell;
+}
+
+</style>
+
+<br><br><br>
+
+##### Lecture 15
+
+# Bayes' Theorem and Independence
+
+#### DSC 40A, Spring 2024
+
+---
+
+### Announcements
+
+- Homework 6 is due **tonight**.
+  - Combinatorics is hard! Come to office hours.
+- No discussion or office hours on Monday.
+  - We'll still post a groupwork worksheet and its solutions, just for extra practice.
+- There will be no live lecture on Tuesday. Instead, the lecture video will be pre-recorded and posted on the course website by Tuesday morning.
+  - There's also a [lecture note](https://dsc40a.com/conditional-independence/) I wrote for Tuesday's lecture that you should read. 
+- The final exam is in two weeks from Saturday: start practicing at [practice.dsc40a.com](https://practice.dsc40a.com)!
+  - (Even) more probability problems coming soon.
+
+---
+
+### Agenda
+
+- Law of Total Probability.
+- Bayes' Theorem.
+- Independence.
+
+Remember, we've posted **many** probability resources on the [resources tab of the course website](https://dsc40a.com/resources/#probability). These will come in handy! Specific resources you should look at:
+- The [DSC 40A probability roadmap](https://dsc40a.com/resources/#probability-roadmap), written by Janine Tiefenbruck.
+- The textbook [Theory Meets Data](http://stat88.org/textbook/content/intro.html), which explains many of the same ideas and contains more practice problems.
+
+**For combinatorics specifically, there are two supplementary videos I created that you should watch. Both are linked in [this playlist](https://www.youtube.com/playlist?list=PLDNbnocpJUhaMR08k5YBu3AXsZxTcUWsy), which is also linked at [dsc40a.com](https://dsc40a.com)**.
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>Remember, you can always ask questions at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform">q.dsc40a.com</a>!</b></big>
+
+If the direct link doesn't work, click the "🤔 Lecture Questions" <br>link in the top right corner of [dsc40a.com](https://dsc40a.com).
+</center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Law of Total Probability
+
+---
+
+### Example: Getting to school
+
+You conduct a survey where you ask students two questions:
+
+1. How did you get to campus today – trolley, bike, or drive? (Assume these are the only options.)
+
+2. Were you late?
+
+<center>
+
+| | Late | Not Late |
+| --- | --- | --- |
+| **Trolley** | 0.06 | 0.24 |
+| **Bike** | 0.03 | 0.07 |
+| **Drive** | 0.36 | 0.24 |
+
+</center>
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+
+<center>
+
+| | Late | Not Late |
+| --- | --- | --- |
+| **Trolley** | 0.06 | 0.24 |
+| **Bike** | 0.03 | 0.07 |
+| **Drive** | 0.36 | 0.24 |
+
+</center>
+
+<br>
+
+
+What's the probability that a randomly selected person was late?
+
+<center>
+
+A. 0.24 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B. 0.30 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C. 0.45 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D. 0.50 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E. None of the above.
+
+</center>
+
+---
+
+### Example: Getting to school
+
+<center>
+
+| | Late | Not Late |
+| --- | --- | --- |
+| **Trolley** | 0.06 | 0.24 |
+| **Bike** | 0.03 | 0.07 |
+| **Drive** | 0.36 | 0.24 |
+
+</center>
+    
+- Since everyone either takes the trolley, bikes, or drives to school, we have:
+    
+$$\mathbb{P}(\text{Late}) = \mathbb{P}(\text{Late} \cap \text{Trolley})  +  \mathbb{P}(\text{Late} \cap \text{Bike})  +  \mathbb{P}(\text{Late} \cap \text{Drive})$$
+
+
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+
+<center>
+
+| | Late | Not Late |
+| --- | --- | --- |
+| **Trolley** | 0.06 | 0.24 |
+| **Bike** | 0.03 | 0.07 |
+| **Drive** | 0.36 | 0.24 |
+
+</center>
+
+Avi took the trolley to school. What is the probability that he was late?
+
+<center>
+
+A. 0.06 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B. 0.20 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C. 0.25 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D. 0.45 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; E. None of the above.
+
+</center>
+
+
+---
+
+### Example: Getting to school
+
+<center>
+
+| | Late | Not Late |
+| --- | --- | --- |
+| **Trolley** | 0.06 | 0.24 |
+| **Bike** | 0.03 | 0.07 |
+| **Drive** | 0.36 | 0.24 |
+
+</center>
+    
+- Since everyone either takes the trolley, bikes, or drives to school, we have:
+    
+$$\mathbb{P}(\text{Late}) = \mathbb{P}(\text{Late} \cap \text{Trolley})  +  \mathbb{P}(\text{Late} \cap \text{Bike})  +  \mathbb{P}(\text{Late} \cap \text{Drive})$$
+
+- Another way of expressing the same thing:
+        
+    $$\begin{align*}\mathbb{P}(\text{Late}) &= \mathbb{P}(\text{Trolley}) \ \mathbb{P}(\text{Late|Trolley}) + \mathbb{P}(\text{Bike}) \ \mathbb{P}(\text{Late|Bike}) \\ &+ \mathbb{P}(\text{Drive}) \ \mathbb{P}(\text{Late|Drive})\end{align*}$$
+    
+---
+
+### Partitions
+
+- A set of events $E_1, E_2, ..., E_k$ is a **partition** of $S$ if:
+  - $\mathbb{P}(E_i \cap E_j) = 0$ for all pairs $i \neq j$.
+  - $\mathbb{P}(E_1 \cup E_2 \cup ... \cup E_k) = 1.$
+      - Equivalently, $\mathbb{P}(E_1) + \mathbb{P}(E_2) + ... + \mathbb{P}(E_k) = 1$.
+- In other words, $E_1, E_2, ..., E_k$ is a partition of $S$ if every outcome $s \in S$ is in **exactly** one event $E_i$.
+
+---
+
+
+---
+
+### Example partitions
+    
+- In getting to school, the events Trolley, Bike, and Drive.
+- In getting to school, the events Late and Not Late.
+- In selecting an undergraduate student at random, the events Freshman, Sophomore, Junior, and Senior, and Other.
+- In rolling a die, the events Even and Odd.
+- In drawing a card from a standard deck of cards, the events Spades, Clubs, Hearts, and Diamonds.
+- Special case: Any event $A$ and its complement $\bar{A}$.
+
+---
+
+### The Law of Total Probability
+
+- If $A$ is an event and $E_1, E_2, ..., E_k$ is a **partition** of $S$, then:
+
+<br>
+        
+$$\begin{align*}
+    \mathbb{P}(A) &= \mathbb{P}(A \cap E_1) + \mathbb{P}(A \cap E_2) + ... + \mathbb{P}(A \cap E_k) \\
+    &= \sum_{i = 1}^k \mathbb{P}(A \cap E_i)
+\end{align*}$$
+        
+
+---
+
+
+    
+---
+
+### The Law of Total Probability
+
+- If $A$ is an event and $E_1, E_2, ..., E_k$ is a **partition** of $S$, then:
+
+<br>
+        
+$$\begin{align*}
+    \mathbb{P}(A) &= \mathbb{P}(A \cap E_1) + \mathbb{P}(A \cap E_2) + ... + \mathbb{P}(A \cap E_k) \\
+    &= \sum_{i = 1}^k \mathbb{P}(A \cap E_i)
+\end{align*}$$
+        
+- Since $\mathbb{P}(A \cap E_i) = \mathbb{P}(E_i) \cdot \mathbb{P}(A | E_i)$ by the multiplication rule, an equivalent formulation is:
+        
+$$\begin{align*}
+\mathbb{P}(A) &= \mathbb{P}(E_1) \cdot \mathbb{P}(A | E_1) + \mathbb{P}(E_2) \cdot \mathbb{P}(A | E_2) + ... + \mathbb{P}(E_k) \cdot \mathbb{P}(A | E_k) \\
+&= \sum_{i = 1}^k \mathbb{P}(E_i) \cdot \mathbb{P}(A | E_i)\end{align*}$$
+
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+
+<center>
+
+| | Late | Not Late |
+| --- | --- | --- |
+| **Trolley** | 0.06 | 0.24 |
+| **Bike** | 0.03 | 0.07 |
+| **Drive** | 0.36 | 0.24 |
+
+</center>
+
+Lauren is late to school. What is the probability that she took the trolley? Choose the best answer.
+
+<center>
+
+A. About 0.05 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B. About 0.15 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; C. About 0.30 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D. About 0.40 
+
+</center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Bayes' Theorem
+
+---
+
+### Example: Getting to school
+
+- Now, suppose we don't have that entire table. Instead, all you know is:
+  - $\mathbb{P}(\text{Late}) = 0.45$.
+  - $\mathbb{P}(\text{Trolley}) = 0.3$.
+  - $\mathbb{P}(\text{Late|Trolley}) = 0.2$.
+- Can we still find $\mathbb{P}(\text{Trolley|Late})$?
+
+---
+
+### Bayes' Theorem
+
+- Recall that the multiplication rule states that:
+        
+$$\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B | A)$$
+        
+- It also states that:
+        
+$$\mathbb{P}(B \cap A) = \mathbb{P}(B) \cdot \mathbb{P}(A | B)$$
+        
+- But since $A \cap B = B \cap A$, we have that:
+
+<br><br>        
+        
+- Re-arranging yields **Bayes' Theorem**:
+        
+<br>
+        
+---
+
+### Bayes' Theorem and the Law of Total Probability
+
+- Bayes' Theorem:
+        
+$$\boxed{\mathbb{P}(B | A) = \frac{\mathbb{P}(B) \cdot \mathbb{P}(A | B)}{\mathbb{P}(A)}}$$
+        
+- Recall from earlier, for any sample space $S$, $B$ and $\bar{B}$ partition $S$. Using the Law of Total Probability, we can re-write $\mathbb{P}(A)$ as:
+        
+$$\mathbb{P}(A) = \mathbb{P}(A \cap B) + \mathbb{P}(A \cap \bar{B}) = \mathbb{P}(B) \cdot \mathbb{P}(A | B) + \mathbb{P}(\bar{B}) \cdot \mathbb{P}(A | \bar{B})$$
+        
+- This means that we can re-write Bayes' Theorem as:
+        
+$$\mathbb{P}(B | A) = \frac{\mathbb{P}(B) \cdot \mathbb{P}(A | B)}{\mathbb{P}(B) \cdot \mathbb{P}(A | B) + \mathbb{P}(\bar{B}) \cdot \mathbb{P}(A | \bar{B})}$$
+
+---
+
+### Example: Drug test
+
+A manufacturer claims that its drug test will **detect steroid use**. What the company does not tell you is that 15\% of all steroid-free individuals also test positive (the "false positive rate"). Suppose 10\% of the Tour de France bike racers use steroids and your favorite cyclist just tested positive. What's the probability that they used steroids?
+
+
+---
+    
+
+---
+
+
+### Example: Taste test
+- Your friend claims to be able to correctly guess what restaurant a burger came from, after just one bite.
+- The probability that she correctly identifies an In-n-Out Burger is 0.55, a Shake Shack burger is 0.75, and a Five Guys burger is 0.6.
+- You buy 5 In-n-Out burgers, 4 Shake Shack burgers, and 1 Five Guys burger, choose one of the burgers randomly, and give it to her.
+- **Question**: Given that she guessed it correctly, what's the probability she ate a Shake Shack burger?
+
+---
+    
+
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+Consider any two events $A$ and $B$. Choose the expression that's equivalent to:
+
+$$\mathbb{P}(B|A) + \mathbb{P}(\bar{B}|A)$$
+
+- A. $\mathbb{P}(A)$
+- B. $1-\mathbb{P}(B)$
+- C. $\mathbb{P}(B)$
+- D. $\mathbb{P}(\bar{B})$
+- E. 1
+
+---
+    
+### Example: Prosecutor's fallacy
+
+A bank was robbed yesterday by one person. Consider the following facts about the crime:
+  - The person who robbed the bank wore Nikes.
+  - Of the 10,000 other people who came to the bank yesterday, only 10 of them wore Nikes.
+
+The prosecutor finds the prime suspect, and states that "given this evidence, the chance that the prime suspect was not at the crime scene is 1 in 1,000".
+
+1. What is wrong with this statement?
+2. Find the probability that the prime suspect is guilty given only the evidence in the exercise.
+
+
+<footer>
+
+Example from [http://stat88.org/textbook/content/Chapter_02/06_Exercises.html](http://stat88.org/textbook/content/Chapter_02/06_Exercises.html)
+
+</footer>
+
+    
+---
+
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Independence
+
+---
+
+### Updating probabilities
+
+- Bayes' Theorem describes how to update the probability of one event, given that another event has occurred.
+        
+  $$\mathbb{P}(B | A) = \frac{\mathbb{P}(B) \cdot \mathbb{P}(A | B)}{\mathbb{P}(A)}$$
+        
+  - $\mathbb{P}(B)$ can be thought of as the "prior" probability of $B$ occurring, before knowing anything about $A$.
+  - $\mathbb{P}(B | A)$ is sometimes called the "posterior" probability of $B$ occurring, given that $A$ occurred.
+
+- What if knowing that $A$ occurred doesn't change the probability that $B$ occurs? In other words, what if:
+        
+$$\mathbb{P}(B | A) = \mathbb{P}(B)$$
+
+---
+
+### Independent events
+
+- $A$ and $B$ are **independent events** if one event occurring does not affect the chance of the other event occurring.
+        
+$$\mathbb{P}(B | A) = \mathbb{P}(B) \qquad \qquad \mathbb{P}(A | B) = \mathbb{P}(A)$$
+        
+- Otherwise, $A$ and $B$ are **dependent events**.
+        
+- Using Bayes' theorem, we can show that if one of the above statements is true, then so is the other.
+        
+---
+
+### Independent events
+
+- **Equivalent definition**: $A$ and $B$ are independent events if:
+
+$$\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$$
+        
+- To check if $A$ and $B$ are independent, use whichever is easiest:
+  - $\mathbb{P}(B | A) = \mathbb{P}(B)$.
+  - $\mathbb{P}(A | B) = \mathbb{P}(A)$.
+  - $\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$.
+
+---
+
+### Mutual exclusivity and independence
+
+Suppose $A$ and $B$ are two events with non-zero probabilities. Is it possible for $A$ and $B$ to be both mutually exclusive and independent?
+
+- A. Yes.
+- B. No.
+
+---
+
+### Example: Venn diagrams
+
+For three events $A$, $B$, and $C$, we know that:
+
+- $A$ and $C$ are independent,
+- $B$ and $C$ are independent,
+- $A$ and $B$ are mutually exclusive,
+- $\mathbb{P}(A \cup C) = \frac{2}{3}$, $\mathbb{P}(B \cup C) = \frac{3}{4}$, $\mathbb{P}(A \cup B \cup C) = \frac{11}{12}$.
+
+Find $\mathbb{P}(A)$, $\mathbb{P}(B)$, and $\mathbb{P}(C)$.
+
+---
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Summary
+
+---
+
+### Summary
+
+- A set of events $E_1, E_2, ..., E_k$ is a **partition** of $S$ if each outcome in $S$ is in exactly one $E_i$.
+ - The Law of Total Probability states that if $A$ is an event and $E_1, E_2, ..., E_k$ is a partition of $S$, then:
+
+$$\begin{align*}
+\mathbb{P}(A) &= \mathbb{P}(E_1) \cdot \mathbb{P}(A | E_1) + \mathbb{P}(E_2) \cdot \mathbb{P}(A | E_2) + ... + \mathbb{P}(E_k) \cdot \mathbb{P}(A | E_k) \\
+&= \sum_{i = 1}^k \mathbb{P}(E_i) \cdot \mathbb{P}(A | E_i)\end{align*}$$
+
+- Bayes' Theorem states that $\displaystyle \mathbb{P}(B | A) = \frac{\mathbb{P}(B) \cdot \mathbb{P}(A | B)}{\mathbb{P}(A)}$.
+- We often re-write the denominator $\mathbb{P}(A)$ in Bayes' Theorem using the Law of Total Probability.
+
+---
+
+### Summary
+
+- Two events $A$ and $B$ are **independent** when knowledge of one event does not change the probability of the other event.
+- There are there equivalent definitions of independence:
+  - $\mathbb{P}(B|A) = \mathbb{P}(B)$
+  - $\mathbb{P}(A|B) = \mathbb{P}(A)$
+  - $\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$

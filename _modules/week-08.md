@@ -1,5 +1,5 @@
 ---
-title: "Week 8 – Combinatorics, Independence<br><small>📘 NEW: Read the note on <a href='conditional-independence'>conditional independence</a>.</small>"
+title: "Week 8 – Combinatorics, Independence"
 weekNumber: 8
 days:
   - date: "2024-05-20"
@@ -21,7 +21,8 @@ days:
     events:
       - name: LEC 15
         type: lecture
-        title: Independence and Bayes' Theorem
+        title: Bayes' Theorem and Independence
+        blank: resources/lectures/lec15/lec15-blank.pdf
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3

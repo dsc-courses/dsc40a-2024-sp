@@ -1,5 +1,5 @@
 ---
-title: "Week 9 – Naïve Bayes"
+title: "Week 9 – Naïve Bayes<br><small>There will not be live lecture on Tuesday. Instead, lecture will be pre-recorded and posted on Tuesday morning. Along with Tuesday's lecture, read this note on <a href='conditional-independence'>conditional independence</a>.</small>"
 weekNumber: 9
 days:
   - date: '2024-05-27'

@@ -1,0 +1,340 @@
+<!-- These set styles for the entire document. -->
+<style>
+
+h1 {
+  background: linear-gradient(90.2deg, rgba(190, 70, 102, 0.93) -15.6%, rgb(252, 154, 154) -15.6%, rgba(190, 70, 102, 0.92) 17.9%, rgb(58, 13, 48) 81.6%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 { font-size: 72px }
+
+h2 { font-size: 48px; color: #fff; }
+
+h3 { font-size: 36px; vertical-align: top; }
+
+h3, h4, h5 {
+  background: rgb(58, 13, 48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3, h4, h5 { color: #444 }
+
+section {
+  position: absolute;
+  height: inherit;
+  vertical-align: bottom;
+  margin: 0;
+  display: table-cell;
+}
+
+</style>
+
+<br><br><br>
+
+##### Lecture 14
+
+# More Combinatorics Examples
+
+#### DSC 40A, Spring 2024
+
+---
+
+### Announcements
+
+- Homework 6 is due on **Thursday at 11:59PM**.
+  - Combinatorics is hard! Come to office hours.
+
+---
+
+### Agenda
+
+- Example: Selecting students.
+- Example: An unfair coin.
+- Example: Poker.
+- Example: Chess.
+
+Remember, we've posted **many** probability resources on the [resources tab of the course website](https://dsc40a.com/resources/#probability). These will come in handy! Specific resources you should look at:
+- The [DSC 40A probability roadmap](https://dsc40a.com/resources/#probability-roadmap), written by Janine Tiefenbruck.
+- The textbook [Theory Meets Data](http://stat88.org/textbook/content/intro.html), which explains many of the same ideas and contains more practice problems.
+
+**For combinatorics specifically, there are two supplementary videos I created that you should watch. Both are linked in [this playlist](https://www.youtube.com/playlist?list=PLDNbnocpJUhaMR08k5YBu3AXsZxTcUWsy), which is also linked at [dsc40a.com](https://dsc40a.com)**.
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>Remember, you can always ask questions at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform">q.dsc40a.com</a>!</b></big>
+
+If the direct link doesn't work, click the "🤔 Lecture Questions" <br>link in the top right corner of [dsc40a.com](https://dsc40a.com).
+</center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Example: Selecting students
+
+<span style="color:white">We'll start by working through a few examples we didn't get to finish on Thursday.</span>
+
+---
+
+### Summary
+
+Suppose we want to select $k$ elements from a group of $n$ possible elements. The following table summarizes whether the problem involves sequences, permutations, or combinations, along with the number of relevant orderings.
+
+
+|  | Yes, order matters | No, order doesn't matter |
+| --- | --- | --- |
+| **With replacement**<br><small>Repetition allowed</small> | $\boxed{n^k}$ possible **sequences**  | more complicated: watch [**this video**](https://youtu.be/epY_8lcKxCU?si=qFOwGWI4UzkWoE9J), or see the domino example |
+| **Without replacement**<br><small>Repetition not allowed</small> | $\boxed{\frac{n!}{(n-k)!}}$ possible **permutations** | $\boxed{n \choose k}$ **combinations** |
+
+
+---
+
+### Using the binomial coefficient, ${n \choose k}$
+
+As an example, let's evaluate:
+
+$${9 \choose 2} + {9 \choose 3}$$
+
+---
+
+
+### Combinatorics as a tool for probability
+
+- If $S$ is a sample space consisting of equally-likely outcomes, and $A$ is an event, then $\mathbb{P}(A) = \frac{|A|}{|S|}$.
+
+- In many examples, this will boil down to using permutations and/or combinations to count $|A|$ and $|S|$.
+- **Tip**: Before starting a probability problem, always think about what the sample space $S$ is!
+
+---
+
+### Overview: Selecting students
+
+We're going answer the same question using several different techniques.
+    
+**There are 20 students in a class. Avi is one of them. Suppose we select 5 students in the class uniformly at random **without replacement**. What is the probability that Avi is among the 5 selected students?**
+    
+---
+
+### Selecting students
+#### Method 1: Using permutations
+    
+There are 20 students in a class. Avi is one of them. Suppose we select 5 students in the class uniformly at random **without replacement**. What is the probability that Avi is among the 5 selected students?
+    
+    
+---
+
+---
+
+### Selecting students
+#### Method 2: Using permutations and the complement
+    
+There are 20 students in a class. Avi is one of them. Suppose we select 5 students in the class uniformly at random **without replacement**. What is the probability that Avi is among the 5 selected students?
+
+---
+
+---
+
+### Selecting students
+#### Method 3: Using combinations
+    
+There are 20 students in a class. Avi is one of them. Suppose we select 5 students in the class uniformly at random **without replacement**. What is the probability that Avi is among the 5 selected students?
+
+---
+
+
+    
+---
+
+
+### Selecting students
+#### Method 4: The "easy" way
+    
+There are 20 students in a class. Avi is one of them. Suppose we select 5 students in the class uniformly at random **without replacement**. What is the probability that Avi is among the 5 selected students?
+    
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+#### With vs. without replacement
+
+We've determined that a probability that a random sample of 5 students from a class of 20 **without replacement** contains Avi (one student in particular) is $\frac{1}{4}$.
+    
+Suppose we instead sampled **with replacement**. Would the resulting probability be equal to, greater than, or less than $\frac{1}{4}$?
+        
+- A. Equal to.
+- B. Greater than.
+- C. Less than.
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Example: An unfair coin
+
+---
+
+### Followup: An unfair coin
+
+In the video you were asked to watch, we flipped an **unfair** coin 10 times, where the coin was biased such that for each flip, $\mathbb{P}(\text{heads}) = \frac{1}{3}$.
+
+1. What is the probability that we see the specific sequence HHHHTTTTTT?<br><br><br><br>
+2. What is the probability that we see exactly 4 heads?
+
+---
+
+### Followup: An unfair coin
+
+3. What is the probability that we see exactly $k$ heads, where $0 \leq k \leq 10$?<br><br><br><br><br>
+4. What is the probability that we see _at least_ $k$ heads, where $0 \leq k \leq 10$?
+
+---
+
+
+---
+
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Example: Poker
+
+---
+
+### Deck of cards
+
+- There are **52** cards in a standard deck.
+- Each card has a suit (4 possibilities) and a value (13 possibilities).
+
+<br>
+
+<center>
+
+<span style="color:red">❤️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:red">♦️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♣: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♠: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+
+</center>
+
+<br>
+
+
+- In poker, each player is dealt 5 cards, called a **hand**. The order of cards in a hand does not matter.
+
+---
+
+### Deck of cards
+
+1. How many 5 card hands are there in poker?
+
+<br><br><br>
+
+2. How many 5 card hands are there where all cards are of the same suit (i.e. a "flush")?
+
+---
+
+### Deck of cards
+
+3. How many 5 card hands are there that include four cards of the same value (i.e. a "four-of-a-kind")?
+
+---
+
+### Deck of cards
+
+4. How many 5 card hands are there that have all card values consecutive (i.e. a "straight")?
+
+---
+
+### Deck of cards
+
+5. How many 5 card hands are there that have all card values consecutive and of the same suit (i.e. a "straight flush")?
+
+---
+
+### Deck of cards
+
+6. How many 5 card hands are there that include exactly one pair of values (e.g. aabcd)?
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Example: Chess
+
+---
+
+### Chess pieces
+
+(Source: [Spring 2023 Midterm 2, Problem 3](https://practice.dsc40a.com/sp23-midterm2/index.html#problem-3))
+
+A set of chess pieces has 32 pieces. 16 of these are black and 16 of these are white. **In each color**, the 16 pieces are:
+
+<br>
+
+<center>
+8 pawns, 2 bishops, 2 knights, 2 rooks, 1 queen, and 1 king
+</center>
+
+<br>
+
+When there are multiple pieces of a given color and type (for example, 
+8 white pawns), we will assume they are **indistinguishable** from one another.
+
+In this problem, a **lineup** is a way of arranging items in a straight line.
+
+---
+
+### Chess pieces
+
+1. A chess player lines up all 16 **white pieces** from the set of chess pieces. How many different-looking lineups can be created? Remember, some pieces look the same.
+
+---
+
+### Chess pieces
+
+2. A chess player lines up all 16 **pawns** from the set of chess pieces. How many lineups have white pawns on both ends?
+
+---
+
+### Chess pieces
+
+3. A chess player lines up all 16 **pawns** from the set of chess pieces. Assuming that each different-looking lineup is equally likely, what is the probability that the lineup has two of the same-colored pawns on both ends (both black or both white)?
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Summary
+
+---
+
+### Summary
+
+Suppose we want to select $k$ elements from a group of $n$ possible elements. The following table summarizes whether the problem involves sequences, permutations, or combinations, along with the number of relevant orderings.
+
+
+|  | Yes, order matters | No, order doesn't matter |
+| --- | --- | --- |
+| **With replacement**<br><small>Repetition allowed</small> | $\boxed{n^k}$ possible **sequences**  | more complicated: watch [**this video**](https://youtu.be/epY_8lcKxCU?si=qFOwGWI4UzkWoE9J), or see the domino example |
+| **Without replacement**<br><small>Repetition not allowed</small> | $\boxed{\frac{n!}{(n-k)!}}$ possible **permutations** | $\boxed{n \choose k}$ **combinations** |
