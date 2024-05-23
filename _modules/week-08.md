@@ -1,5 +1,5 @@
 ---
-title: "Week 8 – Combinatorics, Independence"
+title: "Week 8 – Combinatorics, Independence<br><small>📘 NEW: Read the note on <a href='conditional-independence'>conditional independence</a>.</small>"
 weekNumber: 8
 days:
   - date: "2024-05-20"
