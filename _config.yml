@@ -41,6 +41,7 @@ footer_content:
 # Collections for website data
 collections:
   staffers:
+  advicers:
   staffersnobio:
   modules:
   schedules:
@@ -52,6 +53,12 @@ defaults:
       type: staffers
     values:
       layout: staffer
+      subpath: '/assets/images/'
+  - scope:
+      path: ''
+      type: advicers
+    values:
+      layout: advicer
       subpath: '/assets/images/'
   - scope:
       path: ''

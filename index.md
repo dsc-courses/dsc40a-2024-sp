@@ -15,6 +15,10 @@ nav_order: 1
 
 [Jump to the current week](#week-7-probability-br-small-read-a-href-resources-probability-roadmap-janine-s-probability-roadmap-a-and-a-href-http-stat88-org-textbook-content-intro-html-chapters-1-and-2-of-this-probability-textbook-a-small){: .btn } [Assignment Solutions](https://edstem.org/us/courses/57667/discussion/4730099){: .btn .btn-purple }
 
+{: .green }
+> Check out the new [**🫂 Advice**](advice) page, which contains tips on how to succeed in DSC 40A from current tutors, based on their experiences in the course.<br>
+> Also, note that there is no live lecture on Tuesday, May 28th, and instead, a pre-recorded lecture video will be posted on Tuesday morning. 
+
 <!-- {: .green }
 > **The Midterm Exam is on Tuesday, May 7th during lecture (yes, [campus is back in person tomorrow](https://edstem.org/us/courses/57667/discussion/4920907))! Read the [logistics post on Ed ASAP](https://edstem.org/us/courses/57667/discussion/4898894), and prepare by:**
 > - Attempting past exam problems at [**practice.dsc40a.com**](https://practice.dsc40a.com).
