@@ -6,7 +6,7 @@ days:
     events:
       - name: DISC 8
         type: disc
-        title: Groupwork 7
+        title: "No discussion section (Memorial Day)"
   - date: '2024-05-28'
     events:
       - name: LEC 16
