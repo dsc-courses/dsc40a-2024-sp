@@ -25,5 +25,7 @@ days:
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
       - name: HW 7
         type: hw
-        title: Homework 7
+        title: <br>Homework 7</br>
+        problems: resources/homeworks/hw07.pdf
+        template: https://www.overleaf.com/read/mpbkhfgkcqsv#906d88
 ---
