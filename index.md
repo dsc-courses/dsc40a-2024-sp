@@ -17,7 +17,7 @@ nav_order: 1
 
 {: .green }
 > Check out the new [**🫂 Advice**](advice) page, which contains tips on how to succeed in DSC 40A from current tutors, based on their experiences in the course.<br>
-> Also, note that there is no live lecture on Tuesday, May 28th, and instead, a pre-recorded lecture video will be posted on Tuesday morning. 
+> **Note that there is no groupwork or office hours on Monday due to the Memorial Day holiday. We will still post the problems we would've taken up in discussion and their solutions, but there will be no assignment to submit. Also, note that there is no live lecture on Tuesday, May 28th, and instead, a pre-recorded lecture video will be posted on Tuesday morning.**
 
 <!-- {: .green }
 > **The Midterm Exam is on Tuesday, May 7th during lecture (yes, [campus is back in person tomorrow](https://edstem.org/us/courses/57667/discussion/4920907))! Read the [logistics post on Ed ASAP](https://edstem.org/us/courses/57667/discussion/4898894), and prepare by:**
