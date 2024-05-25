@@ -6,7 +6,7 @@ days:
     events:
       - name: DISC 8
         type: disc
-        title: "No discussion section (Memorial Day)"
+        title: "No discussion section (Memorial Day); worksheet will be posted but not due"
   - date: '2024-05-28'
     events:
       - name: LEC 16
@@ -25,7 +25,7 @@ days:
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
       - name: HW 7
         type: hw
-        title: <br>Homework 7</br>
+        title: <b>Homework 7</b>
         problems: resources/homeworks/hw07.pdf
         template: https://www.overleaf.com/read/mpbkhfgkcqsv#906d88
 ---
