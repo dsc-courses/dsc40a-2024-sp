@@ -7,6 +7,8 @@ days:
       - name: DISC 8
         type: disc
         title: "No discussion section (Memorial Day); worksheet will be posted but not due"
+        problems: resources/groupworks/gw07.pdf
+        template: https://www.overleaf.com/read/gdmdnrmtxjjz#eec52f
   - date: '2024-05-28'
     events:
       - name: LEC 16
