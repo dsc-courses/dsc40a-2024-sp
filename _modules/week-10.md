@@ -11,7 +11,7 @@ days:
     events:
       - name: LEC 18
         type: lecture
-        title: Classification
+        title: Naïve Bayes, Continued
         # url: resources/lectures/lec03/lec03.html
         # filled: resources/lectures/lec03/lec03-filled.html
         # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3

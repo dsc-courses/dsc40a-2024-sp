@@ -13,23 +13,13 @@ nav_order: 1
 
 {{ site.staffersnobio }}
 
-[Jump to the current week](#week-7-probability-br-small-read-a-href-resources-probability-roadmap-janine-s-probability-roadmap-a-and-a-href-http-stat88-org-textbook-content-intro-html-chapters-1-and-2-of-this-probability-textbook-a-small){: .btn } [Assignment Solutions](https://edstem.org/us/courses/57667/discussion/4730099){: .btn .btn-purple }
+[Jump to the current week](#week-9-conditional-independence-na%C3%AFve-bayes-br-small-there-will-not-be-live-lecture-on-tuesday-instead-a-pre-recorded-video-and-annotated-slides-have-already-been-posted-below-along-with-tuesday-s-lecture-read-this-note-on-a-href-conditional-independence-conditional-independence-a-small){: .btn } [Assignment Solutions](https://edstem.org/us/courses/57667/discussion/4730099){: .btn .btn-purple }
 
 {: .green }
-> Check out the new [**🫂 Advice**](advice) page, which contains tips on how to succeed in DSC 40A from current tutors, based on their experiences in the course.<br>
-> **Note that there is no groupwork or office hours on Monday due to the Memorial Day holiday. We will still post the problems we would've taken up in discussion and their solutions, but there will be no assignment to submit. Also, note that there is no live lecture on Tuesday, May 28th, and instead, a pre-recorded lecture video will be posted on Tuesday morning.**
-
-<!-- {: .green }
-> **The Midterm Exam is on Tuesday, May 7th during lecture (yes, [campus is back in person tomorrow](https://edstem.org/us/courses/57667/discussion/4920907))! Read the [logistics post on Ed ASAP](https://edstem.org/us/courses/57667/discussion/4898894), and prepare by:**
-> - Attempting past exam problems at [**practice.dsc40a.com**](https://practice.dsc40a.com).
-> - Reviewing the recently-updated [**FAQs**](faqs) page.
-> - Creating your own index card to bring to the exam, using [**our example index card**](https://dsc40a.com/resources/index-card.pdf) as inspiration (if you want).
-> - Reviewing the podcast of the review session, linked in Week 5 below.
-> - Reviewing [**assignment solutions**](https://edstem.org/us/courses/57667/discussion/4730099).
-> - Double-checking your seat assignment in the [**logistics post above**](https://edstem.org/us/courses/57667/discussion/4898894). -->
-
-<!-- {: .green }
-**Homework 5 is released and is due on Thursday, May 16th. Midterm Exam scores are available on Gradescope; read [this Ed post](https://edstem.org/us/courses/57667/discussion/4928912) for advice on how to move forward.** -->
+> **A few things to note**:
+> - **There is no live lecture on Tuesday; a podcast + annotated slides have already been posted below, along with a required reading.**
+> - **Monday's groupwork worksheet is not due, and its solutions are already on Ed.**
+> -  **Check out the new [🫂 Advice](advice) page, which contains tips on how to succeed in DSC 40A from current tutors, based on their experiences in the course.**
 
 {% for module in site.modules %}
 {{ module }}
