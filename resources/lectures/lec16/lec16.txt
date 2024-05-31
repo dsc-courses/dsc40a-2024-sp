@@ -1,0 +1,393 @@
+<!-- These set styles for the entire document. -->
+<style>
+
+h1 {
+  background: linear-gradient(90.2deg, rgba(190, 70, 102, 0.93) -15.6%, rgb(252, 154, 154) -15.6%, rgba(190, 70, 102, 0.92) 17.9%, rgb(58, 13, 48) 81.6%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 { font-size: 72px }
+
+h2 { font-size: 48px; color: #fff; }
+
+h3 { font-size: 36px; vertical-align: top; }
+
+h3, h4, h5 {
+  background: rgb(58, 13, 48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3, h4, h5 { color: #444 }
+
+section {
+  position: absolute;
+  height: inherit;
+  vertical-align: bottom;
+  margin: 0;
+  display: table-cell;
+}
+
+</style>
+
+<br><br><br>
+
+##### Lecture 16
+
+# Independence and Conditional Independence
+
+#### DSC 40A, Spring 2024
+
+---
+
+### Announcements
+
+- There is no live lecture today (Tuesday). Instead, the lecture video will be pre-recorded and posted on the course website by Tuesday morning.
+  - There's also a [lecture note](https://dsc40a.com/conditional-independence/) I wrote for this lecture that you should read. 
+- Homework 7 is due on **Thursday at 11:59PM**.
+- The final exam is soon: start practicing at [practice.dsc40a.com](https://practice.dsc40a.com)!
+  - There are tons of past probability exams, searchable by topic.
+
+---
+
+### Agenda
+
+- Independence.
+- Conditional independence.
+
+Remember, we've posted **many** probability resources on the [resources tab of the course website](https://dsc40a.com/resources/#probability). These will come in handy! Specific resources you should look at:
+- The [DSC 40A probability roadmap](https://dsc40a.com/resources/#probability-roadmap), written by Janine Tiefenbruck.
+- The textbook [Theory Meets Data](http://stat88.org/textbook/content/intro.html), which explains many of the same ideas and contains more practice problems.
+
+**For combinatorics specifically, there are two supplementary videos I created that you should watch. Both are linked in [this playlist](https://www.youtube.com/playlist?list=PLDNbnocpJUhaMR08k5YBu3AXsZxTcUWsy), which is also linked at [dsc40a.com](https://dsc40a.com)**.
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>Remember, you can always ask questions at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform">q.dsc40a.com</a>!</b></big>
+
+If the direct link doesn't work, click the "🤔 Lecture Questions" <br>link in the top right corner of [dsc40a.com](https://dsc40a.com).
+</center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Independence
+
+---
+
+### Updating probabilities
+
+- Bayes' Theorem describes how to update the probability of one event, given that another event has occurred.
+        
+  $$\mathbb{P}(B | A) = \frac{\mathbb{P}(B) \cdot \mathbb{P}(A | B)}{\mathbb{P}(A)}$$
+        
+  - $\mathbb{P}(B)$ can be thought of as the "prior" probability of $B$ occurring, before knowing anything about $A$.
+  - $\mathbb{P}(B | A)$ is sometimes called the "posterior" probability of $B$ occurring, given that $A$ occurred.
+
+- What if knowing that $A$ occurred doesn't change the probability that $B$ occurs? In other words, what if:
+        
+$$\mathbb{P}(B | A) = \mathbb{P}(B)$$
+
+---
+
+### Independent events
+
+- $A$ and $B$ are **independent events** if one event occurring does not affect the chance of the other event occurring.
+        
+$$\mathbb{P}(B | A) = \mathbb{P}(B) \qquad \qquad \mathbb{P}(A | B) = \mathbb{P}(A)$$
+        
+- Otherwise, $A$ and $B$ are **dependent events**.
+        
+- Using Bayes' theorem, we can show that if one of the above statements is true, then so is the other.
+        
+---
+
+### Independent events
+
+- **Equivalent definition**: $A$ and $B$ are independent events if:
+
+$$\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$$
+        
+- To check if $A$ and $B$ are independent, use whichever is easiest:
+  - $\mathbb{P}(B | A) = \mathbb{P}(B)$.
+  - $\mathbb{P}(A | B) = \mathbb{P}(A)$.
+  - $\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$.
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br>
+
+#### Mutual exclusivity and independence
+
+Suppose $A$ and $B$ are two events with non-zero probabilities. Is it possible for $A$ and $B$ to be both mutually exclusive and independent?
+
+- A. Yes.
+- B. No.
+
+---
+
+### Example: Venn diagrams
+
+For three events $A$, $B$, and $C$, we know that:
+
+- $A$ and $C$ are independent,
+- $B$ and $C$ are independent,
+- $A$ and $B$ are mutually exclusive,
+- $\mathbb{P}(A \cup C) = \frac{2}{3}$, $\mathbb{P}(B \cup C) = \frac{3}{4}$, $\mathbb{P}(A \cup B \cup C) = \frac{11}{12}$.
+
+Find $\mathbb{P}(A)$, $\mathbb{P}(B)$, and $\mathbb{P}(C)$.
+
+---
+
+---
+
+### Example: Cards
+
+<center>
+
+<span style="color:red">❤️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:red">♦️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♣: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♠: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+
+</center>
+
+- Suppose you draw two cards, one at a time.
+  - $A$ is the event that the first card is a heart.
+  - $B$ is the event that the second card is a club.
+- If you draw the cards **with** replacement, are $A$ and $B$ independent?
+- If you draw the cards **without** replacement, are $A$ and $B$ independent?
+
+
+---
+
+### Example: Cards
+
+<center>
+
+<span style="color:red">❤️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:red">♦️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♣: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♠: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+
+</center>
+
+- Suppose you draw one card from a deck of 52.
+  - $A$ is the event that the card is a heart.
+  - $B$ is the event that the card is a face card (J, Q, K).
+
+- Are $A$ and $B$ independent?
+
+---
+
+
+---
+
+### Assuming independence
+
+- Sometimes we assume that events are independent to make calculations easier.
+
+- Real-world events are almost never exactly independent, but they may be close.
+
+---
+
+### Example: Breakfast
+
+1\% of UCSD students are DSC majors. 25\% of UCSD students eat avocado toast for breakfast. Assuming that being a DSC major and eating avocado toast for breakfast are independent:
+
+1. What percentage of DSC majors eat avocado toast for breakfast?
+
+<br><br>
+
+2. What percentage of UCSD students are DSC majors who eat avocado toast for breakfast?
+
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Conditional independence
+
+---
+
+### Conditional independence
+
+- Sometimes, events that are dependent **become** independent, upon learning some new information.
+
+- Or, events that are independent can become dependent, given additional information.
+
+---
+
+### Example: Cards
+
+<center>
+
+<span style="color:red">❤️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:red">♦️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♣: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♠: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+
+</center>
+
+
+- Your dog ate the King of Clubs. Suppose you draw one card from a deck of 51.
+  - $A$ is the event that the card is a heart.
+  - $B$ is the event that the card is a face card (J, Q, K).
+- Are $A$ and $B$ independent?
+
+
+---
+
+### Example: Cards
+
+<center>
+
+<span style="color:red">❤️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:red">♦️: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♣: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+<span style="color:black">♠: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</span>
+
+</center>
+
+
+- Your dog ate the King of Clubs. Suppose you draw one card from a deck of 51.
+  - $A$ is the event that the card is a heart.
+  - $B$ is the event that the card is a face card (J, Q, K).
+- Suppose you learn that the card is red. Are $A$ and $B$ independent given this new information?
+
+
+---
+
+### Conditional independence
+
+- Recall that $A$ and $B$ are independent if:
+
+$$\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$$
+
+- $A$ and $B$ are **conditionally independent** given $C$ if:
+
+$$\mathbb{P}((A \cap B) | C) = \mathbb{P}(A | C) \cdot \mathbb{P}(B | C)$$
+
+- Given that $C$ occurs, this says that $A$ and $B$ are independent of one another.
+
+---
+
+### Assuming conditional independence
+
+- Sometimes we assume that events are conditionally independent to make calculations easier.
+
+- Real-world events are almost never exactly conditionally independent, but they may be close.
+
+---
+
+### Example: Harry Potter and Discord
+
+Suppose that 50\% of UCSD students like Harry Potter and 80\% of UCSD students use Discord. What is the probability that a random UCSD student likes Harry Potter and uses Discord, assuming that these events are conditionally independent given that a person is a UCSD student?
+
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+- Is it reasonable to assume conditional independence of:
+  - liking Harry Potter
+  - using Discord
+given that a person is a UCSD student?
+- Is it reasonable to assume independence of these events in general, among all people?
+
+**Which assumptions do you think are reasonable?**
+
+A. Both. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B. Conditional independence only. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> C. Independence (in general) only. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D. Neither.
+
+---
+
+### Independence vs. conditional independence
+
+In general, **there is no relationship between independence and conditional independence**. All four scenarios before are possible:
+
+1. $A$ and $B$ **are** independent, and **are** conditionally independent given $C$.
+2. $A$ and $B$ **are** independent, but are **not** conditionally independent given $C$.
+3. $A$ and $B$ are **not** independent, but **are** conditionally independent given $C$.
+4. $A$ and $B$ are **not** independent, and are **not** conditionally independent given $C$.
+
+---
+
+### Example: Constructing events
+
+- Consider a sample space $S = \{1, 2, 3, 4, 5, 6, 7, 8\}$ where all outcomes are equally likely.
+- Specify events $A$, $B$, and $C$ that satisfy the given conditions (e.g. $A = \{2, 5, 6\}$).
+- Choose events that are neither impossible nor certain, i.e. $0 < \mathbb{P}(A), \mathbb{P}(B), \mathbb{P}(C) < 1$.
+
+**Scenario 1**: $A$ and $B$ **are** independent, and **are** conditionally independent given $C$.
+
+---
+
+### Example: Constructing events
+
+- Consider a sample space $S = \{1, 2, 3, 4, 5, 6, 7, 8\}$ where all outcomes are equally likely.
+- Specify events $A$, $B$, and $C$ that satisfy the given conditions (e.g. $A = \{2, 5, 6\}$).
+- Choose events that are neither impossible nor certain, i.e. $0 < \mathbb{P}(A), \mathbb{P}(B), \mathbb{P}(C) < 1$.
+
+**Scenario 2**: $A$ and $B$ **are** independent, but are **not** conditionally independent given $C$.
+
+---
+
+### Example: Constructing events
+
+- Consider a sample space $S = \{1, 2, 3, 4, 5, 6, 7, 8\}$ where all outcomes are equally likely.
+- Specify events $A$, $B$, and $C$ that satisfy the given conditions (e.g. $A = \{2, 5, 6\}$).
+- Choose events that are neither impossible nor certain, i.e. $0 < \mathbb{P}(A), \mathbb{P}(B), \mathbb{P}(C) < 1$.
+
+**Scenario 3**: $A$ and $B$ are **not** independent, but **are** conditionally independent given $C$.
+
+
+---
+
+### Example: Constructing events
+
+- Consider a sample space $S = \{1, 2, 3, 4, 5, 6, 7, 8\}$ where all outcomes are equally likely.
+- Specify events $A$, $B$, and $C$ that satisfy the given conditions (e.g. $A = \{2, 5, 6\}$).
+- Choose events that are neither impossible nor certain, i.e. $0 < \mathbb{P}(A), \mathbb{P}(B), \mathbb{P}(C) < 1$.
+
+**Scenario 4**: $A$ and $B$ are **not** independent, and are **not** conditionally independent given $C$.
+
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Summary
+
+---
+
+### Summary
+
+- Two events $A$ and $B$ are **independent** when knowledge of one event does not change the probability of the other event.
+  - Equivalent conditions: $\mathbb{P}(B|A) = \mathbb{P}(B)$, $\mathbb{P}(A|B) = \mathbb{P}(A)$, $\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$.
+- Two events $A$ and $B$ are **conditionally independent** given a third event, $C$, if they are independent given knowledge of event $C$.
+  - Condition: $\mathbb{P}((A \cap B) | C) = \mathbb{P}(A | C) \cdot \mathbb{P}(B | C)$.
+- In general, there is no relationship between independence and conditional independence.
+- **Next time**: Using Bayes' Theorem and conditional independence to solve the **classification problem** in machine learning.

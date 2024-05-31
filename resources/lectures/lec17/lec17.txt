@@ -1,0 +1,933 @@
+<!-- These set styles for the entire document. -->
+<style>
+
+h1 {
+  background: linear-gradient(90.2deg, rgba(190, 70, 102, 0.93) -15.6%, rgb(252, 154, 154) -15.6%, rgba(190, 70, 102, 0.92) 17.9%, rgb(58, 13, 48) 81.6%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 { font-size: 72px }
+
+h2 { font-size: 48px; color: #fff; }
+
+h3 { font-size: 36px; vertical-align: top; }
+
+h3, h4, h5 {
+  background: rgb(58, 13, 48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3, h4, h5 { color: #444 }
+
+section {
+  position: absolute;
+  height: inherit;
+  vertical-align: bottom;
+  margin: 0;
+  display: table-cell;
+}
+
+</style>
+
+<br><br><br>
+
+##### Lecture 17
+
+# Naïve Bayes
+
+#### DSC 40A, Spring 2024
+
+---
+
+### Announcements
+
+- Homework 7 is due **tonight**. **New: You can use two slip days on it.**
+- Homework 8, the final homework, will be released tomorrow and will be due on Thursday, June 6th. **New: You cannot use slip days on it, but it'll be max 3 questions.**
+- Make sure you've watched the recorded lecture from Tuesday and read the accompanying [lecture note](https://dsc40a.com/conditional-independence/).
+- Look at the solutions to last Monday's groupwork worksheet posted on Ed!
+- Read the new [Advice](https://dsc40a.com/advice/) page written by the tutors.
+
+---
+
+### The Final Exam is on Saturday, June 8th!
+
+- The Midterm Exam is on **Saturday, June 8th from 8-11AM**.
+<small>
+    - You will receive a randomized seat assignment early next week.
+</small>
+- 180 minutes, on paper, no calculators or electronics.
+<small>
+    - **You are allowed to bring two double-sided index cards (4 inches by 6 inches) of notes that you write by hand (no iPad).**
+</small>
+- Content: All lectures (including next week), homeworks, and groupworks.
+- We will have two review sessions. In each of them, the first hour will be a mock exam **which you will take silently on paper**; we will take up the problems in the second half.
+  - Tuesday, June 4th, 5-7PM (empirical risk minimization and linear algebra).
+  - Thursday, June 6th, 5-7PM (gradient descent and probability).
+- Friday, June 7th, 4-9PM: office hours in HDSI 123.
+- Prepare by practicing with old exam problems at [practice.dsc40a.com](https://practice.dsc40a.com).
+
+---
+
+### Agenda
+
+- Classification.
+- Classification and conditional independence.
+- Naïve Bayes.
+
+---
+
+### Recap: Bayes Theorem', independence, and conditional independence
+
+- Bayes' Theorem describes how to update the probability of one event, given that another event has occurred.
+        
+  $$\mathbb{P}(B | A) = \frac{\mathbb{P}(B) \cdot \mathbb{P}(A | B)}{\mathbb{P}(A)}$$
+        
+- $A$ and $B$ are **independent** if:
+$$\mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)$$
+- $A$ and $B$ are **conditionally independent** given $C$ if:
+
+  $$\mathbb{P}((A \cap B) | C) = \mathbb{P}(A | C) \cdot \mathbb{P}(B | C)$$
+  - In general, there is no relationship between independence and conditional independence.
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>Remember, you can always ask questions at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform">q.dsc40a.com</a>!</b></big>
+
+If the direct link doesn't work, click the "🤔 Lecture Questions" <br>link in the top right corner of [dsc40a.com](https://dsc40a.com).
+</center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Classification
+
+---
+
+<center>
+
+<img src="imgs/taxonomy.svg" width=90%>
+
+</center>
+
+---
+
+### Classification problems
+    
+- Like with regression, we're interested in making predictions based on data (called **training data**) for which we know the value of the response variable.
+- The difference is that the response variable is now **categorical**.
+- Categories are called **classes**.
+- Example classification problems:
+  - Deciding whether a patient has kidney disease.
+  - Identifying handwritten digits.
+  - Determining whether an avocado is ripe.
+  - Predicting whether credit card activity is fraudulent.
+  - Predicting whether you'll be late to school or not.
+        
+    
+---
+
+### Example: Avocados
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+<small><small><small>
+
+| color        | ripeness |
+|--------------|----------|
+| bright green | unripe ❌ |
+| green-black  | ripe ✅    |
+| purple-black | ripe  ✅   |
+| green-black  | unripe ❌ |
+| purple-black | ripe  ✅   |
+| bright green | unripe ❌  |
+| green-black  | ripe  ✅   |
+| purple-black | ripe  ✅   |
+| green-black  | ripe  ✅   |
+| green-black  | unripe ❌  |
+| purple-black | ripe ✅    |
+
+</small></small></small>
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+You have a green-black avocado, and want to know if it is ripe.
+
+<br>
+
+**Question**: Based on this data, would you predict your avocado is ripe or unripe?
+
+</div>
+</div>
+
+---
+
+### Example: Avocados
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+<small><small><small>
+
+| color        | ripeness |
+|--------------|----------|
+| bright green | unripe ❌ |
+| green-black  | ripe ✅    |
+| purple-black | ripe  ✅   |
+| green-black  | unripe ❌ |
+| purple-black | ripe  ✅   |
+| bright green | unripe ❌  |
+| green-black  | ripe  ✅   |
+| purple-black | ripe  ✅   |
+| green-black  | ripe  ✅   |
+| green-black  | unripe ❌  |
+| purple-black | ripe ✅    |
+
+</small></small></small>
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+You have a green-black avocado, and want to know if it is ripe. Based on this data, would you predict your avocado is ripe or unripe?
+
+<br>
+
+**Strategy**: Calculate two probabilities:
+
+$$\mathbb{P}(\text{ripe} | \text{green-black})$$
+
+$$\mathbb{P}(\text{unripe} | \text{green-black})$$
+
+Then, predict the class with a **larger** probability.
+
+</div>
+</div>
+
+
+---
+
+### Estimating probabilities
+    
+- We would like to determine $\mathbb{P}(\text{ripe|green-black})$ and $\mathbb{P}(\text{unripe|green-black})$ for all avocados in the universe.
+- All we have is a single dataset, which is a **sample** of all avocados in the universe.
+- We can estimate these probabilities by using sample proportions.
+  $$\mathbb{P}(\text{ripe|green-black}) \approx \frac{\text{\# ripe green-black avocados in sample}}{\text{\# green-black avocados in sample}}$$
+- Per the **law of large numbers** in DSC 10, larger samples lead to more reliable estimates of population parameters.
+    
+---
+
+### Example: Avocados
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+<small><small><small>
+
+| color        | ripeness |
+|--------------|----------|
+| bright green | unripe ❌ |
+| green-black  | ripe ✅    |
+| purple-black | ripe  ✅   |
+| green-black  | unripe ❌ |
+| purple-black | ripe  ✅   |
+| bright green | unripe ❌  |
+| green-black  | ripe  ✅   |
+| purple-black | ripe  ✅   |
+| green-black  | ripe  ✅   |
+| green-black  | unripe ❌  |
+| purple-black | ripe ✅    |
+
+</small></small></small>
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+You have a green-black avocado, and want to know if it is ripe. Based on this data, would you predict your avocado is ripe or unripe?
+
+<br>
+
+$\mathbb{P}(\text{ripe} | \text{green-black})=$
+
+<br><br>
+
+$\mathbb{P}(\text{unripe} | \text{green-black})=$
+
+</div>
+</div>
+
+---
+
+### Bayes' Theorem for Classification
+    
+- Suppose that $A$ is the event that an avocado has certain features, and $B$ is the event that an avocado belongs to a certain class. Then, by Bayes' Theorem:
+$$\mathbb{P}(B | A) = \frac{\mathbb{P}(B) \cdot \mathbb{P}(A | B)}{\mathbb{P}(A)}$$
+- More generally:
+$$\mathbb{P}(\text{class|features}) = \frac{\mathbb{P}(\text{class}) \cdot \mathbb{P}(\text{features|class})}{\mathbb{P}(\text{features})}$$
+- What's the point?
+  - Usually, it's not possible to estimate $\mathbb{P}(\text{class|features})$ directly.
+  - Instead, we often have to estimate $\mathbb{P}(\text{class})$, $\mathbb{P}(\text{features|class})$, and $\mathbb{P}(\text{features})$ separately.
+        
+    
+---
+
+### Example: Avocados
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+<small><small><small>
+
+| color        | ripeness |
+|--------------|----------|
+| bright green | unripe ❌ |
+| green-black  | ripe ✅    |
+| purple-black | ripe  ✅   |
+| green-black  | unripe ❌ |
+| purple-black | ripe  ✅   |
+| bright green | unripe ❌  |
+| green-black  | ripe  ✅   |
+| purple-black | ripe  ✅   |
+| green-black  | ripe  ✅   |
+| green-black  | unripe ❌  |
+| purple-black | ripe ✅    |
+
+</small></small></small>
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+You have a green-black avocado, and want to know if it is ripe. Based on this data, would you predict your avocado is ripe or unripe?
+
+$$\mathbb{P}(\text{class|features}) = \frac{\mathbb{P}(\text{class}) \cdot \mathbb{P}(\text{features|class})}{\mathbb{P}(\text{features})}$$
+
+
+</div>
+</div>
+    
+---
+
+### Example: Avocados
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+<small><small><small>
+
+| color        | ripeness |
+|--------------|----------|
+| bright green | unripe ❌ |
+| green-black  | ripe ✅    |
+| purple-black | ripe  ✅   |
+| green-black  | unripe ❌ |
+| purple-black | ripe  ✅   |
+| bright green | unripe ❌  |
+| green-black  | ripe  ✅   |
+| purple-black | ripe  ✅   |
+| green-black  | ripe  ✅   |
+| green-black  | unripe ❌  |
+| purple-black | ripe ✅    |
+
+</small></small></small>
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+You have a green-black avocado, and want to know if it is ripe. Based on this data, would you predict your avocado is ripe or unripe?
+
+$$\mathbb{P}(\text{class|features}) = \frac{\mathbb{P}(\text{class}) \cdot \mathbb{P}(\text{features|class})}{\mathbb{P}(\text{features})}$$
+
+
+</div>
+</div>
+    
+---
+
+### Example: Avocados
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+<small><small><small>
+
+| color        | ripeness |
+|--------------|----------|
+| bright green | unripe ❌ |
+| green-black  | ripe ✅    |
+| purple-black | ripe  ✅   |
+| green-black  | unripe ❌ |
+| purple-black | ripe  ✅   |
+| bright green | unripe ❌  |
+| green-black  | ripe  ✅   |
+| purple-black | ripe  ✅   |
+| green-black  | ripe  ✅   |
+| green-black  | unripe ❌  |
+| purple-black | ripe ✅    |
+
+</small></small></small>
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+You have a green-black avocado, and want to know if it is ripe. Based on this data, would you predict your avocado is ripe or unripe?
+
+$$\mathbb{P}(\text{class|features}) = \frac{\mathbb{P}(\text{class}) \cdot \mathbb{P}(\text{features|class})}{\mathbb{P}(\text{features})}$$
+
+**Shortcut**: Both probabilities have the same denominator, so the larger probability is the one with the **larger numerator**.
+
+$\mathbb{P}(\text{ripe|green-black})=$
+
+<br>
+
+$\mathbb{P}(\text{unripe|green-black})=$
+
+</div>
+</div>
+    
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Classification and conditional independence
+
+---
+
+<style scoped>
+table {
+  font-size: 17px;
+}
+th, td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}</style>
+
+### Example: Avocados, but with more features
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+| color         | softness | variety | ripeness |
+|---------------|----------|---------|----------|
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | medium   | Hass    | ripe     |
+| purple-black  | firm     | Hass    | ripe     |
+| green-black   | medium   | Hass    | unripe   |
+| purple-black  | soft     | Hass    | ripe     |
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | soft     | Zutano  | ripe     |
+| purple-black  | soft     | Hass    | ripe     |
+| green-black   | soft     | Zutano  | ripe     |
+| green-black   | firm     | Hass    | unripe   |
+| purple-black  | medium   | Hass    | ripe     |
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+    
+You have a firm green-black Zutano avocado. Based on this data, would you predict that your avocado is ripe or unripe?
+
+</div></div>
+
+---
+
+<style scoped>
+table {
+  font-size: 17px;
+}
+th, td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}</style>
+
+### Example: Avocados, but with more features
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+| color         | softness | variety | ripeness |
+|---------------|----------|---------|----------|
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | medium   | Hass    | ripe     |
+| purple-black  | firm     | Hass    | ripe     |
+| green-black   | medium   | Hass    | unripe   |
+| purple-black  | soft     | Hass    | ripe     |
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | soft     | Zutano  | ripe     |
+| purple-black  | soft     | Hass    | ripe     |
+| green-black   | soft     | Zutano  | ripe     |
+| green-black   | firm     | Hass    | unripe   |
+| purple-black  | medium   | Hass    | ripe     |
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+    
+You have a firm green-black Zutano avocado. Based on this data, would you predict that your avocado is ripe or unripe?
+
+**Strategy**: Calculate $\mathbb{P}(\text{ripe|features})$ and $\mathbb{P}(\text{unripe|features})$ and choose the class with the **larger** probability.
+  
+<small>
+
+$$\mathbb{P}(\text{ripe|firm, green-black, Zutano})$$
+$$\mathbb{P}(\text{unripe|firm, green-black, Zutano})$$
+
+</small>
+
+
+</div></div>    
+
+---
+
+<style scoped>
+table {
+  font-size: 17px;
+}
+th, td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}</style>
+
+### Example: Avocados, but with more features
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+| color         | softness | variety | ripeness |
+|---------------|----------|---------|----------|
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | medium   | Hass    | ripe     |
+| purple-black  | firm     | Hass    | ripe     |
+| green-black   | medium   | Hass    | unripe   |
+| purple-black  | soft     | Hass    | ripe     |
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | soft     | Zutano  | ripe     |
+| purple-black  | soft     | Hass    | ripe     |
+| green-black   | soft     | Zutano  | ripe     |
+| green-black   | firm     | Hass    | unripe   |
+| purple-black  | medium   | Hass    | ripe     |
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+    
+You have a firm green-black Zutano avocado. Based on this data, would you predict that your avocado is ripe or unripe?
+
+**Strategy**: Calculate $\mathbb{P}(\text{ripe|features})$ and $\mathbb{P}(\text{unripe|features})$ and choose the class with the **larger** probability.
+    
+**Issue**: We have not seem a firm green-black Zutano avocado before, which means that the following probabilities are undefined:
+
+<small>
+
+$$\mathbb{P}(\text{ripe|firm, green-black, Zutano})$$
+$$\mathbb{P}(\text{unripe|firm, green-black, Zutano})$$
+
+</small>
+
+</div></div>    
+    
+---
+
+### A simplifying assumption
+    
+- We want to find $\mathbb{P}(\text{ripe|firm, green-black, Zutano})$, but there are no firm green-black Zutano avocados in our dataset.
+- Bayes' Theorem tells us this probability is equal to:
+
+<br>
+
+<small>
+
+$$\mathbb{P}(\text{ripe|firm, green-black, Zutano}) = \frac{\mathbb{P}(\text{ripe}) \cdot \mathbb{P}(\text{firm, green-black, Zutano|ripe})}{\mathbb{P}(\text{firm, green-black, Zutano})}$$
+
+<br>
+
+</small>
+
+- **Key idea**: **Assume** that features are **conditionally independent** given a class (e.g. ripe).
+
+<br>
+
+<small>
+
+$$\mathbb{P}(\text{firm, green-black, Zutano|ripe}) = \mathbb{P}(\text{firm|ripe}) \cdot \mathbb{P}(\text{green-black|ripe}) \cdot \mathbb{P}(\text{Zutano|ripe})$$
+
+</small>
+
+---
+
+<style scoped>
+table {
+  font-size: 17px;
+}
+th, td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}</style>
+
+### Example: Avocados, but with more features
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+| color         | softness | variety | ripeness |
+|---------------|----------|---------|----------|
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | medium   | Hass    | ripe     |
+| purple-black  | firm     | Hass    | ripe     |
+| green-black   | medium   | Hass    | unripe   |
+| purple-black  | soft     | Hass    | ripe     |
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | soft     | Zutano  | ripe     |
+| purple-black  | soft     | Hass    | ripe     |
+| green-black   | soft     | Zutano  | ripe     |
+| green-black   | firm     | Hass    | unripe   |
+| purple-black  | medium   | Hass    | ripe     |
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+    
+You have a firm green-black Zutano avocado. Based on this data, would you predict that your avocado is ripe or unripe?
+    
+<small>
+
+$$\mathbb{P}(\text{ripe|firm, green-black, Zutano}) = \frac{\mathbb{P}(\text{ripe}) \cdot \mathbb{P}(\text{firm, green-black, Zutano|ripe})}{\mathbb{P}(\text{firm, green-black, Zutano})}$$
+
+</small>
+    
+</div></div>
+
+---
+
+<style scoped>
+table {
+  font-size: 17px;
+}
+th, td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}</style>
+
+### Example: Avocados, but with more features
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+| color         | softness | variety | ripeness |
+|---------------|----------|---------|----------|
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | medium   | Hass    | ripe     |
+| purple-black  | firm     | Hass    | ripe     |
+| green-black   | medium   | Hass    | unripe   |
+| purple-black  | soft     | Hass    | ripe     |
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | soft     | Zutano  | ripe     |
+| purple-black  | soft     | Hass    | ripe     |
+| green-black   | soft     | Zutano  | ripe     |
+| green-black   | firm     | Hass    | unripe   |
+| purple-black  | medium   | Hass    | ripe     |
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+    
+You have a firm green-black Zutano avocado. Based on this data, would you predict that your avocado is ripe or unripe?
+    
+<small>
+
+$$\mathbb{P}(\text{unripe|firm, green-black, Zutano}) = \frac{\mathbb{P}(\text{unripe}) \cdot \mathbb{P}(\text{firm, green-black, Zutano|unripe})}{\mathbb{P}(\text{firm, green-black, Zutano})}$$
+
+</small>
+    
+</div></div>
+
+---
+
+### Conclusion
+    
+- The numerator of $\mathbb{P}(\text{ripe|firm, green-black, Zutano})$ is $\frac{6}{539}$.
+- The numerator of $\mathbb{P}(\text{unripe|firm, green-black, Zutano})$ is $\frac{6}{88}$.
+- Both probabilities have the same denominator, $\mathbb{P}(\text{firm, green-black, Zutano})$. 
+- Since we're just interested in seeing which one is larger, we can ignore the denominator and compare numerators.
+- Since the numerator for unripe is **larger** than the numerator for ripe, we **predict that our avocado is unripe ❌**.
+    
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Naïve Bayes
+
+---
+
+### The Naïve Bayes classifier
+    
+- We want to predict a class, given certain features.
+- Using Bayes' Theorem, we write:
+
+$$\mathbb{P}(\text{class|features}) = \frac{\mathbb{P}(\text{class}) \cdot \mathbb{P}(\text{features|class})}{\mathbb{P}(\text{features})}$$
+
+- For each class, we compute the numerator using the **naïve assumption of conditional independence of features given the class**.
+
+- We estimate each term in the numerator based on the training data.
+
+- We predict the class with the largest numerator.
+
+  - Works if we have multiple classes, too!
+    
+---
+
+<br>
+
+<center>
+
+<img src="imgs/naive.png" width=85%>
+
+</center>
+
+---
+
+<style scoped>
+table {
+  font-size: 17px;
+}
+th, td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}</style>
+
+### Example: Avocados, again
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+| color         | softness | variety | ripeness |
+|---------------|----------|---------|----------|
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | medium   | Hass    | ripe     |
+| purple-black  | firm     | Hass    | ripe     |
+| green-black   | medium   | Hass    | unripe   |
+| purple-black  | soft     | Hass    | ripe     |
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | soft     | Zutano  | ripe     |
+| purple-black  | soft     | Hass    | ripe     |
+| green-black   | soft     | Zutano  | ripe     |
+| green-black   | firm     | Hass    | unripe   |
+| purple-black  | medium   | Hass    | ripe     |
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+    
+You have a soft green-black Hass avocado. Based on this data, would you predict that your avocado is ripe or unripe?
+
+    
+</div></div>
+
+
+---
+
+### Uh oh!
+    
+- There are no soft unripe avocados in the data set.
+- The estimate $\mathbb{P}(\text{soft|unripe}) \approx \frac{\text{\# soft unripe avocados}}{\text{\# unripe avocados}}$ is 0.
+- The estimated numerator:
+
+  $$\mathbb{P}(\text{unripe}) \cdot \mathbb{P}(\text{soft, green-black, Hass|unripe}) = \mathbb{P}(\text{unripe}) \cdot \mathbb{P}(\text{soft|unripe}) \cdot \mathbb{P}(\text{green-black|unripe})\cdot \mathbb{P}(\text{Hass|unripe})$$
+
+  is also 0.
+
+- But just because there isn't a soft unripe avocado in the data set, doesn't mean that it's impossible for one to exist!
+
+- **Idea**: Adjust the numerators and denominators of our estimate so that they're never 0.
+    
+---
+
+
+### Smoothing
+    
+<small>
+  
+- **Without** smoothing:
+
+</small>
+
+<small><small><small>
+
+$$\begin{align*}
+\mathbb{P}(\text{soft|unripe}) &\approx \frac{\text{\# soft unripe}}{\text{\# soft unripe + \# medium unripe + \# firm unripe}}\\
+\mathbb{P}(\text{medium|unripe}) &\approx \frac{\text{\# medium unripe}}{\text{\# soft unripe + \# medium unripe + \# firm unripe}}\\
+\mathbb{P}(\text{firm|unripe}) &\approx \frac{\text{\# firm unripe}}{\text{\# soft unripe + \# medium unripe + \# firm unripe}}                
+\end{align*}$$
+
+</small></small></small>
+
+<small>
+  
+- **With** smoothing:
+
+</small>
+
+<small><small><small>
+
+$$\begin{align*}
+\mathbb{P}(\text{soft|unripe}) &\approx \frac{\text{\# soft unripe + 1}}{\text{\# soft unripe + 1 + \# medium unripe + 1+ \# firm unripe + 1}}\\
+\mathbb{P}(\text{medium|unripe}) &\approx \frac{\text{\# medium unripe + 1}}{\text{\# soft unripe + 1 + \# medium unripe + 1+ \# firm unripe + 1}}\\
+\mathbb{P}(\text{firm|unripe}) &\approx \frac{\text{\# firm unripe + 1}}{\text{\# soft unripe + 1 + \# medium unripe + 1+ \# firm unripe + 1}} 
+\end{align*}$$
+
+</small></small></small>
+
+<small>
+
+- When smoothing, we add 1 to the count of every group whenever we're estimating a conditional probability.
+
+</small>
+    
+---
+
+<style scoped>
+table {
+  font-size: 17px;
+}
+th, td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}</style>
+
+### Example: Avocados, with smoothing
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+| color         | softness | variety | ripeness |
+|---------------|----------|---------|----------|
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | medium   | Hass    | ripe     |
+| purple-black  | firm     | Hass    | ripe     |
+| green-black   | medium   | Hass    | unripe   |
+| purple-black  | soft     | Hass    | ripe     |
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | soft     | Zutano  | ripe     |
+| purple-black  | soft     | Hass    | ripe     |
+| green-black   | soft     | Zutano  | ripe     |
+| green-black   | firm     | Hass    | unripe   |
+| purple-black  | medium   | Hass    | ripe     |
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+    
+You have a soft green-black Hass avocado. Based on this data, would you predict that your avocado is ripe or unripe?
+
+    
+</div></div>
+
+---
+
+<style scoped>
+table {
+  font-size: 17px;
+}
+th, td {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}</style>
+
+### Example: Avocados, with smoothing
+
+<div style="width: 100%;">
+<div style="width: 30%; float: left;"> 
+
+| color         | softness | variety | ripeness |
+|---------------|----------|---------|----------|
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | medium   | Hass    | ripe     |
+| purple-black  | firm     | Hass    | ripe     |
+| green-black   | medium   | Hass    | unripe   |
+| purple-black  | soft     | Hass    | ripe     |
+| bright green  | firm     | Zutano  | unripe   |
+| green-black   | soft     | Zutano  | ripe     |
+| purple-black  | soft     | Hass    | ripe     |
+| green-black   | soft     | Zutano  | ripe     |
+| green-black   | firm     | Hass    | unripe   |
+| purple-black  | medium   | Hass    | ripe     |
+
+</div>
+
+<div style="margin-left: 35%; height: 100px;"> 
+
+    
+You have a soft green-black Hass avocado. Based on this data, would you predict that your avocado is ripe or unripe?
+
+    
+</div></div>
+
+---
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Summary
+
+---
+
+### Summary
+
+- In classification, our goal is to predict a discrete category, called a **class**, given some features.
+
+- The Naïve Bayes classifier uses Bayes' Theorem:
+
+$$\mathbb{P}(\text{class|features}) = \frac{\mathbb{P}(\text{class}) \cdot \mathbb{P}(\text{features|class})}{\mathbb{P}(\text{features})}$$
+
+- And works by estimating the numerator of $\mathbb{P}(\text{class|features})$ for all possible classes.
+
+- It also uses a simplifying assumption, that features are conditionally independent given a class:
+
+$$\mathbb{P}(\text{features|class}) = \mathbb{P}(\text{feature}_1 | \text{class}) \cdot \mathbb{P}(\text{feature}_2 | \text{class}) \cdot ...$$
