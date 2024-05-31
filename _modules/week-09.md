@@ -26,9 +26,8 @@ days:
         type: lecture
         title: Naïve Bayes
         blank: resources/lectures/lec17/lec17-blank.pdf
-        # url: resources/lectures/lec03/lec03.html
-        # filled: resources/lectures/lec03/lec03-filled.html
-        # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
+        filled: resources/lectures/lec17/lec17-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/18
       - name: HW 7
         type: hw
         title: <b>Homework 7</b>
