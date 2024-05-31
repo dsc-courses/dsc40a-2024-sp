@@ -11,21 +11,21 @@ days:
     events:
       - name: LEC 18
         type: lecture
-        title: Naïve Bayes, Continued
-        # url: resources/lectures/lec03/lec03.html
-        # filled: resources/lectures/lec03/lec03-filled.html
-        # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
+        title: Naïve Bayes, Classification
+      - name: REV 1
+        type: review
+        title: "Review: ERM and Linear Algebra (Center Hall 216, 5-7PM)"
   - date: '2024-06-06'
     events:
       - name: LEC 19
         type: lecture
-        title: Review, Conclusion
-        # url: resources/lectures/lec03/lec03.html
-        # filled: resources/lectures/lec03/lec03-filled.html
-        # podcast: https://podcast.ucsd.edu/watch/wi24/dsc80_a00/3
+        title: Conclusion
+      - name: REV 2
+        type: review
+        title: "Review: Gradient Descent and Probability (Center Hall 216, 5-7PM)"
       - name: HW 8
         type: hw
-        title: Homework 8
+        title: <b>Homework 8 (no slip days!)</b>
   - date: '2024-06-08'
     events:
       - name: EXAM
