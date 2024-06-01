@@ -6,7 +6,7 @@ days:
     events:
       - name: DISC 9
         type: disc
-        title: Groupwork 8
+        title: Groupwork 7
   - date: '2024-06-04'
     events:
       - name: LEC 18

@@ -4,7 +4,7 @@ weekNumber: 7
 days:
   - date: "2024-05-13"
     events:
-      - name: DISC 6
+      - name: DISC 5
         type: disc
         title: Groupwork 5
         problems: resources/groupworks/gw05.pdf
