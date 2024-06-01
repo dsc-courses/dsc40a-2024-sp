@@ -26,6 +26,8 @@ days:
       - name: HW 8
         type: hw
         title: <b>Homework 8 (no slip days!)</b>
+        problems: resources/homeworks/hw08.pdf
+        template: https://www.overleaf.com/read/zbckpqqphmgw#4d8853
   - date: '2024-06-08'
     events:
       - name: EXAM
