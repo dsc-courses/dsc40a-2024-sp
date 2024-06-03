@@ -8,6 +8,7 @@ days:
         type: disc
         title: Groupwork 7
         problems: resources/groupworks/gw07-week10.pdf
+        template: https://www.overleaf.com/read/pbjnpvmkxvsv#3f1bb6
   - date: '2024-06-04'
     events:
       - name: LEC 18
