@@ -31,7 +31,10 @@ days:
         template: https://www.overleaf.com/read/zbckpqqphmgw#4d8853
   - date: '2024-06-08'
     events:
+      - name: SUR
+        type: survey
+        title: <b><a href="https://docs.google.com/forms/d/e/1FAIpQLSffswste_zytkO55njB5fLcJWdRbTj1cM7T87zUEhAhTi0-kQ/viewform">End-of-Quarter Survey</a></b> + <b><a href="https://academicaffairs.ucsd.edu/Modules/Evals/">SETs</a> (due 8AM)</b>
       - name: EXAM
         type: exam
-        title: <b>Final Exam (8-11AM, in person, location TBD)</b>
+        title: <b>Final Exam (8-11AM, in person, Center 212+214)</b>
 ---
