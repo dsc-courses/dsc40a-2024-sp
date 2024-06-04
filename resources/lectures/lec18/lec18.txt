@@ -1,0 +1,383 @@
+<style>
+
+h1 {
+  background: linear-gradient(90.2deg, rgba(190, 70, 102, 0.93) -15.6%, rgb(252, 154, 154) -15.6%, rgba(190, 70, 102, 0.92) 17.9%, rgb(58, 13, 48) 81.6%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1 { font-size: 72px }
+
+h2 { font-size: 48px; color: #fff; }
+
+h3 { font-size: 36px; vertical-align: top; }
+
+h3, h4, h5 {
+  background: rgb(58, 13, 48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h3, h4, h5 { color: #444 }
+
+section {
+  position: absolute;
+  height: inherit;
+  vertical-align: bottom;
+  margin: 0;
+  display: table-cell;
+}
+
+</style>
+
+<br><br><br>
+
+##### Lecture 18
+
+# More Naïve Bayes, Review
+
+#### DSC 40A, Spring 2024
+
+---
+
+### Announcements
+
+- Homework 8 is due on **Thursday**. You cannot use slip days on it.
+- The Final Exam is on Saturday from 8-11AM.
+<small>
+    - You will be assigned a seat, either in Center Hall 212 or 214.
+    - 180 minutes, on paper, no calculators or electronics, but **you are allowed to bring two double-sided index cards (4 inches by 6 inches) of notes that you write by hand.**
+</small>
+- We will have two review sessions. In each of them, the first hour will be a mock exam **which you will take silently on paper**; we will take up the problems in the second half.
+<small>
+  - Tuesday, June 4th, 5-7PM (empirical risk minimization and linear algebra).
+  - Thursday, June 6th, 5-7PM (gradient descent and probability).
+  - Also, Friday, June 7th, 4-9PM: study session in HDSI 123.
+</small>
+- If at least 90% of the class fills out both the [**End-of-Quarter Survey**](https://docs.google.com/forms/d/e/1FAIpQLSffswste_zytkO55njB5fLcJWdRbTj1cM7T87zUEhAhTi0-kQ/viewform) and [**SETs**](https://academicaffairs.ucsd.edu/Modules/Evals/) by 8AM on Saturday, then the entire class will have 2% of extra credit added to their overall grade.
+
+---
+
+### Agenda
+
+- Text classification.
+  - Practical demo.
+- Review.
+  - Old exam problems.
+
+---
+
+### Recap: The Naïve Bayes classifier
+    
+- We want to predict a class, given certain features.
+- Using Bayes' Theorem, we write:
+
+$$\mathbb{P}(\text{class|features}) = \frac{\mathbb{P}(\text{class}) \cdot \mathbb{P}(\text{features|class})}{\mathbb{P}(\text{features})}$$
+
+- For each class, we compute the numerator using the **naïve assumption of conditional independence of features given the class**.
+
+- We estimate each term in the numerator based on the training data.
+
+- We predict the class with the largest numerator.
+
+  - Works if we have multiple classes, too!
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+<br><br><br>
+
+<center><big><b>Remember, you can always ask questions at <a href="https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform">q.dsc40a.com</a>!</b></big>
+
+If the direct link doesn't work, click the "🤔 Lecture Questions" <br>link in the top right corner of [dsc40a.com](https://dsc40a.com).
+</center>
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Text classification
+
+---
+
+### Text classification
+
+- Text classification problems include:
+  - Sentiment analysis (e.g. positive and negative customer reviews).
+  - Determining genre (news articles, blog posts, etc.).
+- Spam filtering is a common text classification problem:
+
+<center>
+
+<img src="imgs/spam.png" width=60%>
+
+</center>
+
+- **Goal**: Given the body of an email, determine whether it's <span style="color:orange">**spam**</span> or <span style="color:#007aff">**ham**</span> (not spam).
+
+- **Question**: What information do we use to make these predictions? What **features**?
+
+
+---
+
+### Text features
+
+**Idea**:        
+- Choose a **dictionary** of $d$ words.
+- Represent each email with a **feature vector** $\vec{x}$:
+  $$\vec{x} = \begin{bmatrix} x^{(1)} \\ x^{(2)} \\ ... \\ x^{(d)} \end{bmatrix}$$
+  where $x^{(i)} = 1$ if word $i$ is present in the email, and $x^{(i)} = 0$ otherwise.
+
+This is called the **bag-of-words** model. This model ignores the frequency and meaning of words.
+
+---
+
+### Concrete example
+
+- Dictionary: "prince", "money", "free", and "just".
+- Dataset of 5 emails (<span style="color:orange">**orange are spam**</span>, <span style="color:#007aff">**blue are ham**</span>):
+  - <span style="color:orange">**"I am the prince of UCSD and I demand money."**</span>
+  - <span style="color:#007aff">**"Tapioca Express: redeem your free Thai Iced Tea!"**</span>
+  - <span style="color:#007aff">**"DSC 10: free points if you fill out SETs!"**</span>
+  - <span style="color:orange">**"Click here to make a tax-free donation to the IRS."**</span>
+  - <span style="color:#007aff">**"Free career night at Prince Street Community Center."**</span>
+
+---
+
+### Naïve Bayes for spam classification
+
+$$\mathbb{P}(\text{class | features}) = \frac{\mathbb{P}(\text{class}) \cdot \mathbb{P}(\text{features | class})}{\mathbb{P}(\text{features})}$$
+
+- To classify an email, we'll use Bayes' Theorem to calculate the probability of it belonging to each class:
+  - $\mathbb{P}(\text{spam | features})$.
+  - $\mathbb{P}(\text{ham | features})$.
+- We'll predict the class with a larger probability.
+
+---
+
+### Naïve Bayes for spam classification
+$$\mathbb{P}(\text{class | features}) = \frac{\mathbb{P}(\text{class}) \cdot \mathbb{P}(\text{features | class})}{\mathbb{P}(\text{features})}$$
+
+- Note that the formulas for $\mathbb{P}(\text{spam | features})$ and $\mathbb{P}(\text{ham | features})$ have the same denominator, $\mathbb{P}(\text{features})$.
+- Thus, we can find the larger probability just by comparing numerators:
+  - $\mathbb{P}(\text{spam | features}) \propto \mathbb{P}(\text{spam}) \cdot \mathbb{P}(\text{features | spam})$.
+  - $\mathbb{P}(\text{ham | features}) \propto \mathbb{P}(\text{ham}) \cdot \mathbb{P}(\text{features | ham})$.
+
+
+---
+
+<style scoped>section {background: #f2ecf4 }</style>
+
+### Question 🤔
+**Answer at [q.dsc40a.com](https://docs.google.com/forms/d/e/1FAIpQLSfEaSAGovXZCk_51_CVI587CcGW1GZH1w4Y50dKDzoLEX3D4w/viewform)**
+
+- $\mathbb{P}(\text{features | spam})$.
+- $\mathbb{P}(\text{features | ham})$.
+- $\mathbb{P}(\text{spam})$.
+- $\mathbb{P}(\text{ham})$.
+
+Which of these probabilities should add to 1?
+- A. 1, 2
+- B. 3, 4
+- C. Both (a) and (b).
+- D. Neither (a) nor (b).
+
+---
+
+### Estimating probabilities with training data
+
+- To estimate $\mathbb{P}(\text{spam})$, we compute:
+
+$$\mathbb{P}(\text{spam}) \approx \frac{\text{\# spam emails in training set}}{\text{\# emails in training set}}$$
+
+- To estimate $\mathbb{P}(\text{ham})$, we compute:
+
+$$\mathbb{P}(\text{ham}) \approx \frac{\text{\# ham emails in training set}}{\text{\# emails in training set}}$$
+
+- What about $\mathbb{P}(\text{features | spam})$ and $\mathbb{P}(\text{features | ham})$?
+
+
+---
+
+### Assumption of conditional independence
+
+- Note that $\mathbb{P}(\text{features | spam})$ looks like:
+
+$$\mathbb{P}(x^{(1)} = 0, x^{(2)} = 1, ..., x^{(d)} = 0 \text{ | spam})$$
+
+- Recall: the key assumption that the Naïve Bayes classifier makes is that **the features are conditionally independent given the class**.
+- This means we can estimate $\mathbb{P}(\text{features | spam})$ as:
+
+$$\begin{align*}
+&\mathbb{P}(x^{(1)} = 0, x^{(2)} = 1, ..., x^{(d)} = 0 \text{ | spam}) \\
+= &\mathbb{P}(x^{(1)} = 0 \text{ | spam}) \cdot \mathbb{P}(x^{(2)} = 1 \text{ | spam}) \cdot ... \cdot \mathbb{P}(x^{(d)} = 0 \text{ | spam})
+\end{align*}$$
+
+
+---
+
+### Concrete example
+
+- Dictionary: "prince", "money", "free", and "just".
+- Dataset of 5 emails (<span style="color:orange">**orange are spam**</span>, <span style="color:#007aff">**blue are ham**</span>):
+  - <span style="color:orange">**"I am the prince of UCSD and I demand money."**</span>
+  - <span style="color:#007aff">**"Tapioca Express: redeem your free Thai Iced Tea!"**</span>
+  - <span style="color:#007aff">**"DSC 10: free points if you fill out SETs!"**</span>
+  - <span style="color:orange">**"Click here to make a tax-free donation to the IRS."**</span>
+  - <span style="color:#007aff">**"Free career night at Prince Street Community Center."**</span>
+
+---
+
+### Concrete example
+
+- New email to classify: "Download a free copy of the Prince of Persia."
+
+
+---
+
+
+---
+
+### Uh oh...
+
+- What happens if we try to classify the email "just what's your price, prince"?
+
+---
+
+### Smoothing
+
+- **Without** smoothing:
+
+<small><small>
+$$\mathbb{P}(x^{(i)} = 1\text{ | spam}) \approx \frac{\text{\# spam containing word } i}{\text{\# spam containing word } i + \text{\# spam not containing word } i}$$
+</small></small>
+
+- **With** smoothing:
+
+<small><small>
+$$\mathbb{P}(x^{(i)} = 1\text{ | spam}) \\\\ \approx \frac{(\text{\# spam containing word } i) + 1}{(\text{\# spam containing word } i) + 1 + (\text{\# spam not containing word } i) + 1}$$
+</small></small>
+
+<br>
+
+- When smoothing, we add 1 to the count of every group whenever we're estimating a conditional probability.
+
+---
+
+### Concrete example with smoothing
+
+- What happens if we try to classify the email "just what's your price, prince"?
+
+
+---
+
+
+---
+
+
+### Modifications and extensions
+
+- **Idea**: Use pairs (or longer sequences) of words rather than individual words as features.
+  - This better captures the dependencies between words.
+  - It also leads to a much larger space of features, increasing the complexity of the algorithm.
+    
+- **Idea**: Instead of recording whether each word appears, record how many times each word appears.
+  - This better captures the importance of repeated words.
+
+---
+
+<br><br><br><br><br>
+
+That's all the new content we have!
+
+Let's now try out Naïve Bayes in code. Follow along [here](http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec18/lec18-code.ipynb).
+
+---
+
+<style scoped>section {background: linear-gradient(90deg, hsla(290, 25%, 76%, 1) 0%, hsla(284, 80%, 10%, 1) 100%);}</style>
+
+<br><br><br><br><br>
+
+## Review
+
+<span style="color:white">We're done with new content! Let's work through some old exam problems.</span>
+
+---
+
+### Fall 2021 Final Exam, Problem 10
+
+Suppose you're given the following probabilities:
+
+- $\mathbb{P}(A | B) = \frac{2}{5}$.
+- $\mathbb{P}(B | A) = \frac{1}{4}$.
+- $\mathbb{P}(A | C) = \frac{2}{3}$.
+
+**Part 1**: If $A$ and $C$ are independent, what is $\mathbb{P}(B)$?
+
+---
+
+### Fall 2021 Final Exam, Problem 10
+
+Suppose you're given the following probabilities:
+
+- $\mathbb{P}(A | B) = \frac{2}{5}$.
+- $\mathbb{P}(B | A) = \frac{1}{4}$.
+- $\mathbb{P}(A | C) = \frac{2}{3}$.
+
+**Part 2**: Suppose $A$ and $C$ are not independent, and now suppose that $\mathbb{P}(A | \bar{C}) = \frac{1}{5}$. Given that $A$ and $B$ are independent, what is $\mathbb{P}(C)$?
+
+---
+
+### Spring 2023 Midterm Exam 2, Problem 6.2
+
+The events $A$ and $B$ are mutually exclusive, or disjoint. More generally, for **any** two disjoint events $A$ and $B$, show how to express $P(\bar{A} | (A \cup B))$ in terms of $P(A)$ and $P(B)$ **only**.
+
+---
+
+### Fall 2021 Final Exam, Problem 8
+
+Billy brings you back to Dirty Birds, the restaurant where he is a waiter. He tells you that Dirty Birds has 30 different flavors of chicken wings, 18 of which are ‘wet’ (e.g. honey garlic) and 12 of which are ‘dry’ (e.g. lemon pepper).
+
+Each time you place an order at Dirty Birds, you get to pick 4 different flavors. The order in which you pick your flavors does not matter.
+
+**Part 1**: How many ways can we select 4 flavors in total?
+
+<br><br>
+
+**Part 2**: How many ways can we select 4 flavors in total such that we select an equal number of wet and dry flavors?
+
+---
+
+**Part 3**: Billy tells you he’ll surprise you with 4 different flavors, randomly selected from the 30 flavors available. What’s the probability that he brings you at least one wet flavor and and least one dry flavor?
+
+---
+
+**Part 4**: Suppose you go to Dirty Birds once a day for 7 straight days. Each time you go there, Billy brings you 4 different flavors, randomly selected from the 30 flavors available. What’s the probability that on at least one of the 7 days, he brings you all wet flavors or all dry flavors? (Note: All 4 flavors for a particular day must be different, but it is possible to get the same flavor on multiple days.)
+
+---
+
+### Fall 2021 Final Exam, Problem 9
+
+In this question, we’ll consider the phone number 6789998212 (mentioned in Soulja Boy’s 2008 classic, “Kiss Me thru the Phone”).
+
+**Part 1**: How many permutations of 6789998212 are there?
+
+<br><br><brS>
+
+**Part 2**: How many permutations of 6789998212 have all three 9s next to each other?
+
+---
+
+**Part 3**: How many permutations of 6789998212 end with a 1 and start with a 6?
+
+
+<br><br><br><br>
+
+**Part 4**: How many different 3 digit numbers with unique digits can we create by selecting digits from 6789998212?
+
