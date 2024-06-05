@@ -17,7 +17,7 @@ days:
         blank: resources/lectures/lec18/lec18-blank.pdf
         filled: resources/lectures/lec18/lec18-filled.pdf
         code: http://datahub.ucsd.edu/user-redirect/git-sync?repo=https://github.com/dsc-courses/dsc40a-2024-sp&subPath=lectures/lec18/lec18-code.ipynb
-        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_b00/19
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_a00/19
       - name: REV 1
         type: review
         title: "Review: ERM and Linear Algebra (Center Hall 216, 5-7PM)"
