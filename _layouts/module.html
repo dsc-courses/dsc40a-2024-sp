@@ -20,7 +20,7 @@
               {% else %}
                 {{ event.title }}
               {% endif %}
-              {%- if event.type == "lecture" -%}
+              {%- if event.type == "lecture" or event.type == "review" -%}
                 {%- if event.blank -%}
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

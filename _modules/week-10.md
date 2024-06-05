@@ -21,6 +21,9 @@ days:
       - name: REV 1
         type: review
         title: "Review: ERM and Linear Algebra (Center Hall 216, 5-7PM)"
+        blank: resources/review/mock-final-1.pdf
+        filled: resources/review/mock-final-1-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_a00/22
   - date: '2024-06-06'
     events:
       - name: LEC 19
