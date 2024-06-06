@@ -30,6 +30,8 @@ days:
         type: lecture
         title: Review, Final Thoughts
         blank: resources/lectures/lec19/lec19-blank.pdf
+        filled: resources/lectures/lec19/lec19-filled.pdf
+        podcast: https://podcast.ucsd.edu/watch/sp24/dsc40a_a00/20
       - name: REV 2
         type: review
         title: "Review: Gradient Descent and Probability (Center Hall 216, 5-7PM)"
