@@ -28,7 +28,8 @@ days:
     events:
       - name: LEC 19
         type: lecture
-        title: Conclusion
+        title: Review, Final Thoughts
+        blank: resources/lectures/lec19/lec19-blank.pdf
       - name: REV 2
         type: review
         title: "Review: Gradient Descent and Probability (Center Hall 216, 5-7PM)"
