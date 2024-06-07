@@ -35,7 +35,7 @@ days:
       - name: REV 2
         type: review
         title: "Review: Gradient Descent and Probability (Center Hall 216, 5-7PM)"
-        blank: resources/review/mock-final-1.pdf
+        blank: resources/review/mock-final-2.pdf
         filled: https://dsc-courses.github.io/dsc40a-2023-sp/resources/exams/mockmidterm2sol.pdf
         podcast: https://youtu.be/f9vNrmryuuQ
       - name: HW 8
